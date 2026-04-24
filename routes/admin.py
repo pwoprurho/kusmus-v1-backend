@@ -190,7 +190,7 @@ def modify_role():
         supabase_admin.table('users').update({'role': new_role}).eq('id', user_id).execute()
         return jsonify({'status': 'updated'})
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Failed to update role. Please try again.'}), 500
 
 
 @admin_bp.route('/supa-admin/send-zoho', methods=['POST'])
@@ -328,8 +328,13 @@ def get_chat_history(client_id):
     audit_context = {'original_challenge': 'N/A', 'date_filed': 'N/A'}
     
     try:
-        client_res = supabase_admin.table('clients').select('email').eq('id', client_id).single().execute()
+        client_res = supabase_admin.table('clients').select('email, account_manager_id').eq('id', client_id).single().execute()
         if client_res.data:
+            # IDOR Check: Ensure admin is authorized for this client
+            if current_user.role != 'supa_admin':
+                 if current_user.id != client_res.data.get('account_manager_id'):
+                     return jsonify({'error': 'Unauthorized: Not assigned to this client'}), 403
+
             client_email = client_res.data['email']
             audit_res = supabase_admin.table('audit_requests').select('message, created_at').eq('email', client_email).order('created_at', desc=True).limit(1).execute()
             if audit_res.data:
@@ -361,6 +366,15 @@ def send_admin_message():
     client_id = request.form.get('client_id')
     text = request.form.get('message')
     uploaded_file = request.files.get('file')
+
+    # IDOR Check: Ensure admin is authorized for this client
+    try:
+        client_res = supabase_admin.table('clients').select('account_manager_id').eq('id', client_id).single().execute()
+        if client_res.data and current_user.role != 'supa_admin':
+            if current_user.id != client_res.data.get('account_manager_id'):
+                return jsonify({'error': 'Unauthorized: Not assigned to this client'}), 403
+    except Exception:
+        pass
     
     try:
         attachment_path, attachment_type = None, None
@@ -423,7 +437,7 @@ def view_lead(lead_id):
     except Exception: pass
     return redirect(url_for('admin.dashboard'))
 
-@admin_bp.route('/lead/delete/<string:lead_id>')
+@admin_bp.route('/lead/delete/<string:lead_id>', methods=['POST'])
 @login_required
 @role_required('supa_admin', 'admin')
 def delete_lead(lead_id):
@@ -468,7 +482,7 @@ def edit_post(post_id):
     except Exception: pass
     return redirect(url_for('admin.dashboard'))
 
-@admin_bp.route('/post/publish/<string:post_id>')
+@admin_bp.route('/post/publish/<string:post_id>', methods=['POST'])
 @login_required
 @role_required('supa_admin', 'admin', 'editor')
 def publish_post(post_id):
@@ -478,7 +492,7 @@ def publish_post(post_id):
     except Exception as e: flash(f"Deploy failed: {e}", "error")
     return redirect(url_for('admin.dashboard'))
 
-@admin_bp.route('/post/delete/<string:post_id>')
+@admin_bp.route('/post/delete/<string:post_id>', methods=['POST'])
 @login_required
 @role_required('supa_admin', 'admin')
 def delete_post(post_id):
@@ -596,12 +610,7 @@ def crypto_wallet():
     # GET: Render UI
     return render_template('admin/crypto_wallet.html', result=None)
 
-@admin_bp.route('/crypto-wallet', methods=['GET', 'POST'])
-def crypto_wallet_alias():
-    if request.method == 'POST':
-        return crypto_wallet()
-    # For GET, just render the page with no result
-    return render_template('admin/crypto_wallet.html', result=None)
+# crypto_wallet_alias removed — was a duplicate unprotected route (security fix)
 
 @admin_bp.route('/account-action', methods=['POST'])
 @login_required
@@ -624,6 +633,8 @@ def account_action():
     return render_template('admin/live_chat.html', account_result=result)
 
 @admin_bp.route('/crypto-wallet-action', methods=['POST'])
+@login_required
+@role_required('supa_admin', 'admin')
 def crypto_wallet_action():
     user_id = request.form.get('user_id')
     action = request.form.get('action')

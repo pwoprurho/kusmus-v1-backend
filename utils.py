@@ -1,6 +1,6 @@
 import os
 from functools import wraps
-from flask import abort, current_app, redirect, url_for, session
+from flask import abort, current_app, redirect, url_for, session, request, flash
 from flask_login import current_user
 from supabase import create_client, Client
 from cryptography.fernet import Fernet
@@ -59,11 +59,10 @@ def get_anon_client():
     return create_client(url, key)
 
 def get_cipher_suite():
-    """Retrieves the encryption key."""
+    """Retrieves the encryption key. Fails closed if not configured."""
     key = os.environ.get("ENCRYPTION_KEY")
     if not key:
-        # Fallback for dev safety
-        return Fernet(Fernet.generate_key())
+        raise RuntimeError("CRITICAL: ENCRYPTION_KEY not set in environment. Refusing to operate with ephemeral keys.")
     return Fernet(key.encode())
 
 def encrypt_text(text):

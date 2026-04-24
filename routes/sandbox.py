@@ -117,9 +117,13 @@ def api_sentinel_analyze(ticker):
         })
         
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        print(f"Sandbox Chat Error: {e}")
+        error_msg = str(e) if os.getenv('FLASK_ENV') == 'development' else "Cognitive process interrupted by an internal fault."
+        return jsonify({
+            'error': error_msg,
+            'v_score': 0,
+            'threat_level': 'CRITICAL'
+        }), 500
 
 @sandbox_bp.route("/sandbox")
 def sandbox_view():
@@ -320,7 +324,8 @@ def sandbox_chat_stream():
 
     except Exception as e:
         print(f"Sandbox Stream Error: {e}")
-        return jsonify({'error': str(e)}), 500
+        error_msg = str(e) if os.getenv('FLASK_ENV') == 'development' else "An internal error occurred during neural transmission."
+        return jsonify({'error': error_msg}), 500
 
 
 @sandbox_bp.route("/api/sandbox/chat", methods=["POST"])
@@ -494,9 +499,9 @@ def sandbox_chat():
             pass
 
         return jsonify({
-            'response': f"System Error: {str(e)}", 
+            'response': "An internal system error occurred. Our team has been notified.", 
             'thought_trace': thought_trace,
-            'error': str(e)
+            'error': 'internal_error'
         }), 500
 
 

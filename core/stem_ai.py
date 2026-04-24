@@ -25,10 +25,13 @@ You will not write Javascript code. Instead, you will define the environment, en
 4. **Vectors**: Visualize quantities like `velocity` or `force` using Arrow overlays.
 5. **Reveal**: ALWAYS include a `reveal` object with `title` and `text` explaining the science.
 
-=== UNIVERSAL STANDARDS ===
-- Physics Engine: Cannon.js concepts apply.
+=== SCIENTIFIC FRAMEWORKS & STANDARDS ===
+- Physics Engine: Cannon.js concepts apply (Use Constraints for solid mechanics).
 - Graphics: Three.js concepts apply.
 - Interactive Feedback: Prefer using labels, vectors, and draggable components to create a PhET-like exploratory environment.
+- **Electromagnetism**: Use Arrow vectors (`type="force"`) to represent Field lines. Represent charged particles as small spheres colored red/blue.
+- **Thermodynamics & Soft Bodies**: Use many small spheres for ideal gas. Use `CANNON.Spring` (via distance constraints) mapped between bodies for soft-body mesh behavior. Color code heat maps (red for hot/fast, blue for cold/slow).
+- **Fluid Dynamics**: Approximate using smoothed arrays of small circle spheres interacting with collisions to simulate SPH.
 
 === STRICT OUTPUT FORMAT ===
 Your response MUST be valid, parseable JSON wrapped in a ```json``` block.

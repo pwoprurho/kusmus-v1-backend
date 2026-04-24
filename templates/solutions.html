@@ -2,64 +2,49 @@
 
 {% block title %}Sovereign AI Stack | Engineering Certainty | Kusmus AI{% endblock %}
 
+{% block meta_description %}Discover the Kusmus Sovereign AI Stack: on-premise, air-gapped, NVIDIA-grade infrastructure powering autonomous tax engines, O-RAN defense, and robotic visual security systems.{% endblock %}
 {% block content %}
-<header class="page-header container fade-in">
-    <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 24px;">Institutional Autonomy Stack</h1>
-    <p style="font-size: 1.25rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Kusmus provides the
-        <strong>Independence Stack</strong>. We don't provide a SaaS; we provide the architecture to make you
-        independent of Big Tech through <strong>NVIDIA-grade</strong> sovereign infrastructure.
-    </p>
-    <p
-        style="font-size: 0.85rem; color: #64748b; margin-top: 25px; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-        * Notice: Kusmus AI does not maintain a fixed price list. The value we bring to your institutional operations is
-        unique and non-linear. Additional custom solutions are integrated based on the specific recommendations provided
-        in our Support reports.
-    </p>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/infrastructure.css') }}">
+
+<header class="page-header container fade-in section-container infra-header">
+    <h1>Institutional Autonomy Stack</h1>
+    <p class="subtitle">Kusmus provides the <strong>Independence Stack</strong>. We don't provide a SaaS; we provide the architecture to make you independent of Big Tech through <strong>NVIDIA-grade</strong> sovereign infrastructure.</p>
+    <p class="notice">* Notice: Kusmus AI does not maintain a fixed price list. The value we bring to your institutional operations is unique and non-linear. Additional custom solutions are integrated based on the specific recommendations provided in our Support reports.</p>
 </header>
 
-<!-- METRICS DASHBOARD (Global) -->
-<div class="metrics-dashboard container fade-in"
-    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 80px; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-    <div class="metric-item" style="text-align: center;">
-        <i class="fas fa-bolt" style="font-size: 2rem; color: #0072ff; margin-bottom: 15px;"></i>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #fff;">&lt;12ms</div>
-        <div style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">Execution
-            Latency</div>
+        <div class="metric-label">Execution Latency</div>
     </div>
-    <div class="metric-item" style="text-align: center;">
-        <i class="fas fa-brain" style="font-size: 2rem; color: #00ff88; margin-bottom: 15px;"></i>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #fff;">Lvl 4</div>
-        <div style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">Autonomy</div>
+    <div class="metric-item">
+        <i class="fas fa-brain metric-icon text-accent" style="color: #00ff88 !important;"></i>
+        <div class="metric-value">Lvl 4</div>
+        <div class="metric-label">Autonomy</div>
     </div>
-    <div class="metric-item" style="text-align: center;">
-        <i class="fas fa-balance-scale" style="font-size: 2rem; color: #00c3ff; margin-bottom: 15px;"></i>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #fff;">100%</div>
-        <div style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">Statutory
-            Accuracy</div>
+    <div class="metric-item">
+        <i class="fas fa-balance-scale metric-icon text-accent"></i>
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Statutory Accuracy</div>
     </div>
-    <div class="metric-item" style="text-align: center;">
-        <i class="fas fa-shield-alt" style="font-size: 2rem; color: #ff4444; margin-bottom: 15px;"></i>
-        <div style="font-size: 2.5rem; font-weight: 800; color: #fff;">24/7</div>
-        <div style="color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase;">Active Defense
-        </div>
+    <div class="metric-item">
+        <i class="fas fa-shield-alt metric-icon" style="color: #ff4444;"></i>
+        <div class="metric-value">24/7</div>
+        <div class="metric-label">Active Defense</div>
     </div>
 </div>
 
 <!-- SOVEREIGN ARCHITECTURE SECTION -->
-<section class="container fade-in" style="margin-bottom: 80px;">
-    <h3 style="text-align: center; color: #FFD700; margin-bottom: 40px; font-size: 2rem;">The Sovereign Architecture</h3>
-    <p style="text-align: center; color: #94a3b8; max-width: 900px; margin: 0 auto 50px; line-height: 1.8;">
+<section class="container fade-in section-container">
+    <h3 class="section-title text-gold">The Sovereign Architecture</h3>
+    <p class="section-desc">
         We have eliminated the compromises of generic AI. At Kusmus, our <strong>Sovereign Agents</strong> come
         pre-installed on <strong>NVIDIA-grade</strong> infrastructure.
         We use industry-standard <strong>RL (Reinforcement Learning)</strong> with strictly <strong>GET-only</strong>
         data gathering to ensure your perimeter remains impenetrable while your intelligence evolves.
     </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-        <div class="glass-panel"
-            style="padding: 30px; border-radius: 16px; background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2);">
-            <h4 style="color: #00ff88; margin-bottom: 20px; font-size: 1.4rem;"><i class="fas fa-server"></i>
+    <div class="grid-auto">
+        <div class="glass-card">
+            <h4 class="mb-2"><i class="fas fa-server"></i>
                 Self-Hosted (On-Premise)</h4>
-            <p style="color: #ccc; margin-bottom: 20px;">The ultimate air-gapped security. We deploy vLLM nodes directly
+            <p>The ultimate air-gapped security. We deploy vLLM nodes directly
                 onto your physical hardware or private VPC. Maximum sovereignty for defense and financial institutions.
             </p>
             <ul style="color: #94a3b8; font-size: 0.95rem; line-height: 1.8; list-style: none; padding: 0;">
@@ -103,27 +88,15 @@
                 SOVEREIGN AGENT</div>
             <h3>Tax Compliance Engine</h3>
             <!-- Metrics for this solution -->
-            <div class="metrics-dashboard" style="display: flex; gap: 20px; margin-bottom: 18px;">
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-bolt" style="font-size: 1.3rem; color: #0072ff; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">&lt;10ms</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Calculation Speed</div>
+            <div class="metric-row mb-2" style="padding: 15px; background: rgba(255,255,255,0.02);">
+                <div class="metric-item">
+                    <i class="fas fa-bolt metric-icon text-primary" style="font-size: 1.3rem;"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">&lt;10ms</div>
+                    <div class="metric-label" style="font-size: 0.7rem;">Calculation Speed</div>
                 </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-balance-scale" style="font-size: 1.3rem; color: #00c3ff; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">100%</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Legal Accuracy</div>
-                </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-file-invoice-dollar"
-                        style="font-size: 1.3rem; color: #00ff88; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Instant</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Document Parsing</div>
-                </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-gavel" style="font-size: 1.3rem; color: #ff4444; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">2025</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Act Coverage</div>
+                <div class="metric-item">
+                    <i class="fas fa-balance-scale metric-icon text-accent" style="font-size: 1.3rem;"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">100%</div>
                 </div>
             </div>
             <p class="body-text">
@@ -139,8 +112,8 @@
                 <li><strong>Legal Citation:</strong> Every standardized advice is backed by specific citations from the
                     2025 Tax Act.</li>
             </ul>
-            <a href="{{ url_for('sandbox.sandbox_view') }}?demo=tax_compliance_agent" class="cta-button"
-                style="margin-top: 20px; font-size: 0.9rem; padding: 10px 20px;">Consult Tax Agent &rarr;</a>
+            <a href="{{ url_for('sandbox.sandbox_view') }}?demo=tax_compliance_agent" class="cta-button mt-2"
+                style="font-size: 0.9rem;">Consult Tax Agent &rarr;</a>
         </div>
         <div class="card-visual">
             <i class="fas fa-file-invoice-dollar" style="color: #00c3ff;"></i>
@@ -155,26 +128,14 @@
                 SOVEREIGN AGENT</div>
             <h3>Sentinel: O-RAN Defense System</h3>
             <!-- Metrics for this solution -->
-            <div class="metrics-dashboard" style="display: flex; gap: 20px; margin-bottom: 18px;">
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-bolt" style="font-size: 1.3rem; color: #0072ff; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">&lt;15ms</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Threat Response</div>
+            <div class="metric-row mb-2">
+                <div class="metric-item">
+                    <i class="fas fa-bolt metric-icon text-primary"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">&lt;15ms</div>
                 </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-brain" style="font-size: 1.3rem; color: #00ff88; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Lvl 3</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Autonomy</div>
-                </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-balance-scale" style="font-size: 1.3rem; color: #00c3ff; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">99.9%</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Uptime</div>
-                </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-shield-alt" style="font-size: 1.3rem; color: #ff4444; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Proactive</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Defense</div>
+                <div class="metric-item">
+                    <i class="fas fa-brain metric-icon text-accent" style="color: #00ff88 !important;"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">Lvl 3</div>
                 </div>
             </div>
             <p class="body-text">
@@ -193,10 +154,8 @@
                 style="margin-top: 20px; font-size: 0.9rem; padding: 10px 20px;">Launch Sentinel Demo &rarr;</a>
 
         </div>
-        <div class="card-visual">
-            <i class="fas fa-shield-alt" style="color: #0072ff;"></i>
-        </div>
     </div>
+</div>
 
     <!-- SOLUTION 3: VLA ROBOTICS (Physical Security) -->
     <div class="solution-card reverse fade-in">
@@ -256,16 +215,14 @@
                 style="background: #0072ff; color: #fff; padding: 4px 12px; display: inline-block; border-radius: 20px; font-weight: 700; font-size: 0.7rem; margin-bottom: 15px;">
                 SOVEREIGN AGENT</div>
             <h3>TTSE: Scientific Simulation Engine</h3>
-            <div class="metrics-dashboard" style="display: flex; gap: 20px; margin-bottom: 18px;">
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-atom" style="font-size: 1.3rem; color: #0072ff; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Vector</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Precision</div>
+            <div class="metric-row mb-2">
+                <div class="metric-item">
+                    <i class="fas fa-atom metric-icon text-primary"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">Vector</div>
                 </div>
-                <div class="metric-item" style="text-align: center;">
-                    <i class="fas fa-cubes" style="font-size: 1.3rem; color: #00ff88; margin-bottom: 6px;"></i>
-                    <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">3D</div>
-                    <div style="color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Visualization</div>
+                <div class="metric-item">
+                    <i class="fas fa-cubes metric-icon text-accent" style="color: #00ff88 !important;"></i>
+                    <div class="metric-value" style="font-size: 1.2rem;">3D</div>
                 </div>
             </div>
             <p class="body-text">
@@ -280,8 +237,8 @@
                     diagnostic streams.</li>
                 <li><strong>Generative Physics:</strong> Instantly codes experiment logic into Three.js/Cannon-es.</li>
             </ul>
-            <a href="{{ url_for('sandbox.sandbox_view') }}?demo=physics_sandbox" class="cta-button"
-                style="margin-top: 20px; font-size: 0.9rem; padding: 10px 20px;">Launch Physics Sandbox &rarr;</a>
+            <a href="{{ url_for('sandbox.sandbox_view') }}?demo=physics_sandbox" class="cta-button mt-2"
+                style="font-size: 0.9rem;">Launch Physics Sandbox &rarr;</a>
         </div>
         <div class="card-visual">
             <i class="fas fa-flask" style="color: #00c3ff;"></i>
@@ -334,6 +291,32 @@
             <i class="fas fa-vault" style="color: #00c3ff; font-size: 8rem;"></i>
         </div>
     </div>
+
+    <!-- INDUSTRIES SUPPORTED RESTORATION -->
+    <section class="ecosystem-section reveal-container" style="margin-top: 100px; margin-bottom: 80px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <div class="infra-layer-badge">
+                <i class="fas fa-microchip"></i> SECTOR COVERAGE
+            </div>
+            <h2 style="font-size: 2.2rem; color: #fff; margin-top: 15px;">Industries Supported</h2>
+            <p style="color: #666; max-width: 750px; margin: 20px auto 0; font-size: 1.1rem; line-height: 1.6;">
+                The foundational engine for autonomous success across the global digital and physical layers.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            {% for industry in industries %}
+            <div class="agent-card-glass" style="--accent-clr: {{ industry.color }}; padding: 30px; background: rgba(15,15,15,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                <div class="agent-icon" style="color: var(--accent-clr); font-size: 1.5rem; margin-bottom: 15px;"><i class="{{ industry.icon }}"></i></div>
+                <h3 class="agent-name" style="color: #fff; font-size: 1.25rem; margin-bottom: 10px;">{{ industry.name }}</h3>
+                <p class="agent-desc" style="color: #888; font-size: 0.9rem; line-height: 1.6;">{{ industry.desc }}</p>
+                <div class="pod-tag" style="margin-top: 15px; font-size: 0.75rem; color: var(--accent-clr);">
+                    <span class="dot" style="background: var(--accent-clr); width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span> Core Sector
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
     <div style="text-align: center; margin-top: 80px; margin-bottom: 40px;">
         <h3 style="margin-bottom: 24px; color: #FFD700; font-size: 1.8rem;">Ready to ENGINEER CERTAINTY?</h3>

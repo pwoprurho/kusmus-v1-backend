@@ -644,15 +644,17 @@
                             <td>
                                 <a href="{{ url_for('admin.edit_post', post_id=post.id) }}" class="btn-action">Edit</a>
 
-                                {% if post.status != 'Published' %}
-                                <a href="{{ url_for('admin.publish_post', post_id=post.id) }}" class="btn-action"
-                                    style="border-color:#0072ff; color:#0072ff;"
-                                    onclick="return confirm('Declassify this insight for public viewing?')">Declassify</a>
+                                 {% if post.status != 'Published' %}
+                                <form action="{{ url_for('admin.publish_post', post_id=post.id) }}" method="POST" style="display:inline;">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn-action" style="border-color:#0072ff; color:#0072ff;" onclick="return confirm('Declassify this insight for public viewing?')">Declassify</button>
+                                </form>
                                 {% endif %}
 
-                                <a href="{{ url_for('admin.delete_post', post_id=post.id) }}"
-                                    class="btn-action btn-delete" style="border-color: #ff4444; color: #ff4444;"
-                                    data-title="{{ post.title }}">Delete</a>
+                                <form action="{{ url_for('admin.delete_post', post_id=post.id) }}" method="POST" style="display:inline;" class="form-delete">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="button" class="btn-action btn-delete" style="border-color: #ff4444; color: #ff4444;" data-title="{{ post.title }}">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         {% endfor %}
@@ -839,10 +841,8 @@
         deleteBtns.forEach(btn => {
             btn.addEventListener('click', function (e) {
                 const title = this.dataset.title;
-                if (!confirm(`CRITICAL: You are about to permanently delete "${title}". This cannot be undone. Continue?`)) {
-                    e.preventDefault();
-                } else {
-                    window.location.href = this.getAttribute('href');
+                if (confirm(`CRITICAL: You are about to permanently delete "${title}". This cannot be undone. Continue?`)) {
+                    this.closest('form').submit();
                 }
             });
         });

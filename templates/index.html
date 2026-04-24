@@ -1,137 +1,282 @@
 {% extends 'base.html' %}
 
-{% block title %}#1 Sovereign AI Provider in Nigeria | Engineering Certainty | Kusmus{% endblock %}
+{% block title %}Kusmus AI | Sovereign Engineering & Academy Mastery{% endblock %}
 
+{% block meta_description %}Kusmus AI is Africa's leading sovereign intelligence provider. We engineer high-fidelity,
+private AI clusters (Kuspods) and train elite engineers via the Kusmus Academy.{% endblock %}
 {% block content %}
+<!-- HERO SECTION: THE CORE MANDATE -->
 <section id="hero" class="hero-section container">
     <div class="hero-content">
-        <span class="hero-os-headline fade-in" style="animation-delay: 0.1s;">The Operating System for Sovereign
-            Intelligence</span>
-
         <h1 class="fade-in" style="animation-delay: 0.2s;">Independence from Big Tech.
-            <br>Sovereign AI for Africa.
+            <br>Providing Certainty for Africa.
         </h1>
 
-        <p class="subtitle fade-in" style="animation-delay: 0.3s;">
-            We don't provide a SaaS; we provide the stack. Deploy NVIDIA-grade infrastructure (NVIDIA NeMo, NIMs) with
-            <strong>Kus_org</strong> data orchestration to own your intelligence, your data, and your future.
+        <p class="subtitle fade-in" style="animation-delay: 0.3s; max-width: 800px; margin: 0 auto; margin-bottom: 40px;">
+            Kusmus Smart Tech is a computational and smart solutions venture dedicated to democratizing high-level scientific research and engineering thereby being a catalyst for smart digital sovereignty.
         </p>
 
-        <div class="hero-video-container fade-in">
+        <div class="hero-cta-group fade-in"
+            style="animation-delay: 0.4s; display: flex; gap: 20px; justify-content: center; margin-bottom: 40px;">
+            <a href="{{ url_for('public.audit_request') }}" class="primary-button">Architect Sovereign Support</a>
+            <a href="{{ url_for('public.academy_apply') }}" class="secondary-button"
+                style="border-color: #FFD700; color: #FFD700;">Join Engineering Cohort &rarr;</a>
+        </div>
+
+        <div class="hero-video-container fade-in" style="animation-delay: 0.5s;">
             <video id="hero-video" autoplay muted loop playsinline class="hero-advert-video"
                 poster="{{ url_for('static', filename='images/advert-poster.png') }}">
-
                 <source src="{{ url_for('static', filename='images/advert1.mp4') }}" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-
             <button id="unmute-btn" class="unmute-overlay">
                 <i class="fas fa-volume-mute" id="unmute-icon"></i>
                 <span id="unmute-text">Tap to Listen</span>
             </button>
         </div>
     </div>
+</section>
 
-    <div class="trust-bar">
-        <p>The standard for <strong>Sovereign AI in Nigeria</strong>. Engineering the future for Africa's leading
-            institutions.
-        </p>
+<!-- IN PARTNERSHIP WITH -->
+<section class="trusted-by-section container reveal-container"
+    style="text-align: center; margin: -20px auto 100px; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <h5 class="reveal"
+        style="color: #666; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px;">
+        In partnership with</h5>
+    <div class="reveal reveal-alternate"
+        style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; opacity: 0.8;">
+        <span style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: #FFD700; display: flex; align-items: center; gap: 10px;">
+            <i class="fab fa-python" style="font-size: 1.6rem;"></i> Python Foundation
+        </span>
+        <span style="font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #0072ff; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-code" style="font-size: 1.4rem;"></i> learnpython
+        </span>
     </div>
 </section>
 
-<!-- ECOSYSTEM SECTION: OS vs AGENTS -->
-<section class="ecosystem-section container reveal-container">
-    <div style="text-align: center; margin-bottom: 60px;">
-        <div class="infra-layer-badge reveal">
-            <i class="fas fa-microchip"></i> SOVEREIGN OPERATING SYSTEM (PODS)
-        </div>
-        <h2 class="reveal reveal-alternate">Industries Supported</h2>
-        <p class="reveal reveal-alternate"
-            style="color: #666; max-width: 750px; margin: 25px auto 0; font-size: 1.1rem; line-height: 1.6;">
-            The Core Infrastructure for Autonomous kus_bots. One infrastructure layer. Infinite kus_bot realizations.
-            Every specialized kus_bot below is powered directly by your private Sovereign Pod.
-        </p>
-    </div>
+<!-- SECTION 1: THE SOVEREIGN MANDATE & ECOSYSTEM SUMMARY -->
+<section class="mandate-section container reveal-container" style="text-align: center; padding: 100px 0;">
+    <div class="infra-layer-badge reveal" style="margin: 0 auto; font-size: 1.15rem; padding: 8px 24px; display: inline-flex; justify-content: center; align-items: center;"><i class="fas fa-globe-africa" style="margin-right: 8px;"></i> BUILT-IN SOCIAL MISSION</div>
+    <h2 class="reveal reveal-alternate" style="font-size: 3rem; margin: 30px 0;">Advancing the UN's 4th Sustainable Development Goal.
+    </h2>
 
-    <div class="agent-carousel-wrapper reveal">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px;">
-            {% for industry in industries %}
-            <div class="agent-card-glass">
-                <div class="agent-icon" style="color: {{ industry.color }};"><i class="{{ industry.icon }}"></i></div>
-                <h3 class="agent-name">{{ industry.name }}</h3>
-                <p class="agent-desc">{{ industry.desc }}</p>
-                <div class="pod-tag">
-                    <span class="dot" style="background: {{ industry.color }};"></span> Core Sector
-                </div>
-            </div>
-            {% endfor %}
+    <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; text-align: left; margin-top: 60px;">
+        <div class="reveal">
+            <h3 style="color: #0072ff; margin-bottom: 20px;"><i class="fas fa-microchip"></i> Smart Solutions Venture
+            </h3>
+            <p style="color: #888; line-height: 1.8; font-size: 1.05rem;">
+                Kusmus Smart Tech provides specialized, high-impact, world-class technical trainings, workshops and consultancy services for government agencies, NGOs and private engineering firms transitioning to AI-based automation.
+            </p>
         </div>
-    </div>
-
-    <!-- TECHNICAL CAPABILITIES SLIDER -->
-    <div class="capabilities-slider-section reveal">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <div class="infra-layer-badge">
-                <i class="fas fa-tools"></i> PODHUB TECHNICAL CAPABILITIES
-            </div>
-            <h2 class="reveal-alternate" style="font-size: 2rem;">Real-Time Skill Infrastructure</h2>
+        <div class="reveal">
+            <h3 style="color: #00ff88; margin-bottom: 20px;"><i class="fas fa-shield-alt"></i> Pioneering EdTech</h3>
+            <p style="color: #888; line-height: 1.8; font-size: 1.05rem;">
+                With our foundation as a pioneering EdTech, we provide unique technical infrastructure to ensure inclusive and accessible smart education, serving as a powerful catalyst for smart digital sovereignty.
+            </p>
         </div>
-        
-        <div class="capabilities-slider">
-            {% for category in categories %}
-            <div class="capability-card">
-                <div class="capability-icon" style="color: {{ category.color }};">
-                    <i class="{{ category.icon }}"></i>
-                </div>
-                <h4 class="capability-name">{{ category.name }}</h4>
-                <p class="capability-desc">{{ category.desc }}</p>
-                <div style="font-size: 0.75rem; color: #444; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;">
-                    Protocol: {{ category.name.split(' ')[0] }} Pod
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px; color: #555; font-size: 0.9rem;">
-            <i class="fas fa-arrow-left-long"></i> Scroll to explore capabilities <i class="fas fa-arrow-right-long"></i>
-        </div>
-    </div>
-</section>
-
-<section class="expertise-teaser container glass-panel reveal reveal-scale reveal-container"
-    style="margin-bottom: 80px; text-align: center; padding: 60px;">
-    <div class="infra-layer-badge reveal" style="margin-bottom: 20px;">
-        <i class="fas fa-layer-group"></i> STRATEGIC CERTAINTY LAYER
-    </div>
-    <h2 class="text-gradient reveal reveal-alternate">Engineering Certainty. Scalable Autonomy.</h2>
-    <p class="reveal reveal-alternate"
-        style="margin-bottom: 30px; color: #a0a0a0; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Our methodology is rooted in the intersection of physics and intelligence. We provide the
-        <strong>Sovereign OS</strong> that ensures every kus_bot deployment propagates certainty and
-        institutional autonomy across your entire operational stack.
-    </p>
-    <div class="reveal reveal-alternate" style="display: flex; justify-content: center; gap: 20px;">
-        <a href="{{ url_for('public.audit_request') }}" class="secondary-button">Request Support &rarr;</a>
-    </div>
-</section>
-
-
-<section id="research-section" style="margin-bottom: 100px;">
-    <div class="container reveal-container"
-        style="display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; text-align: center;">
-        <div class="research-content reveal reveal-alternate" style="max-width: 800px; margin: 0 auto;">
-            <span class="infra-layer-badge reveal" style="font-size: 0.7rem; padding: 4px 10px; margin-bottom: 10px;">
-                <i class="fas fa-microchip"></i> INFRASTRUCTURE PROPAGATION
-            </span>
-            <h2 style="font-size: 2.5rem; margin-top: 10px;">Building the Engine for Autonomous Success.</h2>
-            <p style="color: #888; margin-top: 20px; font-size: 1.15rem; line-height: 1.7;">
-                We go beyond simple automation. Our research division engineers the <strong>Sovereign AI Pods</strong> that serve as the foundational engine,
-                allowing you to build and scale adaptive, autonomous kus_bots that solve complex institutional challenges with extreme reliability.
+        <div class="reveal">
+            <h3 style="color: #FFD700; margin-bottom: 20px;"><i class="fas fa-project-diagram"></i> Democratizing Research
+            </h3>
+            <p style="color: #888; line-height: 1.8; font-size: 1.05rem;">
+                Our business model is bridging the divide between theoretical knowledge and practical, data-driven innovation, ultimately democratizing high-level scientific research and engineering for everyone.
             </p>
         </div>
     </div>
 </section>
 
+<!-- HYBRID EDGE: THE VALUE PROP -->
+<section class="hybrid-edge-section container reveal-container" style="margin-bottom: 120px; text-align: center;">
+    <div class="infra-layer-badge reveal"><i class="fas fa-network-wired"></i> THE INFRASTRUCTURE REVOLUTION</div>
+    <h2 class="reveal reveal-alternate" style="font-size: 3rem; margin: 25px 0;">Bridging the Digital Divide</h2>
+    <p class="reveal reveal-alternate"
+        style="color: #888; font-size: 1.15rem; max-width: 800px; margin: 0 auto 50px; line-height: 1.8;">
+        By transforming smartphone technology into sophisticated **"Smart Intelligence" workstations**, we reach low-income earners in several nooks and crannies where traditional computer labs are too expensive or unavailable.
+    </p>
+
+    <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; text-align: left;">
+        <div class="glass-panel reveal reveal-scale" style="padding: 40px; border-top: 4px solid #FFD700;">
+            <h3 style="color: #FFD700; margin-bottom: 15px;"><i class="fas fa-lock"></i> Accessibility for All</h3>
+            <p style="color: #aaa; line-height: 1.6; font-size: 0.95rem;">We are not just teaching AI; we are overcoming infrastructural barriers to deploy sophisticated educational tools across low-facilities economies.</p>
+        </div>
+        <div class="glass-panel reveal reveal-scale" style="padding: 40px; border-top: 4px solid #00c6ff;">
+            <h3 style="color: #00c6ff; margin-bottom: 15px;"><i class="fas fa-cloud-sun"></i> Tools in Every Pocket</h3>
+            <p style="color: #aaa; line-height: 1.6; font-size: 0.95rem;">Our mission physically puts the tools for practical, data-driven innovation directly into the pockets of students and internally displaced persons.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 2: ACADEMY MASTERY (THE RECURRENT ENGINE) -->
+<section id="academy" class="academy-mastery-section container reveal-container"
+    style="background: rgba(10,10,10,0.5); padding: 120px 60px; border-radius: 4px; border: 1px solid rgba(255, 215, 0, 0.1); margin-bottom: 120px;">
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: flex-start;">
+        <div class="reveal">
+            <span class="infra-layer-badge" style="color: #FFD700; border-color: #FFD700;"><i
+                    class="fas fa-graduation-cap"></i> THE ACADEMY BLUEPRINT</span>
+            <h2 style="font-size: 3.2rem; margin: 30px 0; font-family: 'Garamond', serif;">Talent Sovereignty.</h2>
+
+            <div style="margin-bottom: 40px;">
+                <h4
+                    style="color: #fff; margin-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
+                    Cross-Disciplinary AI Integration</h4>
+                <p style="color: #aaa; font-size: 1.15rem; line-height: 1.9;">
+                    Hardware is only as sovereign as the talent operating it. The **Kusmus Academy** doesn't just train
+                    engineers; we train professionals across multiple sectors to master AI in their specific careers.
+                    From **Business Executives** maximizing institutional ROI to **Creatives** deploying generative
+                    pipelines, we ensure your workforce evolves alongside your infrastructure.
+                </p>
+                <p style="color: #aaa; font-size: 1.15rem; line-height: 1.9; margin-top: 25px;">
+                    Whether you are an established professional or entirely new to technology, you need to be a part of
+                    the next big thing. We operate through three distinct channels: **Free Foundational Videos**
+                    teaching absolute computer basics to those who need the foundation before the main course begins,
+                    **Seasonal Public Cohorts** for targeted career acceleration, and **Elite Corporate Training** for
+                    your entire operational division.
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 40px; margin-bottom: 50px;">
+                <div style="flex: 1;">
+                    <h5 style="color: #FFD700; margin-bottom: 10px;">End-to-End Roles</h5>
+                    <p style="font-size: 0.9rem; color: #666;">Tracks for Developers, Managers, and Analysts.</p>
+                </div>
+                <div style="flex: 1;">
+                    <h5 style="color: #0072ff; margin-bottom: 10px;">Bespoke Upskilling</h5>
+                    <p style="font-size: 0.9rem; color: #666;">On-demand curricula aligned with your Sovereign Stack.
+                    </p>
+                </div>
+            </div>
+
+            <a href="{{ url_for('public.academy_apply') }}" class="primary-button"
+                style="background: #FFD700; color: #000;">Enroll in Next Cohort</a>
+        </div>
+
+        <div class="academy-visual reveal reveal-alternate">
+            <div class="glass-panel" style="padding: 40px; border-bottom: 4px solid #FFD700;">
+                <h3 style="color: #fff; margin-bottom: 15px;"><i class="fas fa-layer-group"></i> Flagship Tracks</h3>
+                <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px;">
+                    Our most sought-after intelligence programs, designed for maximum career impact.
+                </p>
+                <ul style="list-style: none; padding: 0;">
+                    <li
+                        style="padding: 15px; margin-bottom: 15px; background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px; position: relative;">
+                        <span
+                            style="position: absolute; top: -10px; right: 15px; background: #FFD700; color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Best
+                            Seller</span>
+                        <h4 style="color: #FFD700; margin-bottom: 5px; font-size: 1.1rem;">A.I. for Academics</h4>
+                        <p style="color: #bbb; font-size: 0.85rem; margin: 0;">Automate research synthesis, scale
+                            literature reviews via RAG, and maintain academic integrity using Sovereign LLMs.</p>
+                    </li>
+                    <li
+                        style="padding: 15px; margin-bottom: 15px; background: rgba(0, 114, 255, 0.05); border: 1px solid rgba(0, 114, 255, 0.2); border-radius: 8px; position: relative;">
+                        <span
+                            style="position: absolute; top: -10px; right: 15px; background: #0072ff; color: #fff; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Most
+                            Popular</span>
+                        <h4 style="color: #00c6ff; margin-bottom: 5px; font-size: 1.1rem;">A.I. for Students</h4>
+                        <p style="color: #bbb; font-size: 0.85rem; margin: 0;">Master the toolstack of the future. Build
+                            a competitive career advantage through applied foundational AI logic.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Software Engineers
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Local inference, API orchestration, and
+                            deployment.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Business Executives
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Risk management, data privacy, and
+                            measuring ROI.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Cyber-Security &
+                            Forensics</h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Engineering autonomous defense systems,
+                            prompt injection mitigation, and zero-trust.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Financial Analysts
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Rapid signal correlation, dynamic risk
+                            assessment, and statutory automation.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Creatives & Marketers
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Building proprietary models for brand
+                            consistency and hyper-personalized campaigns.</p>
+                    </li>
+                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Legal & Policy Experts
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Automating contract analysis and parsing
+                            with air-gapped language models.</p>
+                    </li>
+                    <li style="padding: 15px;">
+                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Operations Managers
+                        </h4>
+                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Integrating machine vision (VLA) and
+                            robotic agents for secure supply chains.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+</section>
+
+<!-- LIVE TELEMETRY BAR -->
+<section class="telemetry-bar reveal-container"
+    style="background: rgba(0,0,0,0.8); border-top: 1px solid rgba(255,215,0,0.2); border-bottom: 1px solid rgba(255,215,0,0.2); padding: 50px 0; margin-bottom: 120px;">
+    <div class="container"
+        style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px;">
+        <div class="reveal reveal-alternate">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; font-weight: 700;">
+                3000<span style="color: #FFD700;">+</span></div>
+            <div
+                style="color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;">
+                Students Trained</div>
+        </div>
+        <div class="reveal reveal-alternate">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; font-weight: 700;">
+                50<span style="color: #00ff88;">+</span></div>
+            <div
+                style="color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;">
+                A.I. Systems Deployed</div>
+        </div>
+        <div class="reveal reveal-alternate">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; font-weight: 700;">
+                15<span style="color: #ff4444;">+</span></div>
+            <div
+                style="color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;">
+                Enterprise Sectors Served</div>
+        </div>
+        <div class="reveal reveal-alternate">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 3rem; color: #fff; font-weight: 700;">
+                100<span style="color: #0072ff;">%</span></div>
+            <div
+                style="color: #666; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px;">
+                Data Sovereignty</div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- THE GUARANTEE -->
+<section class="guarantee-section container reveal-container"
+    style="margin-bottom: 100px; text-align: center; padding: 80px 40px; background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(255,215,0,0.05) 100%); border-radius: 8px;">
+    <i class="fas fa-hand-holding-heart reveal" style="font-size: 4rem; color: #FFD700; margin-bottom: 30px; opacity: 0.8;"></i>
+    <h2 class="reveal reveal-alternate" style="font-size: 2.8rem; margin-bottom: 20px;">Democratize Intelligence.
+        Empower Everyone.</h2>
+    <p class="reveal reveal-alternate" style="color: #888; font-size: 1.15rem; max-width: 600px; margin: 0 auto 30px;">
+        Kusmus Smart Tech bridges the digital divide, transforming everyday smartphones into smart intelligence workstations for the masses.
+    </p>
+    <a href="{{ url_for('public.academy_apply') }}" class="primary-button reveal reveal-scale"
+        style="background: #fff; color: #000;">Enroll the Next Generation &rarr;</a>
+</section>
+
+<!-- SCRIPTS -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const video = document.getElementById('hero-video');

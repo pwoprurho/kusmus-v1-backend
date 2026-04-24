@@ -15,8 +15,8 @@
         gap: 2rem;
         /* Increased height and adjusted for fixed header */
         height: 100vh;
-        padding: 90px 2rem 2rem 2rem;
-        /* Top padding clears the 70px header + gap */
+        padding: 100px 2rem 2rem 2rem;
+        /* Top padding clears the 70px header + banner */
         max-width: 1800px;
         /* Wider for better chat experience */
         margin: 0 auto;
@@ -487,7 +487,28 @@
             padding: 1.5rem;
         }
     }
+
+    /* DEMO BANNER STYLING */
+    .demo-banner {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 114, 255, 0.9);
+        color: white;
+        text-align: center;
+        padding: 8px 10px;
+        z-index: 1999;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-size: 0.8rem;
+        backdrop-filter: blur(5px);
+    }
 </style>
+
+<div class="demo-banner">
+    <i class="fas fa-graduation-cap"></i> BEST OF CLASS 2025 (SPRING SESSION): Authored by Kusmus Academy Graduates.
+</div>
 
 <div class="tax-agent-container">
     <!-- Left Panel: Documents & Context -->

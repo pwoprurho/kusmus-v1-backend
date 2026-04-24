@@ -139,26 +139,82 @@ def _get_skill_categories():
     return categories
 
 def _get_curated_industries():
-    """Business-focused industry mapping for the main grid."""
+    """Comprehensive industry mapping reflecting the original supported sectors."""
     return [
-        {'name': 'Telecommunications', 'icon': 'fas fa-tower-broadcast', 'color': '#00c3ff', 'desc': 'Autonomous O-RAN defense and network resilience including Support for regional leaders like MTN Group.'},
+        {'name': 'Telecommunications', 'icon': 'fas fa-tower-broadcast', 'color': '#00c3ff', 'desc': 'Autonomous O-RAN defense and network resilience for regional telecommunications leaders.'},
         {'name': 'Banking & Finance', 'icon': 'fas fa-vault', 'color': '#0072ff', 'desc': 'Execution-grade signal correlation and automated statutory tax compliance for institutional finance.'},
         {'name': 'Retail & Wholesale', 'icon': 'fas fa-shopping-cart', 'color': '#00ff88', 'desc': 'VLA Robotics for warehouse integrity and frontline labor optimization via automated support pods.'},
-        {'name': 'Integrated Security', 'icon': 'fas fa-shield-halved', 'color': '#ff4444', 'desc': 'Unified digital/physical defense with integrated personnel integrity vetting for critical facilities.'},
-        {'name': 'Entertainment & Media', 'icon': 'fas fa-clapperboard', 'color': '#ff00ff', 'desc': 'Personalized engagement pods, autonomous content synthesis, and decentralized rights management.'},
-        {'name': 'Advertising & Branding', 'icon': 'fas fa-ad', 'color': '#FFD700', 'desc': 'High-fidelity branding pods and sentiment-driven asset generation for global marketing campaigns.'},
-        {'name': 'Critical Infrastructure', 'icon': 'fas fa-city', 'color': '#64748b', 'desc': 'Building the foundational engine for autonomous success across power, logistics, and state operations.'}
+        {'name': 'Oil & Gas / Energy', 'icon': 'fas fa-oil-well', 'color': '#ff7e00', 'desc': 'Predictive maintenance and sovereign resource telemetry for the energy sector.'},
+        {'name': 'Construction & Engineering', 'icon': 'fas fa-trowel-bricks', 'color': '#ff4444', 'desc': 'Autonomous project oversight and kinematic reasoning for large-scale infrastructure.'},
+        {'name': 'Integrated Security', 'icon': 'fas fa-shield-halved', 'color': '#ff4444', 'desc': 'Unified digital/physical defense with integrated personnel integrity vetting.'},
+        {'name': 'Agriculture & Food Security', 'icon': 'fas fa-seedling', 'color': '#2ecc71', 'desc': 'Sovereign climate telemetry and autonomous supply chain optimization for food security.'},
+        {'name': 'Manufacturing & Robotics', 'icon': 'fas fa-robot', 'color': '#9b59b6', 'desc': 'Agentic factory floor orchestration and high-fidelity assembly line diagnostics.'},
+        {'name': 'Entertainment & Media', 'icon': 'fas fa-clapperboard', 'color': '#ff00ff', 'desc': 'Personalized engagement pods and autonomous content synthesis for global digital layers.'},
+        {'name': 'Advertising & Branding', 'icon': 'fas fa-ad', 'color': '#FFD700', 'desc': 'High-fidelity branding pods and sentiment-driven asset generation.'},
+        {'name': 'Critical Infrastructure', 'icon': 'fas fa-city', 'color': '#64748b', 'desc': 'The foundational engine for autonomous success across power and state logistics.'}
     ]
 
 @public_bp.route("/")
 def home():
+    from services.personas import DEMO_REGISTRY
     industries = _get_curated_industries()
     categories = _get_skill_categories()
-    return render_template("index.html", industries=industries, categories=categories)
+    
+    # Select featured academy projects (top 4)
+    featured_projects = {}
+    priority_keys = ['tax_compliance_agent', 'sentinel_monitor', 'market_sentinel', 'surge_vla']
+    for key in priority_keys:
+        if key in DEMO_REGISTRY:
+            featured_projects[key] = DEMO_REGISTRY[key]
+            
+    return render_template("index.html", 
+                           industries=industries, 
+                           categories=categories, 
+                           featured_projects=featured_projects)
+
+@public_bp.route("/careers")
+def careers():
+    return render_template("careers.html")
+
+@public_bp.route("/academy/apply", methods=['GET', 'POST'])
+def academy_apply():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        contact = request.form.get('contact')
+        experience = request.form.get('experience')
+        career_goal = request.form.get('career_goal') # 'New' or 'Existing'
+        ai_ambition = request.form.get('ai_ambition')
+        institute = request.form.get('institute') # Optional
+
+        if not name or not contact or not experience:
+            flash("Identity and background markers are required for Academy selection.", "error")
+            return render_template("academy_apply.html")
+
+        try:
+            # Simulate high-fidelity tracking in Supabase
+            if supabase_admin:
+                safe_execute(supabase_admin.table('academy_applications').insert({
+                    'name': name,
+                    'contact_info': contact,
+                    'professional_background': experience,
+                    'trajectory': career_goal,
+                    'ambition': ai_ambition,
+                    'institution': institute or 'Independent'
+                }))
+
+            flash("Transmission Complete. The Selection Committee will review your telemetry and reach out via secure channels.", "success")
+            return redirect(url_for('public.home'))
+        except Exception as e:
+            print(f"Academy Enrollment Error: {e}")
+            flash("Secure transmission disrupted. Please re-submit your parameters.", "error")
+            return render_template("academy_apply.html")
+
+    return render_template("academy_apply.html")
 
 @public_bp.route("/solutions")
 def solutions():
-    return render_template("solutions.html")
+    industries = _get_curated_industries()
+    return render_template("solutions.html", industries=industries)
 
 @public_bp.route("/infrastructure")
 def infrastructure():
@@ -307,6 +363,10 @@ def skill_detail(category, skill_name):
     import markdown
     import bleach
     
+    # Sanitize inputs to prevent path traversal
+    if not re.match(r'^[a-zA-Z0-9_-]+$', skill_name) or not re.match(r'^[a-zA-Z0-9_-]+$', category):
+        return render_template("404.html"), 404
+
     hub_path = os.path.join(os.getcwd(), 'kushub')
     # Reconstruct path safely (Category is capitalized in UI, but we need folder names)
     skill_dir = None
@@ -318,6 +378,10 @@ def skill_detail(category, skill_name):
                 break
     
     if not skill_dir:
+        return render_template("404.html"), 404
+    
+    # Additional safety: ensure resolved path is still under hub_path
+    if not os.path.realpath(skill_dir).startswith(os.path.realpath(hub_path)):
         return render_template("404.html"), 404
         
     skill_file = os.path.join(skill_dir, 'SKILL.md')
@@ -711,24 +775,26 @@ def robots():
 # === DIAGNOSTIC ROUTE ===
 @public_bp.route('/diag')
 def diag():
-    import hashlib
-    is_dev = os.getenv('FLASK_ENV') == 'development'
-    trigger = request.args.get('trigger') == 'kusmus_diag'
-    if not is_dev and not trigger:
-        return jsonify({'error': 'Unauthorized diagnostic access'}), 401
-    env_summary = {}
-    for key in ['SUPABASE_URL', 'SUPABASE_KEY', 'SUPABASE_SERVICE_ROLE_KEY', 'DATABASE_URL', 'FLASK_ENV', 'SECRET_KEY']:
+    """Security-Hardened Diagnostic: Only available in local development."""
+    is_dev = os.getenv('FLASK_ENV') == 'development' or os.getenv('FLASK_DEBUG') == '1'
+    if not is_dev:
+        # Fails silent-ish in production to avoid reconnaissance
+        return jsonify({'error': 'Neural diagnostic path restricted.'}), 403
+    
+    # We only report presence/absence of keys in dev, never hashes or lengths of sensitive ones
+    safe_keys = ['FLASK_ENV', 'FLASK_DEBUG', 'PORT']
+    sensitive_keys = ['SUPABASE_URL', 'SUPABASE_KEY', 'SUPABASE_SERVICE_ROLE_KEY', 'DATABASE_URL', 'SECRET_KEY']
+    
+    status = {}
+    for key in safe_keys + sensitive_keys:
         val = os.getenv(key)
-        if val:
-            env_summary[key] = {
-                'len': len(val),
-                'hash_8': hashlib.sha256(val.encode()).hexdigest()[:8],
-                'ends_cr': val.endswith('\r'),
-                'ends_space': val.endswith(' ')
-            }
-        else: env_summary[key] = {'present': False}
+        if key in sensitive_keys:
+            status[key] = {'status': 'PRESENT' if val else 'MISSING'}
+        else:
+            status[key] = val or 'NOT_SET'
+
     return jsonify({
-        'env': env_summary,
-        'cwd': os.getcwd(),
-        'files': os.listdir('.')[:20] if os.path.exists('.') else []
+        'neural_status': 'OPERATIONAL',
+        'env_summary': status,
+        'cwd': os.getcwd()
     })

@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}AI Career Pathways | Kusmus Academy{% endblock %}
+
+{% block content %}
+<style>
+    .careers-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        overflow-y: auto; /* Internal scroll if needed */
+    }
+
+    .careers-header {
+        margin-bottom: 40px;
+        max-width: 800px;
+    }
+
+    .careers-header h1 {
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        margin-bottom: 20px;
+        background: -webkit-linear-gradient(#fff, #888);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .careers-header p {
+        color: #888;
+        font-size: 1.15rem;
+        line-height: 1.6;
+    }
+
+    .career-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        margin-top: 20px;
+    }
+
+    .career-card {
+        background: rgba(15, 15, 15, 0.7);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 35px;
+        border-radius: 4px;
+        text-align: left;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .career-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #0072ff, transparent);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+    }
+
+    .career-card:hover {
+        border-color: rgba(0, 114, 255, 0.3);
+        background: rgba(20, 20, 25, 0.9);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .career-card:hover::before {
+        transform: translateX(100%);
+    }
+
+    .career-icon {
+        font-size: 2rem;
+        color: #0072ff;
+        margin-bottom: 20px;
+    }
+
+    .career-name {
+        color: #FFD700;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .career-description {
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .career-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #555;
+        border: 1px solid #333;
+        padding: 4px 10px;
+        border-radius: 2px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    .apply-career-btn {
+        display: inline-block;
+        color: #0072ff;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+    }
+
+    .apply-career-btn:hover {
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        .careers-container {
+            padding: 80px 20px 40px;
+            justify-content: flex-start;
+        }
+        .career-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="careers-container">
+    <div class="careers-header fade-in">
+        <h1>Architect the Future.</h1>
+        <p>The Kusmus Academy doesn't just train employees; we engineer the next generation of sovereign infrastructure masters. Choose your path and redefine what's possible.</p>
+    </div>
+
+    <div class="career-grid">
+        <!-- Sovereign LLM Architect -->
+        <div class="career-card fade-in" style="animation-delay: 0.1s;">
+            <div>
+                <div class="career-tag">Core Intelligence Path</div>
+                <div class="career-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="career-name">Sovereign LLM Architect</h3>
+                <p class="career-description">Master the deployment and optimization of localized, private reasoning engines. Specialize in RAG-orchestration and institutional intelligence perimeters.</p>
+            </div>
+            <a href="{{ url_for('public.academy_apply') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+        </div>
+
+        <!-- Autonomous Engineering Specialist -->
+        <div class="career-card fade-in" style="animation-delay: 0.2s;">
+            <div>
+                <div class="career-tag">Agentic Autonomy Path</div>
+                <div class="career-icon"><i class="fas fa-network-wired"></i></div>
+                <h3 class="career-name">Autonomous Engineering Specialist</h3>
+                <p class="career-description">Design and engineer multi-agent ecosystems that operate with zero-latency coordination. Focus on self-healing protocols and agentic workflows.</p>
+            </div>
+            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+        </div>
+
+        <!-- Institutional AI Security Operative -->
+        <div class="career-card fade-in" style="animation-delay: 0.3s;">
+            <div>
+                <div class="career-tag">SecOps Integrity Path</div>
+                <div class="career-icon"><i class="fas fa-user-shield"></i></div>
+                <h3 class="career-name">Institutional AI Security Operative</h3>
+                <p class="career-description">Harden AI-driven perimeters against emerging adversarial vectors. Master the intersection of cybersecurity and neural network integrity.</p>
+            </div>
+            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+        </div>
+
+        <!-- AI Powered Branding and Marketing Specialist -->
+        <div class="career-card fade-in" style="animation-delay: 0.4s;">
+            <div>
+                <div class="career-tag">Growth Optimization Path</div>
+                <div class="career-icon"><i class="fas fa-ad"></i></div>
+                <h3 class="career-name">AI Powered Branding and Marketing Specialist</h3>
+                <p class="career-description">Leverage generative pods and sentiment-driven telemetry to build sovereign brands that resonate across the global digital layer.</p>
+            </div>
+            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

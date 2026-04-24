@@ -10,6 +10,7 @@ from supabase import create_client
 from db import supabase_admin, safe_execute
 from models import User, ClientUser 
 from services.mailer import send_recovery_otp
+from extensions import limiter
 
 
 def rotate_session():
@@ -35,6 +36,7 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 # === RECOVERY OTP ENDPOINT ===
 @auth_bp.route('/send-recovery', methods=['POST'])
+@limiter.limit("5 per minute")
 def send_recovery():
     email = request.json.get('email')
     if not email: return jsonify({'error': 'Email required'}), 400
@@ -44,7 +46,7 @@ def send_recovery():
         client_res = safe_execute(supabase_admin.table('clients').select('id').eq('email', email))
         if client_res.data and len(client_res.data) > 0:
             # Generate 6-digit OTP
-            otp = ''.join([str(random.randint(0, 9)) for _ in range(6)])
+            otp = ''.join([str(secrets.randbelow(10)) for _ in range(6)])
             session['recovery_otp'] = otp
             session['recovery_email'] = email
             
@@ -52,11 +54,15 @@ def send_recovery():
             from services.mailer import send_recovery_otp
             send_recovery_otp(email, otp)
             
-            return jsonify({'success': True, 'message': 'Recovery code sent'})
+            return jsonify({'success': True, 'message': 'If this email is registered, a recovery code has been sent.'})
         else:
-            return jsonify({'error': 'Email not authorized in system'}), 404
+            # Generic success message delays brute force and thwarts enumeration
+            import time
+            time.sleep(0.5) # Simulate email delay
+            return jsonify({'success': True, 'message': 'If this email is registered, a recovery code has been sent.'})
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Don't leak DB errors to client
+        return jsonify({'error': 'An internal error occurred.'}), 500
 
 
 # === CLIENT TOKEN HANDSHAKE ROUTE ===
@@ -90,6 +96,7 @@ def login():
 # =========================================================
 
 @auth_bp.route('/client-access', methods=['GET', 'POST'])
+@limiter.limit("10 per minute")
 def client_access():
     if request.method == 'POST':
         email_raw = (request.form.get('email') or '').strip()
@@ -158,9 +165,9 @@ def client_access():
             msg = str(e)
             print(f"DEBUG AUTH: Phase 1 (Client Auth) failure: {msg}")
             if "illegal request line" in msg.lower():
-                flash("Proxy Error: Illegal Request Line during DB lookup.", "error")
+                flash("A temporary connection issue occurred. Please retry.", "error")
             else:
-                flash(f"Database Error: {msg}", "error")
+                flash("An internal error occurred. Please try again later.", "error")
             return render_template('client/client_access.html')
 
         try:
@@ -236,7 +243,15 @@ def client_setup():
         if password != confirm:
             flash("Passwords do not match.", "error")
             return redirect(url_for('auth.client_setup'))
-            
+
+        # Password policy enforcement
+        if len(password) < 12:
+            flash("Password must be at least 12 characters.", "error")
+            return redirect(url_for('auth.client_setup'))
+        if not any(c.isdigit() for c in password) or not any(c.isupper() for c in password):
+            flash("Password must contain at least one uppercase letter and one digit.", "error")
+            return redirect(url_for('auth.client_setup'))
+
         hashed_pw = generate_password_hash(password)
         email = session.get('temp_client_email')
         key = session.get('temp_client_key')

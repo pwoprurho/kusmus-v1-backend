@@ -1,0 +1,249 @@
+/* Infrastructure Page Styles */
+
+.infra-header {
+    text-align: center;
+    padding: 80px 0 40px;
+}
+
+.infra-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+}
+
+.infra-header .subtitle {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.infra-header .notice {
+    font-size: 1rem;
+    color: #64748b;
+    margin-top: 25px;
+    font-style: italic;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Sovereign Switch Diagram */
+.sovereign-diag {
+    padding: 40px;
+    border-radius: 24px;
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.sovereign-diag .diag-header {
+    margin-bottom: 40px;
+}
+
+.sovereign-diag h2 {
+    font-size: 2.5rem;
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.sovereign-diag .diag-desc {
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+}
+
+.architecture-image-container {
+    margin: 0 auto;
+    max-width: 800px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.architecture-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sovereign-diag .diag-footer {
+    margin-top: 50px;
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.sovereign-diag .diag-info {
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sovereign-diag .diag-info i {
+    color: #FFD700;
+    margin-right: 8px;
+}
+
+/* Pillar Card System */
+.pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.pillar-card {
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.pillar-card i {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.pillar-card h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.pillar-card p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Industry Section */
+.sector-intro {
+    margin-top: 100px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.sector-intro h2 {
+    font-size: 2.5rem;
+    color: #FFD700;
+}
+
+.sector-intro p {
+    color: #94a3b8;
+    max-width: 850px;
+    margin: 20px auto 0;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.sector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.sector-card {
+    padding: 40px;
+    border-radius: 24px;
+}
+
+.sector-card .card-header {
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.sector-card i {
+    font-size: 2rem;
+}
+
+.sector-card h3 {
+    color: #fff;
+}
+
+.sector-card p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Extreme Security Section */
+.security-section {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 100px 0;
+}
+
+.security-section .sec-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.security-section h2 {
+    font-size: 2.5rem;
+}
+
+.security-section .sec-desc {
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+.security-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.security-card {
+    padding: 40px;
+    border-radius: 24px;
+}
+
+.security-card h4 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.security-card p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Final CTA */
+.infra-cta {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.infra-cta h3 {
+    color: #FFD700;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.infra-cta p {
+    color: #94a3b8;
+    font-size: 1.15rem;
+    margin-bottom: 40px;
+}
+
+/* Color Tokens */
+.border-emerald { border-bottom: 4px solid #00ff88; }
+.border-gold { border-bottom: 4px solid #FFD700; }
+.border-blue { border-bottom: 4px solid #0072ff; }
+.border-cyan { border-bottom: 4px solid #00c3ff; }
+
+.top-cyan { border-top: 5px solid #00c3ff; }
+.top-blue { border-top: 5px solid #0072ff; }
+.top-emerald { border-top: 5px solid #00ff88; }
+.top-magenta { border-top: 5px solid #ff00ff; }
+.top-gold { border-top: 5px solid #FFD700; }
+.top-red { border-top: 5px solid #ff4444; }
+.top-slate { border-top: 5px solid #64748b; }
+
+.left-emerald { border-left: 4px solid #00ff88; }

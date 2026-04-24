@@ -17,7 +17,14 @@
     <meta name="keywords"
         content="{% block meta_keywords %}AI solutions in Nigeria, Sovereign AI Nigeria, Custom AI Development Lagos, Enterprise AI Africa, Fine-Tuned AI Models, Private Data AI, Kusmus AI{% endblock %}">
     <meta name="author" content="Kusmus AI">
-    <meta name="robots" content="index, follow">
+    {% if request.path.startswith(('/admin', '/client', '/auth', '/sandbox', '/tax', '/physics')) %}
+    <meta name="robots" content="noindex, nofollow">
+    {% else %}
+    <!-- Explicit indexing directives for Googlebot & Analytics -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="{{ request.base_url }}">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url_for('public.sitemap') }}">
+    {% endif %}
     <meta name="geo.region" content="NG" />
     <meta name="geo.placename" content="Lagos" />
 
@@ -121,190 +128,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-    <style>
-        /* Global Universal Overrides (Gold Theme) */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: #FFD700 !important;
-        }
-
-        p {
-            font-size: 1.15rem;
-        }
-
-        #chat-window {
-            height: 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
-            visibility: hidden;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 340px;
-            max-height: 480px;
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            display: flex;
-            flex-direction: column;
-            z-index: 999;
-            font-family: 'Inter', sans-serif;
-        }
-
-        #chat-window.visible {
-            height: 480px;
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-
-        .chat-header {
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-body {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 20px;
-            color: #e0e0e0;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: transparent;
-        }
-
-        .chat-body::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .chat-body::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 3px;
-        }
-
-        .chat-body::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: transparent;
-        }
-
-        .chat-input input {
-            flex-grow: 1;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
-            outline: none;
-            font-size: 0.9rem;
-            transition: border-color 0.2s;
-        }
-
-        .chat-input input:focus {
-            border-color: #0072ff;
-        }
-
-        .chat-input button {
-            background: #0072ff;
-            color: white;
-            border: none;
-            padding: 0 15px;
-            margin-left: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-size: 1rem;
-        }
-
-        .chat-input button:hover {
-            background: #005bb5;
-        }
-
-        .chat-toggle {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: #0072ff;
-            color: white;
-            border: none;
-            box-shadow: 0 4px 20px rgba(0, 114, 255, 0.4);
-            font-size: 1.4rem;
-            cursor: pointer;
-            z-index: 1000;
-            transition: transform 0.2s, background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chat-toggle:hover {
-            transform: scale(1.05);
-            background: #005bb5;
-        }
-
-        .user-message {
-            align-self: flex-end;
-            background: #0072ff;
-            color: white;
-            padding: 10px 14px;
-            border-radius: 12px 12px 0 12px;
-            max-width: 85%;
-            line-height: 1.5;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .ai-message {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.08);
-            color: #e0e0e0;
-            padding: 10px 14px;
-            border-radius: 12px 12px 12px 0;
-            max-width: 85%;
-            line-height: 1.5;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .ai-message strong {
-            color: #fff;
-            font-weight: 600;
-        }
-    </style>
     {% block extra_css %}{% endblock %}
 </head>
 
 <body>
 
-    {% if request.endpoint in ['public.home', 'public.solutions', 'sandbox.sandbox_view'] %}
     <div id="global-orbit-container">
         <div class="planet-core"></div>
         <div class="orbit-path path-1">
@@ -325,9 +155,9 @@
             <div class="orbit-point point-gold p5-a"></div>
         </div>
     </div>
-    {% endif %}
 
     <header class="header-blue">
+        <div class="nav-backdrop" id="nav-backdrop"></div>
         <div class="logo">
             <a href="{{ url_for('public.home') }}" class="logo-container">
                 <img src="{{ url_for('static', filename='images/pic01.png') }}" alt="Kusmus AI Logo"
@@ -337,42 +167,54 @@
         </div>
 
         <nav>
-            <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <button class="nav-toggle" id="nav-open-btn" aria-controls="primary-navigation" aria-expanded="false" title="Open Navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <ul id="primary-navigation" data-visible="false">
-                <li><a href="{{ url_for('public.home') }}">Home</a></li>
+                <li class="drawer-header">
+                    <span class="logo-text">KUSMUS AI</span>
+                    <button class="nav-close" id="nav-close-btn" title="Close Navigation">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </li>
+                <li><a href="{{ url_for('public.home') }}"><i class="fas fa-home"></i> Home</a></li>
                 <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('public.method') }}">Methodology</a></li>
-                        <li><a href="{{ url_for('public.ceo_profile') }}">CSE Profile</a></li>
-                        <li><a href="{{ url_for('public.chairman') }}">Founder's Page</a></li>
-
+                        <li><a href="{{ url_for('public.ceo_profile') }}">CEO Profile</a></li>
+                        <li><a href="{{ url_for('public.chairman') }}">Chairman's Page</a></li>
                     </ul>
                 </li>
 
                 <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle">Ecosystem <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-cubes"></i> Ecosystem <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('public.podhub') }}">PodHub</a></li>
                         <li><a href="{{ url_for('sandbox.sandbox_view') }}">Sandbox</a></li>
-                        <!-- <li><a href="{{ url_for('public.community') }}">Community</a></li> -->
+                        <li><a href="{{ url_for('public.community') }}">Community</a></li>
                     </ul>
                 </li>
 
                 <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle">Sovereign Stack <i class="fas fa-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-server"></i> Infrastructure <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('public.solutions') }}">Solutions</a></li>
-                        <!-- <li><a href="{{ url_for('public.infrastructure') }}">Infrastructure</a></li> -->
                         <li><a href="{{ url_for('public.compliance') }}">Compliance</a></li>
                     </ul>
                 </li>
 
-                <li><a href="{{ url_for('public.blog') }}">Insights</a></li>
+                <li class="has-dropdown">
+                    <a href="{{ url_for('public.home') }}#academy" class="dropdown-toggle"><i class="fas fa-graduation-cap"></i> Academy <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('public.home') }}#academy">Training Overview</a></li>
+                        <li><a href="{{ url_for('public.academy_apply') }}">Cohort Enrollment</a></li>
+                        <li><a href="{{ url_for('public.podhub') }}">Intelligence Archive</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('public.blog') }}"><i class="fas fa-lightbulb"></i> Insights</a></li>
 
-                <li><a href="{{ url_for('public.audit_request') }}" class="nav-cta">Request Support</a></li>
+                <li><a href="{{ url_for('public.audit_request') }}" class="nav-cta"><i class="fas fa-clipboard-check"></i> Request Audit</a></li>
             </ul>
         </nav>
     </header>
@@ -396,13 +238,41 @@
         {% endwith %}
 
         {% block content %}{% endblock %}
+
+        <footer style="background: rgba(5,5,5,0.8); border-top: 1px solid #1a1a1a; padding: 30px 20px; font-size: 0.85rem; margin-top: 60px;">
+            <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; margin-bottom: 30px;">
+                <div class="footer-column">
+                    <div class="logo-container" style="margin-bottom: 15px;">
+                        <img src="{{ url_for('static', filename='images/pic01.png') }}" style="height: 25px;">
+                        <span style="font-weight: 600; font-size: 1rem; color: #FFD700; margin-left:10px;">KUSMUS AI</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.8rem; line-height: 1.4;">Engineering certainty through sovereign intelligence and autonomous infrastructure since 2024.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 style="color: #0072ff; margin-bottom: 10px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Academy</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="{{ url_for('public.careers') }}" style="color: #888; display: block; padding: 2px 0;">Career Paths</a></li>
+                        <li><a href="{{ url_for('public.academy_apply') }}" style="color: #888; display: block; padding: 2px 0;">Student Enrollment</a></li>
+                        <li><a href="{{ url_for('public.podhub') }}" style="color: #888; display: block; padding: 2px 0;">Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 style="color: #0072ff; margin-bottom: 10px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Core Sectors</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Telecommunications</a></li>
+                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Banking & Finance</a></li>
+                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Energy / Oil & Gas</a></li>
+                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Infrastructure</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 15px; text-align: center; color: #444; font-size: 0.75rem;">
+                <p>&copy; 2024-2025 Kusmus AI. All rights reserved. Engineering Certainty.</p>
+            </div>
+        </footer>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Kusmus <abbr title="Artificial Intelligence">AI</abbr>. Engineering Certainty.</p>
-    </footer>
-
-    {% if request.endpoint in ['public.home', 'public.solutions', 'sandbox.sandbox_view'] %}
+    <!-- KUSMUS AI SYSTEMS ARCHITECT WIDGET -->
     <div id="chat-widget-container">
         <div id="chat-window" class="chat-window">
             <div class="chat-header">
@@ -411,15 +281,27 @@
                 <i class="fas fa-times" onclick="document.getElementById('chat-toggle-btn').click()"
                     style="cursor:pointer; opacity: 0.7;"></i>
             </div>
-            <div class="chat-body" id="chat-body"></div>
+            <div class="chat-body" id="chat-body">
+                <!-- Hardcoded Initial State for Instant Load -->
+                <div class="ai-message">
+                    <strong>[AI ARCHITECT]</strong><br>
+                    Kusmus AI Systems Architect Online. Core logic synchronized.
+                </div>
+                <div class="ai-message">
+                    I am the sovereign engineer. We don't provide a SaaS; we provide the **Sovereign Stack**.<br><br>
+                    Whether you are deploying strict air-gapped private clusters for high-security environments, or upskilling your workforce through the **Academy** to command modern infrastructure, I am here to guide your orchestration.
+                </div>
+                <div class="ai-message">
+                    How may I assist you today?
+                </div>
+            </div>
             <div class="chat-input">
                 <input id="chat-input-text" type="text" placeholder="Type your query here..." autocomplete="off" />
                 <button id="chat-send-btn"><i class="fas fa-arrow-up"></i></button>
             </div>
         </div>
-        <button id="chat-toggle-btn" class="chat-toggle"><i class="fas fa-project-diagram"></i></button>
+        <button id="chat-toggle-btn" class="chat-toggle"><i class="fas fa-robot"></i></button>
     </div>
-    {% endif %}
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/scroll_effects.js') }}"></script>
@@ -446,9 +328,6 @@
             // This function is called by the buttons in neural_assets.html
             window.launchProtocol = async function (demoId) {
                 console.log("Initializing Protocol:", demoId);
-
-                // A. Set State
-                window.currentDemoId = demoId;
 
                 // B. Reset UI
                 chatBody.innerHTML = ''; // Clear history

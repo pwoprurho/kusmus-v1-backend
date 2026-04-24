@@ -5,8 +5,13 @@ Handles health checks, API key generation, and OpenAI-compatible request proxyin
 """
 
 import secrets
+import hashlib
+import hmac
 import requests
 import json
+import os
+import ipaddress
+from urllib.parse import urlparse
 from db import supabase_admin, safe_execute
 from services.runpod_service import RunPodService
 
@@ -15,6 +20,47 @@ runpod = RunPodService()
 
 class SovereignNodeManager:
     """Manages per-client sovereign LLM nodes (Ollama/vLLM instances)."""
+
+    @staticmethod
+    def _validate_url(url: str) -> bool:
+        """
+        Validate the node URL to prevent SSRF.
+        Ensures the URL is valid, uses http/https, and does not point to internal/private IPs.
+        """
+        try:
+            parsed = urlparse(url)
+            if parsed.scheme not in ('http', 'https'):
+                return False
+            
+            hostname = parsed.hostname
+            if not hostname:
+                return False
+
+            # Check if it's an IP address
+            try:
+                ip = ipaddress.ip_address(hostname)
+                if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast:
+                    return False
+            except ValueError:
+                # Not an IP, could be a hostname. 
+                # In a production env, we'd resolve it and check the IP,
+                # but blocking 'localhost' and '.local' is a good start.
+                blocked_hostnames = ('localhost', '127.0.0.1', '0.0.0.0', '[::1]')
+                if hostname.lower() in blocked_hostnames or hostname.endswith('.local'):
+                    return False
+            
+            return True
+        except Exception:
+            return False
+
+
+    @staticmethod
+    def _hash_api_key(raw_key: str) -> str:
+        """
+        SHA-256 hash of an API key for storage/lookup.
+        The raw key is shown once at provisioning; only the hash is persisted.
+        """
+        return hashlib.sha256(raw_key.encode()).hexdigest()
 
     @staticmethod
     def generate_api_key() -> str:
@@ -38,15 +84,45 @@ class SovereignNodeManager:
 
     @staticmethod
     def get_node_by_api_key(api_key: str) -> dict | None:
-        """Fetch a sovereign node by its API key (used for proxy auth)."""
+        """
+        Fetch a sovereign node by its API key (used for proxy auth).
+        Uses SHA-256 hash for DB lookup + constant-time comparison
+        to prevent timing side-channel attacks.
+        """
         try:
+            key_hash = SovereignNodeManager._hash_api_key(api_key)
+
+            # Primary: lookup by hash (new schema)
+            res = safe_execute(
+                supabase_admin.table('sovereign_nodes')
+                .select('*')
+                .eq('api_key_hash', key_hash)
+                .single()
+            )
+            if res.data:
+                return res.data
+
+            # Fallback: lookup by raw key (pre-migration rows)
+            # Uses constant-time comparison after DB fetch to avoid timing leaks
             res = safe_execute(
                 supabase_admin.table('sovereign_nodes')
                 .select('*')
                 .eq('api_key', api_key)
                 .single()
             )
-            return res.data if res.data else None
+            if res.data and hmac.compare_digest(res.data.get('api_key', ''), api_key):
+                # Auto-migrate: store hash and clear raw key
+                try:
+                    safe_execute(
+                        supabase_admin.table('sovereign_nodes')
+                        .update({'api_key_hash': key_hash, 'api_key': f'migrated_{key_hash[:12]}'})
+                        .eq('client_id', res.data['client_id'])
+                    )
+                except Exception:
+                    pass  # Non-critical: migration will happen on next auth
+                return res.data
+
+            return None
         except Exception as e:
             print(f"[Sovereign] Error fetching node by API key: {e}")
             return None
@@ -57,6 +133,9 @@ class SovereignNodeManager:
         Ping the Ollama /api/tags endpoint to check if the node is online
         and what models are available.
         """
+        if not SovereignNodeManager._validate_url(node_url):
+            return {"online": False, "error": "Invalid or restricted node URL."}
+
         try:
             resp = requests.get(f"{node_url}/api/tags", timeout=5)
             if resp.status_code == 200:
@@ -83,6 +162,9 @@ class SovereignNodeManager:
 
         Uses Ollama's OpenAI-compatible endpoint.
         """
+        if not SovereignNodeManager._validate_url(node_url):
+            return {"success": False, "error": "Invalid or restricted node URL."}
+
         try:
             payload = {
                 "model": model,
@@ -153,11 +235,13 @@ class SovereignNodeManager:
             return {"success": False, "error": "node_url is required for Self-Hosted nodes"}
 
         try:
+            key_hash = SovereignNodeManager._hash_api_key(api_key)
             res = safe_execute(
                 supabase_admin.table('sovereign_nodes').insert({
                     'client_id': client_id,
                     'node_url': node_url,
-                    'api_key': api_key,
+                    'api_key_hash': key_hash,
+                    'api_key': f'migrated_{key_hash[:12]}', # Placeholder for legacy schema
                     'model_name': model_name,
                     'status': status,
                     'storage_gb': storage_gb,
@@ -175,10 +259,14 @@ class SovereignNodeManager:
     def regenerate_api_key(client_id: str) -> dict:
         """Regenerate the API key for a client's sovereign node."""
         new_key = SovereignNodeManager.generate_api_key()
+        key_hash = SovereignNodeManager._hash_api_key(new_key)
         try:
             res = safe_execute(
                 supabase_admin.table('sovereign_nodes')
-                .update({'api_key': new_key})
+                .update({
+                    'api_key_hash': key_hash,
+                    'api_key': f'migrated_{key_hash[:12]}'
+                })
                 .eq('client_id', client_id)
             )
             if res.data:

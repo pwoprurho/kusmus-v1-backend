@@ -5,73 +5,86 @@
 {% block content %}
 <style>
     .audit-container {
-        max-width: 800px;
-        margin: 120px auto 80px;
-        padding: 0 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         z-index: 10;
     }
 
     .form-card {
-        background: rgba(10, 10, 10, 0.8);
+        background: rgba(10, 10, 10, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 60px;
+        padding: 30px 40px;
         border-radius: 4px;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        width: 100%;
     }
 
     .form-header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 25px;
     }
 
     .form-header h1 {
         font-family: 'Garamond', serif;
-        font-size: 3rem;
+        font-size: 2.2rem;
         background: -webkit-linear-gradient(#fff, #888);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
     }
 
     .form-header p {
         font-family: 'Inter', sans-serif;
         color: #888;
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     /* Form Elements */
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px 30px;
+    }
+
     .input-group {
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
 
     .input-group label {
         display: block;
         color: #0072ff;
         font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
     }
 
     .input-group input,
-    .input-group textarea {
+    .input-group textarea,
+    .input-group select {
         width: 100%;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid #333;
-        padding: 15px;
+        padding: 10px 15px;
         color: #fff;
         font-family: 'Inter', sans-serif;
-        font-size: 1rem;
+        font-size: 0.95rem;
         border-radius: 2px;
         transition: border-color 0.3s, background 0.3s;
     }
 
     .input-group input:focus,
-    .input-group textarea:focus {
+    .input-group textarea:focus,
+    .input-group select:focus {
         outline: none;
         border-color: #0072ff;
         background: rgba(255, 255, 255, 0.08);
@@ -82,14 +95,19 @@
         background: #0072ff;
         color: #fff;
         border: none;
-        padding: 18px;
-        font-size: 1rem;
+        padding: 14px;
+        font-size: 0.95rem;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: 600;
         cursor: pointer;
         transition: background 0.3s;
         margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .form-grid { grid-template-columns: 1fr; }
+        .audit-container { padding: 20px; }
     }
 
     .submit-btn:hover {
@@ -106,38 +124,39 @@
 
         <form method="post">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div class="input-group">
-                <label for="company_name">Organization / Company Name</label>
-                <input type="text" id="company_name" name="company_name" required
-                    placeholder="e.g. Dangote Refinery PLC">
-            </div>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="company_name">Organization / Company Name</label>
+                    <input type="text" id="company_name" name="company_name" required
+                        placeholder="e.g. Dangote Refinery PLC">
+                </div>
 
-            <div class="input-group">
-                <label for="name">Lead Representative Name</label>
-                <input type="text" id="name" name="name" required placeholder="e.g. Aliko Dangote">
-            </div>
+                <div class="input-group">
+                    <label for="name">Lead Representative Name</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g. Aliko Dangote">
+                </div>
 
-            <div class="input-group">
-                <label for="email">Secure Contact Protocol (Email)</label>
-                <input type="email" id="email" name="email" required placeholder="director@company.com">
-            </div>
+                <div class="input-group">
+                    <label for="email">Secure Contact Protocol (Email)</label>
+                    <input type="email" id="email" name="email" required placeholder="director@company.com">
+                </div>
 
-            <div class="input-group">
-                <label for="phone">Direct Intelligence Line (Phone)</label>
-                <input type="tel" id="phone" name="phone" required placeholder="e.g. +234 800 000 0000">
+                <div class="input-group">
+                    <label for="phone">Direct Intelligence Line (Phone)</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="e.g. +234 800 000 0000">
+                </div>
             </div>
 
             <div class="input-group">
                 <label for="hosting_preference">Deployment Model / Hosting Preference</label>
-                <select id="hosting_preference" name="hosting_preference" required
-                    style="width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; border-radius: 2px;">
+                <select id="hosting_preference" name="hosting_preference" required>
                     <option value="Self-Hosted (On-Premise)">Self-Hosted (On-Premise) — Full Air-Gapped Autonomy
                     </option>
                     <option value="Help-Hosted (Managed GPU)" selected>Help-Hosted (Managed GPU) — Dedicated Compute
                         Nodes</option>
                 </select>
-                <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">Managed nodes utilize our Sovereign RunPod
-                    infrastructure for rapid deployment.</p>
+                <p style="font-size: 0.75rem; color: #666; margin-top: 4px; margin-bottom: 0;">Managed nodes utilize our Sovereign RunPod infrastructure.</p>
             </div>
 
             <div class="input-group">

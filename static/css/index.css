@@ -1,0 +1,151 @@
+/* ===== KUSMUS AI - MODERN DESIGN SYSTEM (index.css) ===== */
+
+:root {
+    /* Sovereign Palette */
+    --clr-bg: hsl(240, 10%, 4%);
+    --clr-surface: hsl(240, 10%, 7%);
+    --clr-primary: hsl(210, 100%, 50%);
+    --clr-primary-glow: hsla(210, 100%, 50%, 0.4);
+    --clr-accent: hsl(180, 100%, 50%);
+    --clr-gold: hsl(45, 100%, 50%);
+    --clr-text-main: hsl(210, 20%, 90%);
+    --clr-text-dim: hsl(210, 15%, 60%);
+    --clr-border: hsla(210, 100%, 100%, 0.08);
+
+    /* Spacing & Borders */
+    --br-lg: 16px;
+    --br-md: 8px;
+    --sp-xl: 80px;
+    --sp-lg: 40px;
+    --sp-md: 20px;
+    --sp-sm: 10px;
+
+    /* Shadows & Blurs */
+    --shadow-premium: 0 20px 50px hsla(0, 0%, 0%, 0.8);
+    --blur-glass: blur(20px);
+}
+
+/* Base Styles */
+body {
+    background-color: var(--clr-bg);
+    color: var(--clr-text-main);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Premium Utility Classes (Replacement for Inline Styles) */
+.text-gradient {
+    background: linear-gradient(135deg, #fff 0%, var(--clr-text-dim) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gold { color: var(--clr-gold) !important; }
+.text-primary { color: var(--clr-primary) !important; }
+.text-accent { color: var(--clr-accent) !important; }
+.text-dim { color: var(--clr-text-dim) !important; }
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--sp-md);
+}
+
+.glass-card {
+    background: hsla(240, 10%, 8%, 0.7);
+    backdrop-filter: var(--blur-glass);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--br-lg);
+    padding: var(--sp-lg);
+    box-shadow: var(--shadow-premium);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-primary-glow);
+}
+
+/* Sector & Metric Specifics */
+.metric-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--sp-md);
+    margin-bottom: var(--sp-xl);
+    background: hsla(0, 0%, 100%, 0.03);
+    padding: var(--sp-lg);
+    border-radius: 12px;
+    border: 1px solid var(--clr-border);
+}
+
+.metric-item {
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.new-badge {
+    background: var(--clr-primary);
+    color: #fff;
+    padding: 4px 12px;
+    display: inline-block;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+
+.metric-label {
+    color: var(--clr-text-dim);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.metric-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* Section Specifics */
+.section-container {
+    margin-bottom: var(--sp-xl);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.section-desc {
+    text-align: center;
+    color: var(--clr-text-dim);
+    max-width: 900px;
+    margin: 0 auto 50px;
+    line-height: 1.8;
+}
+
+/* Common Spacing Helpers */
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-4 { margin-top: 40px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-4 { margin-bottom: 40px; }
+.mb-8 { margin-bottom: 80px; }

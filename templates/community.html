@@ -1,551 +1,98 @@
 {% extends "base.html" %}
 
-{% block title %}Kusmus AI Community Edition{% endblock %}
+{% block title %}Kusmus AI Community Impact{% endblock %}
 
 {% block content %}
 <div class="community-hero">
-    <div class="container">
-        <span class="badge"
-            style="background: rgba(255, 215, 0, 0.1); color: #FFD700; border: 1px solid rgba(255, 215, 0, 0.2);">Community
-            Edition</span>
-        <h1>KusPods: Open-Source Intelligence</h1>
-        <p class="lead" style="font-size: 1.2rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">
-            Our gift to the world. A powerful, mobile-first orchestrator that puts
-            sovereign AI in your pocket. Built on a <strong>Hybrid-Bridge</strong> architecture for absolute security.
+    <div class="container reveal-container">
+        <span class="badge reveal" style="background: rgba(0, 114, 255, 0.1); color: #0072ff; border: 1px solid rgba(0, 114, 255, 0.2);">Social Impact Hub</span>
+        <h1 class="reveal reveal-alternate">Community & Inclusion</h1>
+        <p class="lead reveal reveal-alternate" style="font-size: 1.2rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">
+            Our EdTech foundation has a built-in social mission: ensuring inclusive, accessible smart education and democratizing high-level engineering for everyone.
         </p>
 
-        <div class="download-grid">
-            <div class="download-card">
-                <i class="fab fa-apple"></i>
-                <h3>iOS</h3>
-                <p>Enterprise Distribution</p>
-                <span class="coming-soon">Coming Soon</span>
+        <div class="impact-grid">
+            <div class="impact-card reveal reveal-scale">
+                <i class="fas fa-globe-africa"></i>
+                <h3>UN 4th SDG</h3>
+                <p>Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities.</p>
             </div>
-            <div class="download-card">
-                <i class="fab fa-android"></i>
-                <h3>Android</h3>
-                <p>Direct APK Download</p>
-                <span class="coming-soon">Coming Soon</span>
+            <div class="impact-card reveal reveal-scale">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Smart Intelligence</h3>
+                <p>Transforming standard smartphones into powerful computational workstations.</p>
             </div>
-            <div class="download-card">
-                <i class="fab fa-windows"></i>
-                <h3>Windows</h3>
-                <p>Desktop Edition</p>
-                <span class="coming-soon">Coming Soon</span>
-            </div>
-            <div class="download-card">
-                <i class="fab fa-apple"></i>
-                <h3>macOS</h3>
-                <p>Apple Silicon & Intel</p>
-                <span class="coming-soon">Coming Soon</span>
-            </div>
-            <div class="download-card">
-                <i class="fab fa-linux"></i>
-                <h3>Linux</h3>
-                <p>AppImage / Binary</p>
-                <span class="coming-soon">Coming Soon</span>
+            <div class="impact-card reveal reveal-scale">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Empowering IDPs</h3>
+                <p>Putting advanced technical tools directly into the pockets of internally displaced persons.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ARCHITECTURE SECTION -->
-<section style="background: rgba(10, 10, 10, 0.4); padding: 100px 0;">
+<!-- MISSION DEEP DIVE -->
+<section style="background: rgba(10, 10, 10, 0.4); padding: 100px 0;" class="reveal-container">
     <div class="container">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-            <div>
-                <h2 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 30px;">Sovereign Hybrid-Bridge</h2>
+            <div class="reveal">
+                <h2 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 30px;">Bridging the Digital Divide</h2>
                 <p style="color: #94a3b8; font-size: 1.15rem; line-height: 1.7; margin-bottom: 30px;">
-                    KusPods separates the <strong>Control Plane</strong> (React Native) from the <strong>Security
-                        Enclave</strong> (Rust/JSI).
-                    Your API keys and credentials never enter the JavaScript environment, ensuring total isolation from
-                    jailbreak attempts.
+                    Traditional computer labs are excessively expensive, creating a bottleneck for intelligent innovation in low-income areas. Kusmus Smart Tech eradicates this barrier by engineering learning environments that live directly on the mobile devices already owned by students and professionals.
                 </p>
                 <div class="feature-item">
-                    <i class="fas fa-shield-halved" style="color: #FFD700;"></i>
+                    <i class="fas fa-book-reader" style="color: #FFD700;"></i>
                     <div>
-                        <h4 style="color: #fff;">Rust Security Enclave</h4>
-                        <p style="color: #64748b;">Memory-only secret store and deterministic whitelisting for all
-                            network calls.</p>
+                        <h4 style="color: #fff;">Free Foundational Videos</h4>
+                        <p style="color: #64748b;">Providing absolute computer basics for individuals with strictly zero prior technology access.</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-brain" style="color: #00ff88;"></i>
+                    <i class="fas fa-laptop-code" style="color: #0072ff;"></i>
                     <div>
-                        <h4 style="color: #fff;">Temporal RAG Learning</h4>
-                        <p style="color: #64748b;"> volatility-aware vector storage with specialized freshness windows
-                            (6h/3d/3m).</p>
+                        <h4 style="color: #fff;">Practical Innovation</h4>
+                        <p style="color: #64748b;">Moving marginalized groups from theoretical knowledge strictly to practical, data-driven automation pipelines.</p>
                     </div>
                 </div>
             </div>
-            <div class="glass-panel"
-                style="padding: 40px; border-radius: 24px; background: rgba(0,0,0,0.8); border: 2px solid rgba(255, 215, 0, 0.1);">
-                <h3 style="color: #fff; margin-bottom: 25px; text-align: center;">Feature Roadmap</h3>
-                <table style="width: 100%; color: #94a3b8; border-collapse: collapse;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                            <th style="padding: 12px; text-align: left; color: #fff;">Category</th>
-                            <th style="padding: 12px; text-align: left; color: #FFD700;">Free</th>
-                            <th style="padding: 12px; text-align: left; color: #00ff88;">Premium</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                            <td style="padding: 12px;">Models</td>
-                            <td style="padding: 12px;">1B-3B SLMs</td>
-                            <td style="padding: 12px;">7B-9B High-End</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                            <td style="padding: 12px;">Inference</td>
-                            <td style="padding: 12px;">Static</td>
-                            <td style="padding: 12px;">Active RL (LoRA)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-                            <td style="padding: 12px;">Security</td>
-                            <td style="padding: 12px;">JS Base</td>
-                            <td style="padding: 12px;">Rust Enclave</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px;">Freshness</td>
-                            <td style="padding: 12px;">Manual</td>
-                            <td style="padding: 12px;">6hr Auto-Scout</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="glass-panel reveal reveal-scale" style="padding: 40px; border-radius: 24px; background: rgba(0,0,0,0.8); border: 2px solid rgba(0, 114, 255, 0.2);">
+                <h3 style="color: #fff; margin-bottom: 25px; text-align: center;">Join the Movement</h3>
+                <p style="color: #94a3b8; text-align: center; margin-bottom: 25px; line-height: 1.6;">
+                    Are you a government agency, NGO, or corporate partner looking to amplify our social mission? Partner with us to scale our 'Smart Intelligence Workstations' to the communities that need them most.
+                </p>
+                
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="{{ url_for('public.audit_request') }}" class="btn-premium">Request Premium Upgrade</a>
+                    <a href="{{ url_for('public.audit_request') }}" class="btn-premium" style="background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);">Partner With Us</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- KUSPOD v1.0 SYSTEM WALKTHROUGH SECTION -->
-<section class="walkthrough-section" id="kuspod-walkthrough">
+<!-- HOW IT WORKS OUT IN THE FIELD -->
+<section class="walkthrough-section reveal-container">
     <div class="container">
-        <span class="badge"
-            style="background: rgba(255, 215, 0, 0.1); color: #FFD700; border: 1px solid rgba(255, 215, 0, 0.2);">v1.0
-            Technical Deep Dive</span>
-        <h2 class="walkthrough-title">Kuspod v1.0 — System Walkthrough</h2>
-        <p class="walkthrough-lead">
-            A four-tier vertical stack: <strong>38 production files</strong> across Rust, Go, Python, and TypeScript.
-            Every module is real, tested, and designed for the 8GB RAM floor.
+        <span class="badge reveal" style="background: rgba(0, 255, 136, 0.1); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.2);">Field Execution</span>
+        <h2 class="walkthrough-title reveal reveal-alternate">Reaching the Unreached</h2>
+        <p class="walkthrough-lead reveal reveal-alternate">
+            How we mobilize our EdTech resources to transform demographics historically excluded from high-level digital infrastructures.
         </p>
 
-        <!-- SOVEREIGN STACK DIAGRAM -->
-        <div class="stack-diagram">
-            <div class="stack-tier stack-tier-4">
-                <div class="tier-label">TIER 4</div>
-                <div class="tier-content">
-                    <h3><i class="fas fa-mobile-alt"></i> KusPods -Private AI</h3>
-                    <p>React Native (Fabric) — Field Command Center</p>
-                    <div class="tier-tags">
-                        <span>Marketplace</span><span>Mission Control</span><span>Terminal</span><span>Chat</span>
-                    </div>
-                </div>
-            </div>
-            <div class="stack-connector"><i class="fas fa-chevron-down"></i></div>
-            <div class="stack-tier stack-tier-3">
-                <div class="tier-label">TIER 3</div>
-                <div class="tier-content">
-                    <h3><i class="fas fa-brain"></i> AutoDidatic Engine</h3>
-                    <p>Python — The Evolutionary Brain that learns following the path you dictate</p>
-                    <div class="tier-tags">
-                        <span>PRM Scoring</span><span>Trace Capture</span><span>MadMax DPO</span><span>LoRA
-                            Training</span>
-                    </div>
-                </div>
-            </div>
-            <div class="stack-connector"><i class="fas fa-chevron-down"></i></div>
-            <div class="stack-tier stack-tier-2">
-                <div class="tier-label">TIER 2</div>
-                <div class="tier-content">
-                    <h3><i class="fas fa-bolt"></i> PodHub Runtime</h3>
-                    <p>Go — Speed & Context Proxy</p>
-                    <div class="tier-tags">
-                        <span>Skill Minification</span><span>Directive Injection</span><span>KV-Cache ≤900MB</span>
-                    </div>
-                </div>
-            </div>
-            <div class="stack-connector"><i class="fas fa-chevron-down"></i></div>
-            <div class="stack-tier stack-tier-1">
-                <div class="tier-label">TIER 1</div>
-                <div class="tier-content">
-                    <h3><i class="fas fa-shield-halved"></i> Kusecure Kernel</h3>
-                    <p>Rust — Zero-Trust Hardware Broker</p>
-                    <div class="tier-tags">
-                        <span>WASM Sandbox</span><span>PTY Bridge</span><span>Ed25519 Passport</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- DETAILED TIER BREAKDOWN -->
-        <h2 class="section-heading" style="margin-top: 80px;">Tier-by-Tier Breakdown</h2>
-
-        <div class="tier-details-grid">
-            <!-- Tier 1: Kusecurity -->
-            <details class="tier-detail-card" id="tier1-detail">
-                <summary>
-                    <div class="detail-header">
-                        <span class="detail-icon" style="background: rgba(239, 68, 68, 0.1); color: #EF4444;">
-                            <i class="fas fa-shield-halved"></i>
-                        </span>
-                        <div>
-                            <h3>Kusecurity Kernel</h3>
-                            <span class="detail-lang">Rust • 6 files</span>
-                        </div>
-                    </div>
-                </summary>
-                <div class="detail-body">
-                    <table class="detail-table">
-                        <thead>
-                            <tr>
-                                <th>Module</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>passport/mod.rs</code></td>
-                                <td>Ed25519 key generation, message signing, signature verification, file persistence
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>sandbox/mod.rs</code></td>
-                                <td>WASM binary validation, memory limits (16MB), timeout enforcement, isolated
-                                    execution</td>
-                            </tr>
-                            <tr>
-                                <td><code>pty_bridge/mod.rs</code></td>
-                                <td>PTY session spawning, multiplexing (4 sessions), resize, streaming I/O</td>
-                            </tr>
-                            <tr>
-                                <td><code>integration_tests.rs</code></td>
-                                <td>Forge-to-Field key exchange, tamper detection, sandbox security policy tests</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="detail-highlight">
-                        <i class="fas fa-lock"></i>
-                        <span>Real Ed25519 cryptography via <code>ed25519-dalek</code> — not placeholders</span>
-                    </div>
-                </div>
-            </details>
-
-            <!-- Tier 2: nanoclaw -->
-            <details class="tier-detail-card" id="tier2-detail">
-                <summary>
-                    <div class="detail-header">
-                        <span class="detail-icon" style="background: rgba(59, 130, 246, 0.1); color: #3B82F6;">
-                            <i class="fas fa-bolt"></i>
-                        </span>
-                        <div>
-                            <h3>nanoclaw Runtime</h3>
-                            <span class="detail-lang">Go • 5 files</span>
-                        </div>
-                    </div>
-                </summary>
-                <div class="detail-body">
-                    <table class="detail-table">
-                        <thead>
-                            <tr>
-                                <th>Module</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>skillcache.go</code></td>
-                                <td>SKILL.md minification → ≤300-token directives, directory scanning, compression
-                                    metrics</td>
-                            </tr>
-                            <tr>
-                                <td><code>proxy.go</code></td>
-                                <td>Tactical Directive Injection, KV-cache budget enforcement (≤900MB)</td>
-                            </tr>
-                            <tr>
-                                <td><code>main.go</code></td>
-                                <td>HTTP proxy: /health, /inject, /reload, /skills, /cache-status endpoints</td>
-                            </tr>
-                            <tr>
-                                <td><code>skillcache_test.go</code></td>
-                                <td>Token estimation, minification accuracy, cache CRUD, directory loading tests</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="detail-highlight">
-                        <i class="fas fa-compress-arrows-alt"></i>
-                        <span>KV-cache tracking: 2 bytes × tokens × 32 layers against 900MB ceiling</span>
-                    </div>
-                </div>
-            </details>
-
-            <!-- Tier 3: Autodidatic -->
-            <details class="tier-detail-card" id="tier3-detail">
-                <summary>
-                    <div class="detail-header">
-                        <span class="detail-icon" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">
-                            <i class="fas fa-brain"></i>
-                        </span>
-                        <div>
-                            <h3>Autodidatic Engine</h3>
-                            <span class="detail-lang">Python • 7 files</span>
-                        </div>
-                    </div>
-                </summary>
-                <div class="detail-body">
-                    <table class="detail-table">
-                        <thead>
-                            <tr>
-                                <th>Module</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>evaluator.py</code></td>
-                                <td>PRM scoring: positive/negative indicators, grounding bonus (+0.15), weighted
-                                    aggregation</td>
-                            </tr>
-                            <tr>
-                                <td><code>trace_capture.py</code></td>
-                                <td>Reasoning trace lifecycle: begin → add steps → evaluate → archive to JSON</td>
-                            </tr>
-                            <tr>
-                                <td><code>scheduler.py</code></td>
-                                <td>MadMax Quiet Hours scheduler (3:00 AM), daemon mode, session tracking</td>
-                            </tr>
-                            <tr>
-                                <td><code>trainer.py</code></td>
-                                <td>DPO trainer: LoRA rank 8, FP16, gradient checkpointing, preference pair formation
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>test_prm.py</code></td>
-                                <td>9 tests: step scoring, grounding bonus, trace evaluation, weighted later steps</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="detail-highlight">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Later reasoning steps carry more weight — matching how real logic builds
-                            iteratively</span>
-                    </div>
-                </div>
-            </details>
-
-            <!-- Tier 4: PocketPal-Kus UI -->
-            <details class="tier-detail-card" id="tier4-detail">
-                <summary>
-                    <div class="detail-header">
-                        <span class="detail-icon" style="background: rgba(236, 72, 153, 0.1); color: #EC4899;">
-                            <i class="fas fa-mobile-alt"></i>
-                        </span>
-                        <div>
-                            <h3>PocketPal-Kus UI</h3>
-                            <span class="detail-lang">TypeScript / React Native • 7 files</span>
-                        </div>
-                    </div>
-                </summary>
-                <div class="detail-body">
-                    <table class="detail-table">
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>App.tsx</code></td>
-                                <td>Root component with bottom tab navigator (Chat, Marketplace, Mission Control,
-                                    Terminal)</td>
-                            </tr>
-                            <tr>
-                                <td><code>MarketplaceScreen.tsx</code></td>
-                                <td>Skill cards with category badges, token budgets, hire button with loading animation
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>MissionControlScreen.tsx</code></td>
-                                <td>SAP feed with priority badges, Ed25519 verification status, pull-to-refresh</td>
-                            </tr>
-                            <tr>
-                                <td><code>TerminalScreen.tsx</code></td>
-                                <td>Interactive terminal with 8 built-in commands (status, passport, cache, prm, madmax,
-                                    etc.)</td>
-                            </tr>
-                            <tr>
-                                <td><code>theme.ts</code></td>
-                                <td>Sovereign dark theme: gold accents, terminal cyan, priority colors, shadow system
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="detail-highlight">
-                        <i class="fas fa-palette"></i>
-                        <span>Premium sovereign dark theme with gold (#D4A843) accents throughout</span>
-                    </div>
-                </div>
-            </details>
-        </div>
-
-        <!-- CORE WORKFLOWS -->
-        <h2 class="section-heading" style="margin-top: 80px;">Core Ecosystem Workflows</h2>
-
-        <div class="workflow-grid">
-            <div class="workflow-card">
-                <div class="workflow-icon" style="background: linear-gradient(135deg, #FFD700, #b8860b);">A</div>
-                <h3>In-App Hiring</h3>
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <span class="step-num">1</span>
-                        <div>
-                            <strong>Discovery</strong>
-                            <p>User browses the Marketplace, which reads <code>registry.json</code> from the local
-                                kushub-mirror.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">2</span>
-                        <div>
-                            <strong>Hiring</strong>
-                            <p>Kusecurity signs the request and performs a <code>git sparse-checkout</code> of the skill
-                                folder.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">3</span>
-                        <div>
-                            <strong>Nano-Activation</strong>
-                            <p>nanoclaw hot-reloads the skill, minifying to ≤300 tokens. The specialist is now a
-                                "Sovereign Pal."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workflow-card">
-                <div class="workflow-icon" style="background: linear-gradient(135deg, #00ff88, #00b359);">B</div>
-                <h3>Sovereign Announcement Protocol</h3>
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <span class="step-num">1</span>
-                        <div>
-                            <strong>Forge Update</strong>
-                            <p>A new insight or update is pushed to <code>announcements.json</code> in the kushub repo.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">2</span>
-                        <div>
-                            <strong>Field Sync</strong>
-                            <p>The app fetches the signed JSON. Kusecurity verifies the Ed25519 signature using the Forge
-                                public key.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">3</span>
-                        <div>
-                            <strong>Broadcast</strong>
-                            <p>Validated updates appear in the Mission Control tab with priority-coded badges.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workflow-card">
-                <div class="workflow-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">C</div>
-                <h3>Recursive Learning</h3>
-                <div class="workflow-steps">
-                    <div class="workflow-step">
-                        <span class="step-num">1</span>
-                        <div>
-                            <strong>Trace Capture</strong>
-                            <p>Autodidatic records the "Thought Steps" of every specialist task into structured JSON
-                                traces.</p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">2</span>
-                        <div>
-                            <strong>PRM Gating</strong>
-                            <p>The Process Reward Model scores each step for accuracy. Only traces scoring ≥0.7 pass.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="workflow-step">
-                        <span class="step-num">3</span>
-                        <div>
-                            <strong>MadMax DPO</strong>
-                            <p>At 3:00 AM, the scheduler fine-tunes the local 1.5B model using LoRA adapters and
-                                high-score traces.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VERIFICATION RESULTS -->
-        <h2 class="section-heading" style="margin-top: 80px;">Verification Results</h2>
-
-        <div class="verification-grid">
-            <div class="verification-card verified">
-                <div class="verify-status"><i class="fas fa-check-circle"></i> Passed</div>
-                <h4>PRM Evaluator</h4>
-                <p>Step scoring returns <strong>0.95</strong> for grounded reasoning steps with positive indicators.
-                    High quality: <code>True</code></p>
-            </div>
-            <div class="verification-card verified">
-                <div class="verify-status"><i class="fas fa-check-circle"></i> Passed</div>
-                <h4>Ed25519 Keygen</h4>
-                <p>Generated <code>sovereign_passport.json</code> + <code>public_key.json</code> with valid Ed25519
-                    keypairs.</p>
-            </div>
-            <div class="verification-card verified">
-                <div class="verify-status"><i class="fas fa-check-circle"></i> Passed</div>
-                <h4>Structure Audit</h4>
-                <p>All <strong>38 files</strong> verified across the monorepo. Directory layout matches
-                    <code>system_design.md</code> Section 2.
-                </p>
-            </div>
-        </div>
-
-        <!-- KEY ARCHITECTURAL DECISIONS -->
-        <h2 class="section-heading" style="margin-top: 80px;">Key Architectural Decisions</h2>
-
         <div class="decisions-grid">
-            <div class="decision-card">
-                <div class="decision-num">01</div>
-                <h4>Real Cryptography</h4>
-                <p>Kusecurity Passport uses <code>ed25519-dalek</code> (Rust) and Python's <code>cryptography</code>
-                    library — not placeholder crypto. Every SAP message is verifiable.</p>
+            <div class="decision-card reveal">
+                <div class="decision-num" style="color: #00ff88;">01</div>
+                <h4>Zero-Barrier Entry</h4>
+                <p>We deploy learning curriculums optimized for low-bandwidth zones and basic smartphone hardware models.</p>
             </div>
-            <div class="decision-card">
-                <div class="decision-num">02</div>
-                <h4>Token Budget Enforced</h4>
-                <p>nanoclaw's skill minifier actively truncates SKILL.md content to ≤300 tokens with measured
-                    compression metrics. No skill exceeds the budget.</p>
+            <div class="decision-card reveal">
+                <div class="decision-num" style="color: #00ff88;">02</div>
+                <h4>NGO Integration</h4>
+                <p>We host physical and digital workshops aligned directly with global NGO aid pipelines for internally displaced persons.</p>
             </div>
-            <div class="decision-card">
-                <div class="decision-num">03</div>
-                <h4>KV-Cache Intelligence</h4>
-                <p>The proxy tracks per-context memory impact (2 bytes × tokens × 32 layers) and rejects requests that
-                    would breach the 900MB ceiling.</p>
-            </div>
-            <div class="decision-card">
-                <div class="decision-num">04</div>
-                <h4>Weighted PRM Scoring</h4>
-                <p>Later reasoning steps carry exponentially more weight in the aggregate score, matching how real
-                    logical reasoning builds on earlier steps.</p>
-            </div>
-            <div class="decision-card">
-                <div class="decision-num">05</div>
-                <h4>Mobile-Optimized DPO</h4>
-                <p>LoRA rank 8 + FP16 + gradient checkpointing keeps the training footprint under ~2GB during Quiet
-                    Hours on 8GB devices.</p>
+            <div class="decision-card reveal">
+                <div class="decision-num" style="color: #00ff88;">03</div>
+                <h4>Localized Engineering</h4>
+                <p>We teach communities to build AI logic that specifically solves regional challenges—farming, logistics, and grassroots finance.</p>
             </div>
         </div>
     </div>
@@ -562,20 +109,20 @@
         font-size: 4rem;
         font-weight: 800;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #FFD700 0%, #b8860b 100%);
+        background: linear-gradient(135deg, #00c3ff 0%, #0072ff 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
-    .download-grid {
+    .impact-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
         margin-top: 60px;
     }
 
-    .download-card {
+    .impact-card {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
@@ -583,42 +130,27 @@
         transition: all 0.3s ease;
     }
 
-    .download-card:hover {
+    .impact-card:hover {
         transform: translateY(-10px);
-        border-color: #0072ff;
+        border-color: #00c3ff;
         box-shadow: 0 10px 30px rgba(0, 114, 255, 0.1);
     }
 
-    .download-card i {
+    .impact-card i {
         font-size: 3rem;
         margin-bottom: 20px;
-        color: #FFD700;
+        color: #00c3ff;
     }
 
-    .coming-soon {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 8px 20px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        color: #FFD700;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+    .impact-card h3 {
+        color: #fff;
+        margin-bottom: 15px;
     }
 
-    .manifesto-section {
-        padding: 100px 0;
-        background: #050505;
-    }
-
-    .manifesto-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 80px;
-        align-items: center;
+    .impact-card p {
+        color: #94a3b8;
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .feature-item {
@@ -629,81 +161,40 @@
 
     .feature-item i {
         font-size: 1.5rem;
-        color: #00ff88;
-    }
-
-    .nexus-glow {
-        width: 300px;
-        height: 300px;
-        background: #0072ff;
-        filter: blur(100px);
-        border-radius: 50%;
-        margin: 0 auto;
-        opacity: 0.3;
-    }
-
-    .upgrade-section {
-        padding: 80px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .btn-premium {
-        background: linear-gradient(135deg, #00c3ff 0%, #ff9900 100%);
-        color: #000;
+        color: #fff;
         padding: 15px 40px;
         font-weight: 700;
         border-radius: 50px;
         text-decoration: none;
         display: inline-block;
         margin-top: 30px;
+        transition: all 0.3s;
     }
 
     .btn-premium:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-        .manifesto-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .community-hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .workflow-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .verification-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .decisions-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .walkthrough-title {
-            font-size: 2.2rem !important;
-        }
+        color: #fff;
+        box-shadow: 0 0 20px rgba(0, 114, 255, 0.3);
     }
 
     /* ── WALKTHROUGH SECTION ── */
     .walkthrough-section {
         padding: 100px 0;
         background: linear-gradient(180deg, #050505 0%, #0A0E1A 50%, #050505 100%);
+        text-align: center;
     }
 
     .walkthrough-title {
         font-size: 3rem;
         font-weight: 800;
         margin: 20px 0;
-        background: linear-gradient(135deg, #FFD700 0%, #b8860b 100%);
+        background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-align: center;
     }
 
     .walkthrough-lead {
@@ -711,459 +202,56 @@
         color: #94a3b8;
         max-width: 750px;
         margin: 0 auto 60px;
-        text-align: center;
         line-height: 1.7;
     }
 
-    .section-heading {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #fff;
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    /* ── STACK DIAGRAM ── */
-    .stack-diagram {
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .stack-tier {
-        display: flex;
-        align-items: stretch;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: all 0.3s ease;
-    }
-
-    .stack-tier:hover {
-        transform: translateX(6px);
-        border-color: rgba(255, 215, 0, 0.3);
-        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.05);
-    }
-
-    .tier-label {
-        writing-mode: vertical-lr;
-        text-orientation: mixed;
-        padding: 16px 12px;
-        font-size: 0.7rem;
-        font-weight: 800;
-        letter-spacing: 3px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 44px;
-    }
-
-    .stack-tier-4 {
-        background: rgba(236, 72, 153, 0.06);
-    }
-
-    .stack-tier-4 .tier-label {
-        background: rgba(236, 72, 153, 0.2);
-    }
-
-    .stack-tier-3 {
-        background: rgba(139, 92, 246, 0.06);
-    }
-
-    .stack-tier-3 .tier-label {
-        background: rgba(139, 92, 246, 0.2);
-    }
-
-    .stack-tier-2 {
-        background: rgba(59, 130, 246, 0.06);
-    }
-
-    .stack-tier-2 .tier-label {
-        background: rgba(59, 130, 246, 0.2);
-    }
-
-    .stack-tier-1 {
-        background: rgba(239, 68, 68, 0.06);
-    }
-
-    .stack-tier-1 .tier-label {
-        background: rgba(239, 68, 68, 0.2);
-    }
-
-    .tier-content {
-        padding: 20px 24px;
-        flex: 1;
-    }
-
-    .tier-content h3 {
-        color: #fff;
-        font-size: 1.15rem;
-        margin: 0 0 4px;
-    }
-
-    .tier-content h3 i {
-        margin-right: 8px;
-        opacity: 0.8;
-    }
-
-    .tier-content>p {
-        color: #64748b;
-        font-size: 0.85rem;
-        margin: 0 0 10px;
-    }
-
-    .tier-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .tier-tags span {
-        font-size: 0.72rem;
-        padding: 3px 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 50px;
-        color: #94a3b8;
-    }
-
-    .stack-connector {
-        text-align: center;
-        padding: 6px 0;
-        color: rgba(255, 215, 0, 0.3);
-        font-size: 0.7rem;
-    }
-
-    /* ── TIER DETAIL CARDS ── */
-    .tier-details-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-        .tier-details-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .tier-detail-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: border-color 0.3s ease;
-    }
-
-    .tier-detail-card[open] {
-        border-color: rgba(255, 215, 0, 0.2);
-    }
-
-    .tier-detail-card summary {
-        padding: 20px 24px;
-        cursor: pointer;
-        list-style: none;
-    }
-
-    .tier-detail-card summary::-webkit-details-marker {
-        display: none;
-    }
-
-    .tier-detail-card summary::after {
-        content: '▸';
-        color: #64748b;
-        float: right;
-        font-size: 1.1rem;
-        transition: transform 0.2s ease;
-    }
-
-    .tier-detail-card[open] summary::after {
-        transform: rotate(90deg);
-    }
-
-    .detail-header {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-    }
-
-    .detail-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.1rem;
-        flex-shrink: 0;
-    }
-
-    .detail-header h3 {
-        color: #fff;
-        font-size: 1.05rem;
-        margin: 0;
-    }
-
-    .detail-lang {
-        color: #64748b;
-        font-size: 0.8rem;
-    }
-
-    .detail-body {
-        padding: 0 24px 24px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .detail-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 16px;
-    }
-
-    .detail-table th {
-        text-align: left;
-        padding: 8px 10px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: #FFD700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .detail-table td {
-        padding: 10px;
-        font-size: 0.85rem;
-        color: #94a3b8;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        vertical-align: top;
-    }
-
-    .detail-table td code {
-        background: rgba(255, 215, 0, 0.1);
-        color: #FFD700;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        white-space: nowrap;
-    }
-
-    .detail-highlight {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 16px;
-        padding: 12px 16px;
-        background: rgba(255, 215, 0, 0.04);
-        border: 1px solid rgba(255, 215, 0, 0.1);
-        border-radius: 10px;
-        color: #94a3b8;
-        font-size: 0.85rem;
-    }
-
-    .detail-highlight i {
-        color: #FFD700;
-    }
-
-    .detail-highlight code {
-        background: rgba(255, 215, 0, 0.1);
-        color: #FFD700;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-    }
-
-    /* ── WORKFLOW CARDS ── */
-    .workflow-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-
-    .workflow-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        padding: 32px 28px;
-        transition: all 0.3s ease;
-    }
-
-    .workflow-card:hover {
-        border-color: rgba(255, 215, 0, 0.2);
-        transform: translateY(-4px);
-    }
-
-    .workflow-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-        font-weight: 900;
-        color: #000;
-        margin-bottom: 16px;
-    }
-
-    .workflow-card h3 {
-        color: #fff;
-        font-size: 1.1rem;
-        margin: 0 0 20px;
-    }
-
-    .workflow-steps {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .workflow-step {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-    }
-
-    .step-num {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: rgba(255, 215, 0, 0.1);
-        border: 1px solid rgba(255, 215, 0, 0.2);
-        color: #FFD700;
-        font-size: 0.75rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    .workflow-step strong {
-        color: #fff;
-        font-size: 0.9rem;
-        display: block;
-        margin-bottom: 3px;
-    }
-
-    .workflow-step p {
-        color: #64748b;
-        font-size: 0.82rem;
-        margin: 0;
-        line-height: 1.5;
-    }
-
-    .workflow-step code {
-        background: rgba(255, 215, 0, 0.1);
-        color: #FFD700;
-        padding: 1px 6px;
-        border-radius: 3px;
-        font-size: 0.78rem;
-    }
-
-    /* ── VERIFICATION CARDS ── */
-    .verification-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-
-    .verification-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 28px;
-    }
-
-    .verification-card.verified {
-        border-color: rgba(16, 185, 129, 0.2);
-    }
-
-    .verify-status {
-        color: #10B981;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 12px;
-    }
-
-    .verify-status i {
-        margin-right: 4px;
-    }
-
-    .verification-card h4 {
-        color: #fff;
-        font-size: 1.05rem;
-        margin: 0 0 8px;
-    }
-
-    .verification-card p {
-        color: #64748b;
-        font-size: 0.85rem;
-        margin: 0;
-        line-height: 1.6;
-    }
-
-    .verification-card code {
-        background: rgba(255, 215, 0, 0.1);
-        color: #FFD700;
-        padding: 1px 6px;
-        border-radius: 3px;
-        font-size: 0.8rem;
-    }
-
-    /* ── DECISION CARDS ── */
     .decisions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+        text-align: left;
     }
 
     .decision-card {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 16px;
-        padding: 28px;
-        transition: all 0.3s ease;
-    }
-
-    .decision-card:hover {
-        border-color: rgba(255, 215, 0, 0.15);
-        transform: translateY(-2px);
+        padding: 30px;
+        position: relative;
     }
 
     .decision-num {
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: 900;
-        background: linear-gradient(135deg, #FFD700 0%, #b8860b 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 12px;
-        line-height: 1;
+        opacity: 0.1;
+        position: absolute;
+        top: 20px;
+        right: 30px;
     }
 
     .decision-card h4 {
         color: #fff;
-        font-size: 1rem;
-        margin: 0 0 8px;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
     }
 
     .decision-card p {
-        color: #64748b;
-        font-size: 0.85rem;
-        margin: 0;
-        line-height: 1.6;
+        color: #94a3b8;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 
-    .decision-card code {
-        background: rgba(255, 215, 0, 0.1);
-        color: #FFD700;
-        padding: 1px 6px;
-        border-radius: 3px;
-        font-size: 0.8rem;
+    @media (max-width: 1024px) {
+        .container > div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .community-hero h1 { font-size: 2.5rem; }
+        .walkthrough-title { font-size: 2.2rem; }
+        .decisions-grid { grid-template-columns: 1fr; }
     }
 </style>
 {% endblock %}

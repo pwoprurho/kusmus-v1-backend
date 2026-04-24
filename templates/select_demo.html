@@ -559,8 +559,7 @@
         <div class="demo-grid-container">
             <div class="demo-page-header">
                 <h2>Select Environment</h2>
-                <p>Initialize a secure sandbox instance to test Kusmus AI capabilities in real-time response scenarios.
-                </p>
+                <p>Initialize a secure sandbox instance. These environments serve as living proof of the **Kusmus Academy** engineering standard, each authored and perfected by our graduates from the **Best of Class** programs.</p>
             </div>
 
             <div class="demo-cards-grid">
@@ -578,9 +577,12 @@
                     is_coming_soon else '' }}>
 
                     <span class="demo-status-badge">
-                        {% if is_coming_soon %}COMING SOON
+                        {% if demo_id == 'sentinel' %}BEST OF CLASS 2024 (SUMMER)
+                        {% elif demo_id == 'finance' %}BEST OF CLASS 2025 (SPRING)
+                        {% elif demo_id == 'physics' %}BEST OF CLASS 2024 (WINTER)
+                        {% elif is_coming_soon %}COMING SOON
                         {% elif is_beta %}BETA
-                        {% else %}ONLINE{% endif %}
+                        {% else %}ACADEMY PROJECT{% endif %}
                     </span>
 
                     <div class="card-icon">

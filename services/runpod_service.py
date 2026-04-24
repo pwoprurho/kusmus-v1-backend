@@ -62,40 +62,39 @@ class RunPodService:
         """
         Provision a new vLLM pod on RunPod.
         If storage_id is provided, the pod will mount the network volume.
+        Uses parameterized GraphQL variables to prevent injection.
         """
-        storage_clause = ""
+        # Build input dict safely — no string interpolation in the query
+        pod_input = {
+            "cloudType": "ALL",
+            "gpuCount": gpu_count,
+            "volumeInGb": 50,
+            "containerDiskInGb": 20,
+            "minVcpuCount": 4,
+            "minMemoryInGb": 16,
+            "gpuTypeId": gpu_type,
+            "imageName": "vllm/vllm-openai",
+            "dockerArgs": f"--model {model_name}",
+            "ports": "8000/http",
+            "env": [
+                {"key": "CLIENT_ID", "value": client_id}
+            ]
+        }
         if storage_id:
-            storage_clause = f'storageId: "{storage_id}", dataCenterId: "{data_center_id}",'
+            pod_input["storageId"] = storage_id
+            pod_input["dataCenterId"] = data_center_id
 
-        # GraphQL Mutation for pod creation
         mutation = """
-        mutation {
-          podFindAndDeployOnDemand(
-            input: {
-              cloudType: ALL,
-              gpuCount: %d,
-              volumeInGb: 50,
-              containerDiskInGb: 20,
-              minVcpuCount: 4,
-              minMemoryInGb: 16,
-              gpuTypeId: "%s",
-              %s
-              imageName: "vllm/vllm-openai",
-              dockerArgs: "--model %s",
-              ports: "8000/http",
-              env: [
-                { key: "CLIENT_ID", value: "%s" }
-              ]
-            }
-          ) {
+        mutation CreatePod($input: PodFindAndDeployOnDemandInput!) {
+          podFindAndDeployOnDemand(input: $input) {
             id
             imageName
             machineId
           }
         }
-        """ % (gpu_count, gpu_type, storage_clause, model_name, client_id)
+        """
 
-        result = self._execute_query(mutation)
+        result = self._execute_query(mutation, {"input": pod_input})
         if "error" in result:
             return result
             
@@ -107,8 +106,8 @@ class RunPodService:
     def get_pod_details(self, pod_id: str) -> dict:
         """Fetch real-time details (IP, status) for a specific pod."""
         query = """
-        query {
-          pod(input: { podId: "%s" }) {
+        query GetPod($podId: String!) {
+          pod(input: { podId: $podId }) {
             id
             runtime {
               uptimeInSeconds
@@ -121,9 +120,9 @@ class RunPodService:
             }
           }
         }
-        """ % pod_id
+        """
 
-        result = self._execute_query(query)
+        result = self._execute_query(query, {"podId": pod_id})
         if "error" in result:
             return result
             
@@ -153,12 +152,12 @@ class RunPodService:
     def terminate_pod(self, pod_id: str) -> dict:
         """Terminate a running pod to stop billing."""
         mutation = """
-        mutation {
-          podTerminate(input: { podId: "%s" })
+        mutation TerminatePod($podId: String!) {
+          podTerminate(input: { podId: $podId })
         }
-        """ % pod_id
+        """
         
-        result = self._execute_query(mutation)
+        result = self._execute_query(mutation, {"podId": pod_id})
         if "error" in result:
             return result
         return {"success": True}

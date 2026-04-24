@@ -6,9 +6,11 @@ import datetime
 from cryptography.fernet import Fernet
 
 def get_cipher_suite():
-    """Retrieves the encryption key from environment or generates a fallback."""
+    """Retrieves the encryption key from environment. Fails closed if missing."""
     key = os.environ.get("ENCRYPTION_KEY")
-    return Fernet(key.encode()) if key else Fernet(Fernet.generate_key())
+    if not key:
+        raise RuntimeError("CRITICAL: ENCRYPTION_KEY not set. Refusing to operate with ephemeral keys.")
+    return Fernet(key.encode())
 
 def encrypt_text(text):
     """Standardized encryption for sensitive data."""

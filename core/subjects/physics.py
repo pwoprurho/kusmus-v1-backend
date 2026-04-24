@@ -40,6 +40,7 @@ GENERATION_PROMPT_ADDITION = """
   - `type`: 'velocity' or 'force'.
   - `color`: Hex color.
 - **Constraints**: Link bodies using `bodyA`, `bodyB` (IDs). types: `pointToPoint`, `distance`, `hinge`.
+  - **CRITICAL**: Do NOT manually draw constraint lines (e.g. pendulum strings). The system will auto-draw `CANNON.Constraint` objects.
 - **Visibility**: The camera will AUTO-FIT the scene. Do not provide a `cameraPos`.
 - **CRITICAL**: Return ONLY the raw JSON object. Do NOT include "SIMULATION: ...", "OBJECTS: ...", or any other text from the design phase. Your output must be 100% valid JSON.
 

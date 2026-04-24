@@ -3,233 +3,166 @@
 {% block title %}Sovereign AI Infrastructure | Independence from Big Tech | Kusmus{% endblock %}
 
 {% block content %}
-<header class="page-header container fade-in">
-    <h1 class="text-gradient" style="font-size: 3.5rem; margin-bottom: 24px;">Physical Core Infrastructure</h1>
-    <p style="font-size: 1.15rem; color: #94a3b8; max-width: 800px; margin: 0 auto; line-height: 1.6;">Establishing the
-        physical foundations of
-        institutional autonomy. We deploy hardened, sovereign compute perimeters designed for absolute data residency.
-    </p>
-    <p
-        style="font-size: 1rem; color: #64748b; margin-top: 25px; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-        * Notice: Kusmus AI implementation starts with a **Strategic Support Session**. Our engineering team provides a
-        comprehensive roadmap for institutional autonomy before any physical deployment.
-    </p>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/infrastructure.css') }}">
+
+<header class="page-header container fade-in infra-header">
+    <h1 class="text-gradient">Physical Core Infrastructure</h1>
+    <p class="subtitle">Establishing the physical foundations of institutional autonomy. We deploy hardened, sovereign compute perimeters designed for absolute data residency.</p>
+    <p class="notice">* Notice: Kusmus AI implementation starts with a Strategic Support Session. Our engineering team provides a comprehensive roadmap for institutional autonomy before any physical deployment.</p>
 </header>
 
 <section class="container fade-in" style="margin-bottom: 100px;">
-    <!-- THE SOVEREIGN DATA FLOW VISUAL (Updated with official diagram) -->
-    <div class="glass-panel"
-        style="padding: 40px; border-radius: 24px; background: rgba(10, 10, 10, 0.6); border: 1px solid rgba(255, 215, 0, 0.1); margin-bottom: 80px; text-align: center;">
-        <div style="margin-bottom: 40px;">
-            <h2 style="font-size: 2.5rem; color: #FFD700; margin-bottom: 15px;">The Sovereign Switch</h2>
-            <p style="color: #94a3b8; max-width: 700px; margin: 0 auto; font-size: 1.15rem;">
-                The Kuspod Visual Workflow: Visualizing the secure transition from local UI to high-fidelity deep
-                reasoning through our proprietary Sovereign GPU Handshake.
-            </p>
+    <!-- THE SOVEREIGN DATA FLOW VISUAL -->
+    <div class="glass-panel sovereign-diag">
+        <div class="diag-header">
+            <h2>The Sovereign Switch</h2>
+            <p class="diag-desc">The Kuspod Visual Workflow: Visualizing the secure transition from local UI to high-fidelity deep reasoning through our proprietary Sovereign GPU Handshake.</p>
         </div>
 
-        <div class="architecture-image-container"
-            style="margin: 0 auto; max-width: 800px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(255,215,0,0.2);">
-            <img src="{{ url_for('static', filename='images/sovereign_switch.jpg') }}"
-                alt="The Sovereign Switch - Kusmus AI Architecture" style="width: 100%; height: auto; display: block;">
+        <div class="architecture-image-container">
+            <img src="{{ url_for('static', filename='images/sovereign_switch.jpg') }}" alt="The Sovereign Switch - Kusmus AI Architecture">
         </div>
 
-        <div style="margin-top: 50px; padding: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
-            <p style="color: #64748b; font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
-                <i class="fas fa-info-circle" style="color: #FFD700; margin-right: 8px;"></i>
-                Our <strong>Sovereign Switch</strong> protocol ensures that high-risk audits and critical LLM operations
-                are offloaded to <strong>Elite NVIDIA L40S/H100 clusters</strong> via the <strong>IronClaw
-                    Handshake</strong>, maintaining a verifiable return to mobile edge devices without sacrificing
-                privacy or performance.
+        <div class="diag-footer">
+            <p class="diag-info">
+                <i class="fas fa-info-circle"></i>
+                Our <strong>Sovereign Switch</strong> protocol ensures that high-risk audits and critical LLM operations are offloaded to <strong>Elite NVIDIA L40S/H100 clusters</strong> via the <strong>IronClaw Handshake</strong>, maintaining a verifiable return to mobile edge devices without sacrificing privacy or performance.
             </p>
         </div>
     </div>
 
     <!-- TECHNICAL PILLARS -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+    <div class="pillar-grid">
         <!-- NVIDIA NeMo/NIMs -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 20px; border-bottom: 4px solid #00ff88;">
-            <i class="fas fa-bolt" style="font-size: 2rem; color: #00ff88; margin-bottom: 25px;"></i>
-            <h3 style="color: #fff; margin-bottom: 15px;">NVIDIA-Grade Orchestration</h3>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                We leverage <strong>NVIDIA NeMo</strong> and <strong>NIMs</strong> to provide
-                enterprise-ready inference and fine-tuning. This ensures high-fidelity
-                reasoning across distributed GPU nodes.
-            </p>
+        <div class="glass-panel pillar-card border-emerald">
+            <i class="fas fa-bolt" style="color: #00ff88;"></i>
+            <h3>NVIDIA-Grade Orchestration</h3>
+            <p>We leverage <strong>NVIDIA NeMo</strong> and <strong>NIMs</strong> to provide enterprise-ready inference and fine-tuning. This ensures high-fidelity reasoning across distributed GPU nodes.</p>
         </div>
 
         <!-- Sovereign GPU Clusters -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 20px; border-bottom: 4px solid #FFD700;">
-            <i class="fas fa-microchip" style="font-size: 2rem; color: #FFD700; margin-bottom: 25px;"></i>
-            <h3 style="color: #fff; margin-bottom: 15px;">Sovereign GPU Clusters</h3>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Deployment of <strong>A100/H100</strong> clusters dedicated to your institution.
-                Complete hardware ownership with air-gapped performance for high-stakes models.
-            </p>
+        <div class="glass-panel pillar-card border-gold">
+            <i class="fas fa-microchip" style="color: #FFD700;"></i>
+            <h3>Sovereign GPU Clusters</h3>
+            <p>Deployment of <strong>A100/H100</strong> clusters dedicated to your institution. Complete hardware ownership with air-gapped performance for high-stakes models.</p>
         </div>
 
         <!-- Passive Data / GET-only RL -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 20px; border-bottom: 4px solid #0072ff;">
-            <i class="fas fa-shield-alt" style="font-size: 2rem; color: #0072ff; margin-bottom: 25px;"></i>
-            <h3 style="color: #fff; margin-bottom: 15px;">Passive Data Harvesting</h3>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Our <strong>Sovereign RL</strong> protocols use strictly <strong>GET-only</strong> requests.
-                Passive intelligence gathering ensuring your system evolves without write-path risks.
-            </p>
+        <div class="glass-panel pillar-card border-blue">
+            <i class="fas fa-shield-alt" style="color: #0072ff;"></i>
+            <h3>Passive Data Harvesting</h3>
+            <p>Our <strong>Sovereign RL</strong> protocols use strictly <strong>GET-only</strong> requests. Passive intelligence gathering ensuring your system evolves without write-path risks.</p>
         </div>
 
         <!-- Data Orchestration (Kus_org) -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 20px; border-bottom: 4px solid #00c3ff;">
-            <i class="fas fa-layer-group" style="font-size: 2rem; color: #00c3ff; margin-bottom: 25px;"></i>
-            <h3 style="color: #fff; margin-bottom: 15px;">Kus_org Data Engine</h3>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Integration with the <strong>Kus_org</strong> framework for seamless
-                orchestration. Local fine-tuning ensures peak performance on industry-specific objectives.
-            </p>
+        <div class="glass-panel pillar-card border-cyan">
+            <i class="fas fa-layer-group" style="color: #00c3ff;"></i>
+            <h3>Kus_org Data Engine</h3>
+            <p>Integration with the <strong>Kus_org</strong> framework for seamless orchestration. Local fine-tuning ensures peak performance on industry-specific objectives.</p>
         </div>
     </div>
 
     <!-- TARGETED INDUSTRY IMPLEMENTATIONS -->
-    <div style="margin-top: 100px; margin-bottom: 60px; text-align: center;">
-        <h2 style="font-size: 2.5rem; color: #FFD700;">Industries Supported</h2>
-        <p style="color: #94a3b8; max-width: 850px; margin: 20px auto 0; font-size: 1.15rem; line-height: 1.6;">
-            The Core Infrastructure for Autonomous Success. One infrastructure layer. Infinite realizations.
-            Every specialized pod below is powered directly by your private Sovereign Infrastructure.
-        </p>
+    <div class="sector-intro">
+        <h2>Industries Supported</h2>
+        <p>The Core Infrastructure for Autonomous Success. One infrastructure layer. Infinite realizations. Every specialized pod below is powered directly by your private Sovereign Infrastructure.</p>
     </div>
 
-    <div
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 100px;">
-
+    <div class="sector-grid">
         <!-- TELECOM SECTOR -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #00c3ff;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-tower-broadcast" style="font-size: 2rem; color: #00c3ff;"></i>
-                <h3 style="color: #fff;">Telecommunications</h3>
+        <div class="glass-panel sector-card top-cyan">
+            <div class="card-header">
+                <i class="fas fa-tower-broadcast" style="color: #00c3ff;"></i>
+                <h3>Telecommunications</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Autonomous O-RAN defense and network resilience including <strong>HR Field-Force Support</strong> for
-                regional leaders like MTN Group.
-            </p>
+            <p>Autonomous O-RAN defense and network resilience including <strong>HR Field-Force Support</strong> for regional leaders like MTN Group.</p>
         </div>
 
         <!-- BANKING & FINANCE -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #0072ff;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-vault" style="font-size: 2rem; color: #0072ff;"></i>
-                <h3 style="color: #fff;">Banking & Finance</h3>
+        <div class="glass-panel sector-card top-blue">
+            <div class="card-header">
+                <i class="fas fa-vault" style="color: #0072ff;"></i>
+                <h3>Banking & Finance</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Execution-grade signal correlation and automated statutory tax compliance for institutional finance and
-                wealth management.
-            </p>
+            <p>Execution-grade signal correlation and automated statutory tax compliance for institutional finance and wealth management.</p>
         </div>
 
         <!-- RETAIL & WHOLESALE -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #00ff88;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-shopping-cart" style="font-size: 2rem; color: #00ff88;"></i>
-                <h3 style="color: #fff;">Retail & Wholesale</h3>
+        <div class="glass-panel sector-card top-emerald">
+            <div class="card-header">
+                <i class="fas fa-shopping-cart" style="color: #00ff88;"></i>
+                <h3>Retail & Wholesale</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                VLA Robotics for warehouse integrity and frontline labor optimization via automated internal support
-                pods.
-            </p>
+            <p>VLA Robotics for warehouse integrity and frontline labor optimization via automated internal support pods.</p>
         </div>
 
         <!-- ENTERTAINMENT & MEDIA -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #ff00ff;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-clapperboard" style="font-size: 2rem; color: #ff00ff;"></i>
-                <h3 style="color: #fff;">Entertainment & Media</h3>
+        <div class="glass-panel sector-card top-magenta">
+            <div class="card-header">
+                <i class="fas fa-clapperboard" style="color: #ff00ff;"></i>
+                <h3>Entertainment & Media</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Personalized engagement pods, autonomous content synthesis, and decentralized rights management for
-                modern media.
-            </p>
+            <p>Personalized engagement pods, autonomous content synthesis, and decentralized rights management for modern media.</p>
         </div>
 
         <!-- ADVERTISING & BRANDING -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #FFD700;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-ad" style="font-size: 2rem; color: #FFD700;"></i>
-                <h3 style="color: #fff;">Advertising & Branding</h3>
+        <div class="glass-panel sector-card top-gold">
+            <div class="card-header">
+                <i class="fas fa-ad" style="color: #FFD700;"></i>
+                <h3>Advertising & Branding</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                High-fidelity branding pods and sentiment-driven asset generation for global marketing and brand
-                consistency.
-            </p>
+            <p>High-fidelity branding pods and sentiment-driven asset generation for global marketing and brand consistency.</p>
         </div>
 
         <!-- INTEGRATED SECURITY -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #ff4444;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-shield-halved" style="font-size: 2rem; color: #ff4444;"></i>
-                <h3 style="color: #fff;">Integrated Security</h3>
+        <div class="glass-panel sector-card top-red">
+            <div class="card-header">
+                <i class="fas fa-shield-halved" style="color: #ff4444;"></i>
+                <h3>Integrated Security</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Unified digital/physical defense with integrated sovereign personnel integrity vetting for critical
-                facilities.
-            </p>
+            <p>Unified digital/physical defense with integrated sovereign personnel integrity vetting for critical facilities.</p>
         </div>
 
         <!-- CRITICAL INFRASTRUCTURE -->
-        <div class="glass-panel" style="padding: 40px; border-radius: 24px; border-top: 5px solid #64748b;">
-            <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 20px;">
-                <i class="fas fa-city" style="font-size: 2rem; color: #64748b;"></i>
-                <h3 style="color: #fff;">Critical Infrastructure</h3>
+        <div class="glass-panel sector-card top-slate">
+            <div class="card-header">
+                <i class="fas fa-city" style="color: #64748b;"></i>
+                <h3>Critical Infrastructure</h3>
             </div>
-            <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.6;">
-                Building the foundational engine for autonomous success across power grids, logistics networks, and
-                state operations.
-            </p>
+            <p>Building the foundational engine for autonomous success across power grids, logistics networks, and state operations.</p>
         </div>
     </div>
     </div>
 </section>
 
 <!-- AIR-GAPPED & SECURITY SECTION -->
-<section style="background: rgba(0,0,0,0.4); padding: 100px 0;">
+<section class="security-section">
     <div class="container">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h2 class="text-gradient" style="font-size: 2.5rem;">Extreme Security. Zero Compromise.</h2>
-            <p style="color: #94a3b8; max-width: 700px; margin: 20px auto 0;">
-                For government and defense sectors, we provide the ultimate in data sovereignty.
-            </p>
+        <div class="sec-header">
+            <h2 class="text-gradient">Extreme Security. Zero Compromise.</h2>
+            <p class="sec-desc">For government and defense sectors, we provide the ultimate in data sovereignty.</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-            <div class="glass-panel" style="padding: 40px; border-radius: 24px;">
-                <h4 style="color: #fff; margin-bottom: 15px;">Level 1: Sovereign Cloud (Help-Hosted)</h4>
-                <p style="color: #94a3b8; font-size: 0.9rem;">Managed deployment within dedicated VPCs on AWS or Google
-                    Cloud. You own the compute and weights; we handle the orchestration.</p>
+        <div class="security-grid">
+            <div class="glass-panel security-card">
+                <h4>Level 1: Sovereign Cloud (Help-Hosted)</h4>
+                <p>Managed deployment within dedicated VPCs on AWS or Google Cloud. You own the compute and weights; we handle the orchestration.</p>
             </div>
-            <div class="glass-panel" style="padding: 40px; border-radius: 24px;">
-                <h4 style="color: #fff; margin-bottom: 15px;"><i class="fas fa-lock"></i> Level 2: Air-Gapped
-                    Deployments</h4>
-                <p style="color: #94a3b8; font-size: 0.9rem;">
-                    Deploy your intelligence nodes in physically isolated environments.
-                    No external internet access required for inference or operation.
-                </p>
+            <div class="glass-panel security-card">
+                <h4><i class="fas fa-lock"></i> Level 2: Air-Gapped Deployments</h4>
+                <p>Deploy your intelligence nodes in physically isolated environments. No external internet access required for inference or operation.</p>
             </div>
-            <div class="glass-panel" style="padding: 40px; border-left: 4px solid #00ff88;">
-                <h4 style="color: #fff; margin-bottom: 15px;"><i class="fas fa-map-marker-alt"></i> Local Data Residency
-                </h4>
-                <p style="color: #94a3b8; font-size: 0.9rem;">
-                    Full compliance with <strong>NITDA</strong> and regional data laws.
-                    Your data never leaves your jurisdiction, or even your building.
-                </p>
+            <div class="glass-panel security-card left-emerald">
+                <h4><i class="fas fa-map-marker-alt"></i> Local Data Residency</h4>
+                <p>Full compliance with <strong>NITDA</strong> and regional data laws. Your data never leaves your jurisdiction, or even your building.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container" style="text-align: center; padding: 100px 0;">
-    <h3 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 30px;">Ready for Sovereign Independence?</h3>
-    <p style="color: #94a3b8; font-size: 1.15rem; margin-bottom: 40px;">Begin your transition to institutional autonomy
-        with a Strategic Support Session.</p>
-    <a href="{{ url_for('public.audit_request') }}" class="btn btn-primary"
-        style="padding: 18px 45px; font-size: 1.1rem; border-radius: 50px; background: #FFD700; color: #000; font-weight: 700; text-decoration: none;">Request
-        Strategic Support</a>
+<section class="container infra-cta">
+    <h3>Ready for Sovereign Independence?</h3>
+    <p>Begin your transition to institutional autonomy with a Strategic Support Session.</p>
+    <a href="{{ url_for('public.audit_request') }}" class="nav-cta" style="padding: 18px 45px; font-size: 1.1rem; border-radius: 50px;">Request Strategic Support</a>
 </section>
 
 {% endblock %}
