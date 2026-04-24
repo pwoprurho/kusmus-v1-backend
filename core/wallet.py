@@ -4,6 +4,7 @@ from eth_account import Account
 import bitcoin
 import json
 from cryptography.fernet import Fernet
+from werkzeug.utils import secure_filename
 
 
 def _get_wallet_cipher():
@@ -19,6 +20,18 @@ def _get_wallet_cipher():
 
 
 class Wallet:
+    @staticmethod
+    def _wallet_file_path(user_id):
+        base_dir = os.path.abspath('data')
+        safe_user_id = secure_filename(str(user_id))
+        if not safe_user_id:
+            raise ValueError("Invalid user_id for wallet path")
+        filename = f'wallet_{safe_user_id}.json'
+        wallet_path = os.path.abspath(os.path.join(base_dir, filename))
+        if os.path.commonpath([base_dir, wallet_path]) != base_dir:
+            raise ValueError("Unsafe wallet path")
+        return wallet_path
+
     def __init__(self, user_id):
         self.user_id = user_id
         self.eth_address = None
@@ -72,7 +85,7 @@ class Wallet:
     def _save_to_disk(self):
         """Persist wallet with encrypted private keys."""
         os.makedirs('data', exist_ok=True)
-        wallet_path = os.path.join('data', f'wallet_{self.user_id}.json')
+        wallet_path = self._wallet_file_path(self.user_id)
         data = {
             'eth_address': self.eth_address,
             'eth_private_key_enc': self._eth_private_key_encrypted,
@@ -84,7 +97,10 @@ class Wallet:
 
     def _load_from_disk(self) -> bool:
         """Load wallet from encrypted file. Returns False if not found."""
-        wallet_path = os.path.join('data', f'wallet_{self.user_id}.json')
+        try:
+            wallet_path = self._wallet_file_path(self.user_id)
+        except ValueError:
+            return False
         if not os.path.exists(wallet_path):
             return False
         try:
@@ -120,7 +136,10 @@ class Wallet:
     @staticmethod
     def get_wallet(user_id):
         """Load an existing wallet by user_id. Returns None if not found."""
-        wallet_path = os.path.join('data', f'wallet_{user_id}.json')
+        try:
+            wallet_path = Wallet._wallet_file_path(user_id)
+        except ValueError:
+            return None
         if not os.path.exists(wallet_path):
             return None
         return Wallet(user_id)
