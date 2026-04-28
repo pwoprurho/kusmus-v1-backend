@@ -43,7 +43,7 @@ body {
     background-color: var(--bg-dark);
     color: #e0e6ed;
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 0.8rem + 0.25vw, 1.1rem);
+    font-size: clamp(1.1rem, 1.0rem + 0.3vw, 1.3rem); /* Increased globally */
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -76,7 +76,7 @@ h6 {
 }
 
 p {
-    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.15rem);
+    font-size: clamp(1.2rem, 1.1rem + 0.3vw, 1.45rem); /* Increased globally */
     margin-bottom: 1.5rem;
 }
 
@@ -775,11 +775,11 @@ nav {
 
 /* 6. Unified Scaling & Window Autoscaling Logic */
 html {
-    font-size: calc(14px + 0.2vw); /* Fluid base font for autoscaling */
+    font-size: calc(19px + 0.2vw); /* Fluid base font for autoscaling (Increased by ~5pt) */
 }
 
 @media screen and (min-width: 1920px) {
-    html { font-size: 18px; }
+    html { font-size: 23px; }
 }
 
 .container {
@@ -1900,7 +1900,7 @@ footer {
 
 .quote-box {
     font-family: 'Garamond', serif;
-    font-size: 1.8rem;
+    font-size: 2.15rem; /* Increased from 1.8rem (~+5pt) */
     color: #fff;
     font-style: italic;
     line-height: 1.4;
@@ -1911,8 +1911,9 @@ footer {
 
 .mandate-text p {
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: 1.45rem; /* Increased from 1.1rem (~+5pt) */
     color: #ccc;
+    line-height: 1.6;
 }
 
 .signature {
@@ -2089,6 +2090,8 @@ footer {
     .nav-toggle {
         display: block;
         order: 2;
+    }
+}
 /* END OF UNIFIED SCALING */
 
 /* ==========================================================================
@@ -2189,7 +2192,7 @@ footer {
         }
 
         p {
-            font-size: 1.15rem;
+            font-size: 1.4rem; /* Increased globally override */
         }
 
         #chat-window {
@@ -2352,4 +2355,35 @@ footer {
         .ai-message strong {
             color: #fff;
             font-weight: 600;
+        }
+
+        /* Chairman's Mandate Responsive Overrides */
+        @media (max-width: 768px) {
+            .mandate-section {
+                flex-direction: column;
+                gap: 30px;
+                padding-bottom: 40px;
+            }
+            
+            .chairman-sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                min-width: unset;
+                margin-bottom: 20px;
+            }
+            
+            .chairman-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .quote-box {
+                font-size: 1.65rem; /* Increased from 1.3rem (~+5pt) */
+                padding-left: 15px;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
         }

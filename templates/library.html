@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Free Library - Foundations & PDFs | Kusmus Smart Tech{% endblock %}
+
+{% block content %}
+<div class="library-hero" style="padding: 120px 0 80px; text-align: center; background: radial-gradient(circle at center, rgba(0, 114, 255, 0.1) 0%, transparent 70%);">
+    <div class="container reveal-container">
+        <span class="badge reveal" style="background: rgba(0, 255, 136, 0.1); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.2);">Open Education</span>
+        <h1 class="reveal reveal-alternate" style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Free Academic Library</h1>
+        <p class="lead reveal reveal-alternate" style="font-size: 1.15rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">
+            Our gift to the community. To truly bridge the digital divide, we have released the foundational syllabuses of our core training tracks as highly compressed, smartphone-optimized PDFs. Download them directly and start your journey completely free.
+        </p>
+    </div>
+</div>
+
+<section class="pdf-library-section reveal-container" style="padding: 60px 0 120px;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+            
+            {% if documents %}
+                {% for doc in documents %}
+                <div class="pdf-card reveal" style="background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; text-align: center; transition: all 0.3s ease;">
+                    <div class="pdf-icon" style="height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-file-pdf" style="font-size: 5rem; color: #ff4444;"></i>
+                    </div>
+                    <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 15px;">{{ doc.name }}</h3>
+                    <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px;">A free master-class syllabus designed for foundational progression in intelligence technologies.</p>
+                    <a href="{{ url_for('static', filename='library_pdfs/' + doc.filename) }}" download class="primary-button" style="display: block; width: 100%; background: rgba(0, 114, 255, 0.1); color: #00c6ff; border: 1px solid rgba(0, 114, 255, 0.3);"><i class="fas fa-download"></i> Download PDF ({{ doc.size }})</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px; background: rgba(255,255,255,0.02); border-radius: 16px;">
+                    <i class="fas fa-books" style="font-size: 3rem; color: #666; margin-bottom: 20px;"></i>
+                    <h3 style="color: #fff; margin-bottom: 10px;">Library Empty</h3>
+                    <p style="color: #888;">No free learning materials are currently uploaded. Our academics are finalizing the new curriculums right now. Check back shortly!</p>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .pdf-card {
+        cursor: pointer;
+    }
+    .pdf-card:hover {
+        transform: translateY(-8px);
+        border-color: #00c6ff;
+        box-shadow: 0 10px 30px rgba(0, 114, 255, 0.15);
+    }
+    .pdf-card .primary-button {
+        text-decoration: none;
+    }
+    .pdf-card .primary-button:hover {
+        background: #0072ff !important;
+        color: #fff !important;
+    }
+</style>
+{% endblock %}

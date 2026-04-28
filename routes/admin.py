@@ -660,3 +660,31 @@ def crypto_wallet_action():
         ussd_result = ussd_gateway.send_payment(phone_number, amount)
         return jsonify({'btc_address': wallet.btc_address, 'eth_address': wallet.eth_address, 'ussd_result': ussd_result})
     return jsonify({'error': 'Invalid action'}), 400
+
+# =========================================================
+# === FREE PDF LIBRARY MANAGER ===
+# =========================================================
+
+@admin_bp.route('/library/upload', methods=['POST'])
+@login_required
+@role_required('supa_admin', 'admin', 'editor')
+def upload_library_pdf():
+    """Handles admin uploading new PDF materials for the Free Document Library."""
+    pdf_file = request.files.get('pdf_file')
+    if not pdf_file or not pdf_file.filename.endswith('.pdf'):
+        flash("Invalid file. Please upload a valid PDF document.", "error")
+        return redirect(url_for('admin.dashboard'))
+        
+    try:
+        library_dir = os.path.join(os.getcwd(), 'static', 'library_pdfs')
+        os.makedirs(library_dir, exist_ok=True)
+        
+        filename = secure_filename(pdf_file.filename)
+        save_path = os.path.join(library_dir, filename)
+        
+        pdf_file.save(save_path)
+        flash(f"Successfully uploaded {filename} to the Free Library!", "success")
+    except Exception as e:
+        flash(f"Error saving PDF: {str(e)}", "error")
+        
+    return redirect(url_for('admin.dashboard'))

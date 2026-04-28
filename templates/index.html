@@ -120,105 +120,127 @@ private AI clusters (Kuspods) and train elite engineers via the Kusmus Academy.{
                     style="color: #fff; margin-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">
                     Cross-Disciplinary AI Integration</h4>
                 <p style="color: #aaa; font-size: 1.15rem; line-height: 1.9;">
-                    Hardware is only as sovereign as the talent operating it. The **Kusmus Academy** doesn't just train
-                    engineers; we train professionals across multiple sectors to master AI in their specific careers.
-                    From **Business Executives** maximizing institutional ROI to **Creatives** deploying generative
-                    pipelines, we ensure your workforce evolves alongside your infrastructure.
+                    Our Academy breaks down the barriers to the tech industry. We start from the absolute basics of ICT and guide you through a practical curriculum in software development, AI, and Data Science. You do not need expensive hardware; our curriculum is tailored to ensure you can build automation pipelines using just the technology currently in your pocket.
                 </p>
                 <p style="color: #aaa; font-size: 1.15rem; line-height: 1.9; margin-top: 25px;">
-                    Whether you are an established professional or entirely new to technology, you need to be a part of
-                    the next big thing. We operate through three distinct channels: **Free Foundational Videos**
-                    teaching absolute computer basics to those who need the foundation before the main course begins,
-                    **Seasonal Public Cohorts** for targeted career acceleration, and **Elite Corporate Training** for
-                    your entire operational division.
+                    We operate through three distinct channels: **Free Foundational Videos** for beginners requiring the absolute basics, **Seasonal Public Cohorts** offering intensive career acceleration, and an exclusive **Sovereign Innovators Internship** to provide hands-on experience in real industry projects.
                 </p>
             </div>
 
             <div style="display: flex; gap: 40px; margin-bottom: 50px;">
                 <div style="flex: 1;">
-                    <h5 style="color: #FFD700; margin-bottom: 10px;">End-to-End Roles</h5>
-                    <p style="font-size: 0.9rem; color: #666;">Tracks for Developers, Managers, and Analysts.</p>
+                    <h5 style="color: #FFD700; margin-bottom: 10px;">Foundational Training</h5>
+                    <p style="font-size: 0.9rem; color: #666;">Step-by-step tracks from zero computing background to advanced logic.</p>
                 </div>
                 <div style="flex: 1;">
-                    <h5 style="color: #0072ff; margin-bottom: 10px;">Bespoke Upskilling</h5>
-                    <p style="font-size: 0.9rem; color: #666;">On-demand curricula aligned with your Sovereign Stack.
-                    </p>
+                    <h5 style="color: #0072ff; margin-bottom: 10px;">Hands-On Internships</h5>
+                    <p style="font-size: 0.9rem; color: #666;">Apply your skills immediately within our partner networks.</p>
                 </div>
             </div>
 
-            <a href="{{ url_for('public.academy_apply') }}" class="primary-button"
-                style="background: #FFD700; color: #000;">Enroll in Next Cohort</a>
+            <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                <a href="{{ url_for('public.academy_apply') }}" class="primary-button"
+                    style="background: #FFD700; color: #000;">Enroll in Next Cohort</a>
+                <a href="{{ url_for('public.academy_apply') }}?type=internship" class="primary-button"
+                    style="background: transparent; color: #00ff88; border: 2px solid #00ff88;">Apply for Internship &rarr;</a>
+            </div>
         </div>
 
         <div class="academy-visual reveal reveal-alternate">
-            <div class="glass-panel" style="padding: 40px; border-bottom: 4px solid #FFD700;">
-                <h3 style="color: #fff; margin-bottom: 15px;"><i class="fas fa-layer-group"></i> Flagship Tracks</h3>
-                <p style="color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px;">
-                    Our most sought-after intelligence programs, designed for maximum career impact.
-                </p>
-                <ul style="list-style: none; padding: 0;">
-                    <li
-                        style="padding: 15px; margin-bottom: 15px; background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px; position: relative;">
-                        <span
-                            style="position: absolute; top: -10px; right: 15px; background: #FFD700; color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Best
-                            Seller</span>
-                        <h4 style="color: #FFD700; margin-bottom: 5px; font-size: 1.1rem;">A.I. for Academics</h4>
-                        <p style="color: #bbb; font-size: 0.85rem; margin: 0;">Automate research synthesis, scale
-                            literature reviews via RAG, and maintain academic integrity using Sovereign LLMs.</p>
-                    </li>
-                    <li
-                        style="padding: 15px; margin-bottom: 15px; background: rgba(0, 114, 255, 0.05); border: 1px solid rgba(0, 114, 255, 0.2); border-radius: 8px; position: relative;">
-                        <span
-                            style="position: absolute; top: -10px; right: 15px; background: #0072ff; color: #fff; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Most
-                            Popular</span>
-                        <h4 style="color: #00c6ff; margin-bottom: 5px; font-size: 1.1rem;">A.I. for Students</h4>
-                        <p style="color: #bbb; font-size: 0.85rem; margin: 0;">Master the toolstack of the future. Build
-                            a competitive career advantage through applied foundational AI logic.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Software Engineers
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Local inference, API orchestration, and
-                            deployment.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Business Executives
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Risk management, data privacy, and
-                            measuring ROI.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Cyber-Security &
-                            Forensics</h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Engineering autonomous defense systems,
-                            prompt injection mitigation, and zero-trust.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Financial Analysts
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Rapid signal correlation, dynamic risk
-                            assessment, and statutory automation.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Creatives & Marketers
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Building proprietary models for brand
-                            consistency and hyper-personalized campaigns.</p>
-                    </li>
-                    <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Legal & Policy Experts
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Automating contract analysis and parsing
-                            with air-gapped language models.</p>
-                    </li>
-                    <li style="padding: 15px;">
-                        <h4 style="color: #cbd5e1; margin-bottom: 5px; font-size: 1rem;">A.I. for Operations Managers
-                        </h4>
-                        <p style="color: #888; font-size: 0.85rem; margin: 0;">Integrating machine vision (VLA) and
-                            robotic agents for secure supply chains.</p>
-                    </li>
-                </ul>
+            <h3 style="color: #fff; margin-bottom: 15px; text-align: center;"><i class="fas fa-layer-group"></i> Current Training Tracks</h3>
+            <p style="color: #888; font-size: 1.05rem; line-height: 1.6; margin-bottom: 40px; text-align: center;">
+                Our highly requested, project-based curriculums built for the modern digital economy.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <!-- Card 1 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fas fa-desktop" style="font-size: 2rem; color: #4ade80;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 12px; border-radius: 8px;">₦50,000</span>
+                        </div>
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Intro to ICT & Computing</h4>
+                        <p style="color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0;">Master foundational computer literacy, smartphone smartification, and internet basics.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fas fa-code" style="font-size: 2rem; color: #4ade80;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 12px; border-radius: 8px;">₦150,000</span>
+                        </div>
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Full-Stack Web Dev</h4>
+                        <p style="color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0;">Build and deploy modern, responsive web applications from the ground up.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.3); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <span style="position: absolute; top: -12px; right: 20px; background: #FFD700; color: #000; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);">Most Popular</span>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fab fa-python" style="font-size: 2.2rem; color: #FFD700;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #FFD700; font-weight: bold; background: rgba(255, 215, 0, 0.15); padding: 5px 12px; border-radius: 8px;">₦180,000</span>
+                        </div>
+                        <h4 style="color: #FFD700; margin-bottom: 15px; font-size: 1.25rem;">Artificial Intelligence & Python</h4>
+                        <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin: 0;">Learn Python from scratch and use it to interact with, control, and build AI logic.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(0, 114, 255, 0.05); border: 1px solid rgba(0, 114, 255, 0.3); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <span style="position: absolute; top: -12px; right: 20px; background: #0072ff; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);">Best Seller</span>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fas fa-brain" style="font-size: 2.2rem; color: #00c6ff;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #00c6ff; font-weight: bold; background: rgba(0, 114, 255, 0.15); padding: 5px 12px; border-radius: 8px;">₦220,000</span>
+                        </div>
+                        <h4 style="color: #00c6ff; margin-bottom: 15px; font-size: 1.25rem;">Machine Learning Fundamentals</h4>
+                        <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin: 0;">Train algorithms, understand datasets, and deploy lightweight models on edge devices.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fas fa-chart-network" style="font-size: 2rem; color: #4ade80;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 12px; border-radius: 8px;">₦200,000</span>
+                        </div>
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Data Science & Analytics</h4>
+                        <p style="color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0;">Transform raw institutional data into actionable insights and automated forecasting.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                            <i class="fas fa-cloud" style="font-size: 2rem; color: #4ade80;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 12px; border-radius: 8px;">₦180,000</span>
+                        </div>
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Cloud Computing & AI Deployment</h4>
+                        <p style="color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0;">Master the skills required to safely orchestrate, secure, and deploy applications.</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTERNSHIP BANNER -->
+<section class="internship-banner reveal-container" style="background: rgba(0, 255, 136, 0.05); padding: 60px 0; border-top: 1px solid rgba(0, 255, 136, 0.1); border-bottom: 1px solid rgba(0, 255, 136, 0.1); margin-bottom: 80px;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <i class="fas fa-user-graduate reveal" style="font-size: 3.5rem; color: #00ff88; margin-bottom: 20px;"></i>
+        <h2 class="reveal reveal-alternate" style="font-size: 2.2rem; color: #fff; margin-bottom: 15px;">Sovereign Innovators Internship</h2>
+        <p class="reveal reveal-alternate" style="color: #888; font-size: 1.1rem; max-width: 650px; margin-bottom: 30px; line-height: 1.6;">
+            Are you looking for a space to apply your skills in the real world? We offer exclusive, hands-on internships where you work directly on mission-critical AI automation projects alongside our senior engineers.
+        </p>
+        <div class="reveal reveal-scale">
+            <a href="{{ url_for('public.academy_apply') }}?type=internship" class="primary-button" style="background: linear-gradient(135deg, #00ff88 0%, #00b359 100%); color: #000; font-weight: bold;">Submit Internship Application</a>
         </div>
     </div>
 </section>

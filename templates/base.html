@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Sovereign AI | Institutional Autonomy | Kusmus AI{% endblock %}</title>
+    <title>{% block title %}A.I and Python Trainings & Solutions in Nigeria | Kusmus Smart Tech{% endblock %}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 
-    <!-- SEO & Meta Tags -->
+    <!-- SEO & AEO Meta Tags -->
     <meta name="description"
-        content="{% block meta_description %}Kusmus AI delivers high-fidelity sovereign AI solutions, private cluster orchestration, and institutional autonomy through our premium Sovereign Agent stack.{% endblock %}">
+        content="{% block meta_description %}Nigeria's premier institute for A.I and Python trainings. Kusmus Smart Tech provides premium AI solutions, software engineering education, and bridging the digital divide with smartphone-based intelligence infrastructure in Nigeria.{% endblock %}">
     <meta name="keywords"
-        content="{% block meta_keywords %}AI solutions in Nigeria, Sovereign AI Nigeria, Custom AI Development Lagos, Enterprise AI Africa, Fine-Tuned AI Models, Private Data AI, Kusmus AI{% endblock %}">
-    <meta name="author" content="Kusmus AI">
+        content="{% block meta_keywords %}A.I and python trainings nigeria, AI solutions offering in nigeria, python trainings lagos, machine learning nigeria, web development training nigeria, tech solutions nigeria, Kusmus Smart Tech{% endblock %}">
+    <meta name="author" content="Kusmus Smart Tech">
     {% if request.path.startswith(('/admin', '/client', '/auth', '/sandbox', '/tax', '/physics')) %}
     <meta name="robots" content="noindex, nofollow">
     {% else %}
-    <!-- Explicit indexing directives for Googlebot & Analytics -->
+    <!-- Explicit indexing directives for Googlebot & Answer Engines -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{{ request.base_url }}">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url_for('public.sitemap') }}">
@@ -32,9 +32,9 @@
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.url }}">
     <meta property="og:title"
-        content="{% block og_title %}Kusmus AI - Nigeria's Leading AI Solutions Provider{% endblock %}">
+        content="{% block og_title %}A.I and Python Trainings & Solutions offering in Nigeria | Kusmus{% endblock %}">
     <meta property="og:description"
-        content="{% block og_description %}Engineering institutional certainty through sovereign AI, private GPU clusters, and high-performance agentic orchestration.{% endblock %}">
+        content="{% block og_description %}Transform your career with Nigeria's best A.I and Python training programs. We offer robust AI solutions and democratized tech education.{% endblock %}">
     <meta property="og:image"
         content="{% block og_image %}{{ url_for('static', filename='images/pic01.png', _external=True) }}{% endblock %}">
 
@@ -42,30 +42,32 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.url }}">
     <meta property="twitter:title"
-        content="{% block twitter_title %}Kusmus AI - The Frontier of Sovereign AI in Nigeria{% endblock %}">
+        content="{% block twitter_title %}Top A.I and Python Trainings in Nigeria | Kusmus{% endblock %}">
     <meta property="twitter:description"
-        content="{% block twitter_description %}Engineering institutional certainty through sovereign AI solutions and technology innovation. We are transitionsing Nigeria's market leaders into the AI era.{% endblock %}">
+        content="{% block twitter_description %}Nigeria's leading academy for Artificial Intelligence, Python programming, and enterprise software solutions.{% endblock %}">
     <meta property="twitter:image"
         content="{% block twitter_image %}{{ url_for('static', filename='images/pic01.png', _external=True) }}{% endblock %}">
 
-    <!-- JSON-LD Structured Data: Organization -->
+    <!-- JSON-LD Structured Data: EducationalOrganization & LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Kusmus AI",
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "name": "Kusmus Smart Tech",
+      "description": "Provider of A.I and Python trainings and solutions offering in Nigeria.",
       "url": "{{ request.url_root }}",
       "logo": "{{ url_for('static', filename='images/pic01.png', _external=True) }}",
+      "knowsAbout": ["Artificial Intelligence", "Python Programming", "Machine Learning", "Web Development", "ICT solutions"],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+234-800-KUSMUS",
-        "contactType": "customer service",
+        "contactType": "admissions",
         "areaServed": "NG",
         "availableLanguage": "English"
       },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Sovereign Plaza, Victoria Island",
+        "streetAddress": "Smart Tech Hub, Victoria Island",
         "addressLocality": "Lagos",
         "addressRegion": "LA",
         "addressCountry": "NG"
@@ -77,31 +79,31 @@
     }
     </script>
 
-    <!-- FAQ Schema for SERP Authority -->
+    <!-- FAQ Schema for SERP/AEO Authority -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [{
         "@type": "Question",
-        "name": "Who is the leading AI solutions provider in Nigeria?",
+        "name": "Who provides the best A.I and python trainings in Nigeria?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Kusmus AI is the leading AI solutions provider in Nigeria, specializing in sovereign enterprise intelligence and fine-tuned AI models for African institutions."
+          "text": "Kusmus Smart Tech is the leading provider for A.I and Python trainings in Nigeria. We offer inclusive EdTech resources, turning standard smartphones into intelligent workstations for absolute beginners to advanced engineers."
         }
       }, {
         "@type": "Question",
-        "name": "What are sovereign AI solutions?",
+        "name": "What AI solutions and tech offerings do you provide?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sovereign AI solutions are customized, security-hardened implementations where models are fine-tuned on private institutional data and deployed within a secure perimeter, ensuring complete data ownership and privacy."
+          "text": "We offer comprehensive tech solutions ranging from Full-Stack Web Development, foundational IT education, to advanced enterprise AI pipelines tailored for the Nigerian ecosystem."
         }
       }, {
         "@type": "Question",
-        "name": "How does Kusmus AI support Nigerian market leaders?",
+        "name": "Are there internship opportunities for Python and AI in Nigeria?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Kusmus AI provides strategic AI audits, private infrastructure deployment, and continuous reinforcement learning loops to ensure that Nigerian market leaders achieve institutional autonomy and operational certainty."
+          "text": "Yes. Kusmus Smart Tech offers the Sovereign Innovators Internship, a specialized program designed for students and professionals to gain hands-on, real-world industry experience in AI and software engineering."
         }
       }]
     }
@@ -193,6 +195,7 @@
                         <li><a href="{{ url_for('public.podhub') }}">PodHub</a></li>
                         <li><a href="{{ url_for('sandbox.sandbox_view') }}">Sandbox</a></li>
                         <li><a href="{{ url_for('public.community') }}">Community</a></li>
+                        <li><a href="{{ url_for('public.library') }}">Free PDF Library</a></li>
                     </ul>
                 </li>
 

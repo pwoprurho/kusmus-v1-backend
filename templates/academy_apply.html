@@ -158,7 +158,22 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="institute">Parent Institute (Optional)</label>
+                    <label for="track">Preferred Training Track</label>
+                    <select id="track" name="track" required>
+                        <option value="" disabled selected>Select an option...</option>
+                        <option value="ict_basics">1. Intro to ICT & Computing Basics</option>
+                        <option value="web_dev">2. Full-Stack Web Development</option>
+                        <option value="ai_python">3. Artificial Intelligence & Python</option>
+                        <option value="ml_fundamentals">4. Machine Learning Fundamentals</option>
+                        <option value="data_science">5. Data Science & Analytics</option>
+                        <option value="cloud_ai">6. Cloud Computing & AI Deployment</option>
+                        <option value="" disabled>──────────────────────────</option>
+                        <option value="internship" style="color: #00ff88; font-weight: bold;">[+] Sovereign Innovators Internship</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width">
+                    <label for="institute">Parent Institute / Current Organization (Optional)</label>
                     <input type="text" id="institute" name="institute" placeholder="Organization name if applicable">
                 </div>
 
@@ -179,4 +194,16 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.get('type') === 'internship') {
+            const trackSelect = document.getElementById('track');
+            if(trackSelect) {
+                trackSelect.value = 'internship';
+            }
+        }
+    });
+</script>
 {% endblock %}

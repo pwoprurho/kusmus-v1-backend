@@ -176,6 +176,26 @@ def home():
 def careers():
     return render_template("careers.html")
 
+@public_bp.route("/library")
+def library():
+    import os
+    library_dir = os.path.join(os.getcwd(), 'static', 'library_pdfs')
+    if not os.path.exists(library_dir):
+        os.makedirs(library_dir, exist_ok=True)
+    
+    documents = []
+    for f in os.listdir(library_dir):
+        if f.endswith('.pdf'):
+            file_path = os.path.join(library_dir, f)
+            size_mb = os.path.getsize(file_path) / (1024 * 1024)
+            documents.append({
+                'filename': f,
+                'name': f.replace('.pdf', '').replace('_', ' ').replace('-', ' ').title(),
+                'size': f"{size_mb:.1f}MB"
+            })
+            
+    return render_template("library.html", documents=documents)
+
 @public_bp.route("/academy/apply", methods=['GET', 'POST'])
 def academy_apply():
     if request.method == 'POST':
