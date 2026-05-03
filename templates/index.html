@@ -153,15 +153,19 @@ private AI clusters (Kuspods) and train elite engineers via the Kusmus Academy.{
             </p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-                <!-- Card 1 -->
-                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                <!-- Card 1 (FREE - PCEP Focused) -->
+                <div class="glass-panel" style="padding: 30px; border-radius: 16px; background: rgba(55, 118, 171, 0.1); border: 1px solid rgba(255, 212, 59, 0.3); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative;">
+                    <span style="position: absolute; top: -12px; left: 20px; background: #FFD43B; color: #3776AB; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(255, 212, 59, 0.2);">Free Foundation</span>
                     <div>
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
-                            <i class="fas fa-desktop" style="font-size: 2rem; color: #4ade80;"></i>
-                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 12px; border-radius: 8px;">₦50,000</span>
+                            <i class="fab fa-python" style="font-size: 2.2rem; color: #3776AB;"></i>
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #FFD43B; font-weight: bold; background: rgba(55, 118, 171, 0.2); padding: 5px 12px; border-radius: 8px;">FREE</span>
                         </div>
-                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 1.25rem;">Intro to ICT & Computing</h4>
-                        <p style="color: #888; font-size: 0.95rem; line-height: 1.6; margin: 0;">Master foundational computer literacy, smartphone smartification, and internet basics.</p>
+                        <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.25rem;">Intro to ICT & Computing</h4>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+                            <span style="font-size: 0.65rem; color: #FFD43B; border: 1px solid rgba(255, 212, 59, 0.4); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;">PCEP Candidate Track</span>
+                        </div>
+                        <p style="color: #aaa; font-size: 0.95rem; line-height: 1.6; margin: 0;">Master foundational computer literacy and start your journey towards Python Certified Entry-Level Programmer (PCEP) certification.</p>
                     </div>
                 </div>
 
@@ -313,6 +317,10 @@ private AI clusters (Kuspods) and train elite engineers via the Kusmus Academy.{
                     icon.className = 'fas fa-volume-up';
                     text.textContent = 'Mute Audio';
                     video.volume = 1.0;
+                } else {
+                    video.muted = true;
+                    icon.className = 'fas fa-volume-mute';
+                    text.textContent = 'Tap to Listen';
                 }
             });
         }

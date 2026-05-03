@@ -17,6 +17,21 @@
     <meta name="keywords"
         content="{% block meta_keywords %}A.I and python trainings nigeria, AI solutions offering in nigeria, python trainings lagos, machine learning nigeria, web development training nigeria, tech solutions nigeria, Kusmus Smart Tech{% endblock %}">
     <meta name="author" content="Kusmus Smart Tech">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}A.I and Python Trainings & Solutions in Nigeria | Kusmus Smart Tech{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Engineering Independence from Big Tech. Providing Certainty for Africa.{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}A.I and Python Trainings & Solutions in Nigeria | Kusmus Smart Tech{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Engineering Independence from Big Tech. Providing Certainty for Africa.{% endblock %}">
+    <meta property="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+
     {% if request.path.startswith(('/admin', '/client', '/auth', '/sandbox', '/tax', '/physics')) %}
     <meta name="robots" content="noindex, nofollow">
     {% else %}
@@ -129,6 +144,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+    <!-- SEO / AEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Kusmus AI",
+      "url": "https://www.kusmus.ai",
+      "logo": "https://www.kusmus.ai/static/images/logo.png",
+      "description": "Africa's leading provider of Sovereign AI infrastructure and Agentic pods.",
+      "founder": {
+        "@type": "Person",
+        "name": "Prof. Godfrey Akpojotor"
+      },
+      "knowsAbout": ["Artificial Intelligence", "Sovereign Intelligence", "Theoretical Physics", "Computational Science"],
+      "sameAs": [
+        "https://linkedin.com/company/kusmus-ai"
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
@@ -158,66 +193,323 @@
         </div>
     </div>
 
-    <header class="header-blue">
-        <div class="nav-backdrop" id="nav-backdrop"></div>
-        <div class="logo">
-            <a href="{{ url_for('public.home') }}" class="logo-container">
-                <img src="{{ url_for('static', filename='images/pic01.png') }}" alt="Kusmus AI Logo"
-                    class="nav-logo-img">
-                <span class="logo-text">KUSMUS <abbr title="Artificial Intelligence">AI</abbr></span>
-            </a>
-        </div>
+    <!-- PREMIUM GLASS NAVIGATION -->
+    <style>
+        /* Global Mobile Overflow Fix */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Modernized Glass Header */
+        .premium-header {
+            background: rgba(5, 5, 10, 0.7);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+            z-index: 5000;
+            height: 75px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .premium-header.scrolled {
+            height: 65px;
+            background: rgba(2, 2, 5, 0.9);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .brand-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            height: 38px;
+            filter: drop-shadow(0 0 10px rgba(0, 114, 255, 0.4));
+            transition: transform 0.3s ease;
+        }
+        
+        .brand-logo-wrapper:hover .brand-logo-img {
+            transform: scale(1.05);
+        }
+
+        .brand-logo-text {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+        .brand-logo-text span {
+            color: #FFD700;
+        }
+
+        #primary-navigation.premium-nav-list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0 !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 0; /* completely removed horizontal padding */
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-link i {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modern Dropdown System */
+        .glass-dropdown {
+            position: absolute;
+            top: calc(100% + 15px);
+            /* Align to left edge to prevent bleeding off screen on the left */
+            left: 0;
+            transform: translateY(10px);
+            background: rgba(15, 15, 20, 0.85);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            min-width: 200px;
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 5100;
+        }
+
+        .nav-item:hover .glass-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Invisible bridge so mouse doesn't fall through */
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 20px;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin-bottom: 2px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 114, 255, 0.15);
+            color: #00c3ff;
+            transform: translateX(5px);
+        }
+
+        /* CTA Button Override */
+        .nav-cta-btn {
+            background: linear-gradient(135deg, #0072ff, #00c3ff);
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 10px;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.6);
+            background: linear-gradient(135deg, #0056cc, #00a0d6);
+        }
+        
+        /* Mobile Hamburger Overrides */
+        @media (max-width: 1024px) {
+            #primary-navigation.premium-nav-list {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 320px;
+                height: 100vh;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 100px; /* added bottom padding */
+                transition: right 0.4s ease;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+                overflow-y: auto; /* Allow scrolling within the drawer */
+            }
+            #primary-navigation.premium-nav-list.active {
+                right: 0;
+            }
+            .nav-item { width: 100%; margin-bottom: 10px; }
+            .nav-link, .dropdown-item, .nav-cta-btn {
+                font-size: 1.1rem !important;
+                padding: 15px 20px !important;
+            }
+            .glass-dropdown {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                border: none;
+                background: rgba(255, 255, 255, 0.02);
+                padding: 10px;
+                display: none; /* Hidden by default on mobile */
+                margin-left: 10px;
+                border-left: 2px solid rgba(0, 114, 255, 0.3);
+                border-radius: 0;
+            }
+            .glass-dropdown.show {
+                display: block; /* Toggled via JS */
+            }
+            .nav-item:hover .glass-dropdown {
+                display: block;
+            }
+            .nav-cta-btn { margin-left: 0; margin-top: 20px; width: 100%; text-align: center; }
+        }
+        /* --- Reveal Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.reveal-alternate {
+            transform: translateY(-30px);
+        }
+
+        .reveal.reveal-scale {
+            transform: scale(0.95);
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- Fade-In Animation --- */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <header class="premium-header">
+        <a href="{{ url_for('public.home') }}" class="brand-logo-wrapper">
+            <img src="{{ url_for('static', filename='images/pic01.png') }}" alt="Kusmus Logo" class="brand-logo-img">
+            <div class="brand-logo-text">KUSMUS <span>AI</span></div>
+        </a>
+
+        <button class="nav-toggle" id="nav-open-btn" style="border: none; background: transparent; color: white; font-size: 1.5rem; cursor: pointer;">
+            <i class="fas fa-bars"></i>
+        </button>
 
         <nav>
-            <button class="nav-toggle" id="nav-open-btn" aria-controls="primary-navigation" aria-expanded="false" title="Open Navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul id="primary-navigation" data-visible="false">
-                <li class="drawer-header">
-                    <span class="logo-text">KUSMUS AI</span>
-                    <button class="nav-close" id="nav-close-btn" title="Close Navigation">
-                        <i class="fas fa-times"></i>
-                    </button>
+            <ul class="premium-nav-list" id="primary-navigation">
+                <!-- Mobile Only Close Button -->
+                <li class="nav-item" style="display: none;" id="mobile-close-wrapper">
+                    <button id="nav-close-btn" style="position: absolute; top: -60px; right: 0; background: none; border: none; color: white; font-size: 1.8rem;"><i class="fas fa-times"></i></button>
                 </li>
-                <li><a href="{{ url_for('public.home') }}"><i class="fas fa-home"></i> Home</a></li>
-                <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('public.method') }}">Methodology</a></li>
-                        <li><a href="{{ url_for('public.ceo_profile') }}">CEO Profile</a></li>
-                        <li><a href="{{ url_for('public.chairman') }}">Chairman's Page</a></li>
-                    </ul>
+                
+                <li class="nav-item"><a href="{{ url_for('public.home') }}" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
+                    <div class="glass-dropdown">
+                        <a href="{{ url_for('public.method') }}" class="dropdown-item">Methodology</a>
+                        <a href="{{ url_for('public.lead_consultant_profile') }}" class="dropdown-item">Lead AI Consultant's Profile</a>
+                        <a href="{{ url_for('public.mentor') }}" class="dropdown-item">Mentor's Mandate</a>
+                    </div>
                 </li>
 
-                <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-cubes"></i> Ecosystem <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('public.podhub') }}">PodHub</a></li>
-                        <li><a href="{{ url_for('sandbox.sandbox_view') }}">Sandbox</a></li>
-                        <li><a href="{{ url_for('public.community') }}">Community</a></li>
-                        <li><a href="{{ url_for('public.library') }}">Free PDF Library</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-cubes"></i> Ecosystem <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
+                    <div class="glass-dropdown">
+                        <a href="{{ url_for('public.podhub') }}" class="dropdown-item">PodHub</a>
+                        <a href="{{ url_for('sandbox.sandbox_view') }}" class="dropdown-item">Sandbox Environment</a>
+                        <a href="{{ url_for('public.community') }}" class="dropdown-item">Community Network</a>
+
+                    </div>
                 </li>
 
-                <li class="has-dropdown">
-                    <a href="#" class="dropdown-toggle"><i class="fas fa-server"></i> Infrastructure <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('public.solutions') }}">Solutions</a></li>
-                        <li><a href="{{ url_for('public.compliance') }}">Compliance</a></li>
-                    </ul>
+                <li class="nav-item" style="position: relative;">
+                    <a href="#" class="nav-link"><i class="fas fa-server"></i> Infrastructure <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
+                    <div class="glass-dropdown" style="left: auto; right: 0; transform: translateX(0) translateY(10px);">
+                        <a href="{{ url_for('public.solutions') }}" class="dropdown-item">Enterprise Solutions</a>
+                        <a href="{{ url_for('public.compliance') }}" class="dropdown-item">Compliance Standards</a>
+                    </div>
                 </li>
 
-                <li class="has-dropdown">
-                    <a href="{{ url_for('public.home') }}#academy" class="dropdown-toggle"><i class="fas fa-graduation-cap"></i> Academy <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('public.home') }}#academy">Training Overview</a></li>
-                        <li><a href="{{ url_for('public.academy_apply') }}">Cohort Enrollment</a></li>
-                        <li><a href="{{ url_for('public.podhub') }}">Intelligence Archive</a></li>
-                    </ul>
+                <li class="nav-item" style="position: relative;">
+                    <a href="{{ url_for('public.home') }}#academy" class="nav-link"><i class="fas fa-graduation-cap"></i> Academy <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
+                    <div class="glass-dropdown" style="left: auto; right: 0; transform: translateX(0) translateY(10px);">
+                        <a href="{{ url_for('public.home') }}#academy" class="dropdown-item">Training Overview</a>
+                        <a href="{{ url_for('public.academy_apply') }}" class="dropdown-item">Cohort Enrollment</a>
+                        <a href="{{ url_for('public.podhub') }}" class="dropdown-item">Intelligence Archive</a>
+                    </div>
                 </li>
-                <li><a href="{{ url_for('public.blog') }}"><i class="fas fa-lightbulb"></i> Insights</a></li>
+                
+                <li class="nav-item"><a href="{{ url_for('public.blog') }}" class="nav-link"><i class="fas fa-lightbulb"></i> Insights</a></li>
 
-                <li><a href="{{ url_for('public.audit_request') }}" class="nav-cta"><i class="fas fa-clipboard-check"></i> Request Audit</a></li>
+                <li class="nav-item"><a href="{{ url_for('public.audit_request') }}" class="nav-cta-btn"><i class="fas fa-shield-alt"></i> Request Audit</a></li>
             </ul>
         </nav>
     </header>
@@ -455,6 +747,44 @@
                     if (e.key === 'Enter') sendMessage();
                 });
             }
+
+            // --- 4. MOBILE NAVIGATION LOGIC ---
+            const navOpenBtn = document.getElementById('nav-open-btn');
+            const navCloseBtn = document.getElementById('nav-close-btn');
+            const primaryNav = document.getElementById('primary-navigation');
+            const mobileCloseWrapper = document.getElementById('mobile-close-wrapper');
+
+            if (navOpenBtn && primaryNav) {
+                navOpenBtn.addEventListener('click', () => {
+                    primaryNav.classList.add('active');
+                    if(mobileCloseWrapper) mobileCloseWrapper.style.display = 'block';
+                });
+            }
+            
+            if (navCloseBtn && primaryNav) {
+                navCloseBtn.addEventListener('click', () => {
+                    primaryNav.classList.remove('active');
+                    if(mobileCloseWrapper) mobileCloseWrapper.style.display = 'none';
+                });
+            }
+
+            // Mobile Dropdown Toggle (for links that have href="#")
+            const navLinksWithDropdown = document.querySelectorAll('.nav-item > a[href="#"]');
+            navLinksWithDropdown.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        const dropdown = link.nextElementSibling;
+                        if (dropdown && dropdown.classList.contains('glass-dropdown')) {
+                            // Close other open dropdowns (accordion style)
+                            document.querySelectorAll('.glass-dropdown.show').forEach(d => {
+                                if (d !== dropdown) d.classList.remove('show');
+                            });
+                            dropdown.classList.toggle('show');
+                        }
+                    }
+                });
+            });
 
             // Flash Message Dismissal
             document.querySelectorAll('.flash-message').forEach(flash => {

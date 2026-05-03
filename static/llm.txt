@@ -3,6 +3,10 @@
 ## 🛡️ Mission: Engineering Institutional Certainty
 Kusmus AI is a provider of Sovereign AI infrastructure and specialized Agentic pods. We enable private, air-gapped intelligence for institutions requiring 100% data residency and independence from Big Tech ecosystems.
 
+## 🎓 Leadership & Vision
+- **Lead AI Consultant**: Akpojotor Oghenerurho. Pioneer in deploying Neural Systems and Enterprise AI in West Africa. Architect of the Kushub ecosystem.
+- **Mentor's Mandate**: Prof. Godfrey E. Akpojotor. Distinguished Professor of Theoretical Physics & Pioneer of African AI Infrastructure. Focus on "Engineering Certainty" and "Smartphones for Smart Learning Project" (SSLP).
+
 ## 🏗️ Core Architecture: The "Sovereign Agent" Stack
 A high-fidelity hybrid architecture designed for performance and security.
 
@@ -14,31 +18,26 @@ A high-fidelity hybrid architecture designed for performance and security.
 ### 2. The Knowledge Vault (Temporal RAG)
 - **Engine**: `sqlite-vec` for native embeddings.
 - **Freshness Control**: Dynamic "Volatility Tags" based on data velocity:
-    - *High Volatility (Stocks/Real-time)*: 6-hour window.
-    - *Medium Volatility (News/Reports)*: 3-day window.
-    - *Low Volatility (Documentation/Theory)*: 3-month window.
-- **Learning**: Local LoRA fine-tuning (Active RL) performed during device charging states.
+    - *High Volatility*: 6-hour window.
+    - *Medium Volatility*: 3-day window.
+    - *Low Volatility*: 3-month window.
+- **Learning**: Local LoRA fine-tuning performed during device charging states.
 
 ### 3. Physical Infrastructure
 - **Compute**: Sovereign GPU Clusters (NVIDIA A100/H100).
-- **Orchestration**: NVIDIA NeMo & NVIDIA NIMs integration for low-latency inference.
+- **Orchestration**: NVIDIA NeMo & NVIDIA NIMs integration.
 
 ## 🚀 Key Solutions & Products
+- **PodHub**: A comprehensive repository of AI skill protocols and neural toolkits.
 - **KusPods**: Personal sovereign AI for high-stakes productivity.
 - **Sovereign Vault**: Air-gapped banking and finance intelligence.
 - **Sentinel**: Autonomous O-RAN defense for telecommunications.
-- **VLA Robotics**: Vision-Language-Action models for warehouse and logistics security.
+- **VLA Robotics**: Vision-Language-Action models for logistics security.
 
 ## 🏢 Industries Supported
-- Telecommunications (Network Resilience)
-- Banking & Finance (Statutory Compliance)
-- Retail & Wholesale (Labor Optimization)
-- Integrated Security (Digital/Physical Defense)
-- Entertainment & Media (Content Synthesis)
-- Advertising & Branding (Generative ROI)
-- Critical Infrastructure (Autonomous State Ops)
+- Telecommunications, Banking & Finance, Retail & Wholesale, Integrated Security, Entertainment & Media, Advertising & Branding, Critical Infrastructure.
 
 ## 📡 Contact & Support
 Requests for **Institutional Autonomy** are handled through our "Strategic Support" program.
-Endpoint: `/request-support`
 Official Website: `https://www.kusmus.ai`
+Sitemap: `https://www.kusmus.ai/sitemap.xml`

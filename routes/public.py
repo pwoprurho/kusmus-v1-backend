@@ -287,17 +287,17 @@ def community_models():
     ]
     return jsonify(models)
 
-@public_bp.route("/ceo-profile")
-def ceo_profile():
-    return render_template("ceo_profile.html")
+@public_bp.route("/lead-consultant-profile")
+def lead_consultant_profile():
+    return render_template("lead_consultant_profile.html")
 
 @public_bp.route("/team")
 def team():
     return render_template("our_team.html")
 
-@public_bp.route("/chairman")
-def chairman():
-    return render_template("chairmans_mandate.html")
+@public_bp.route("/mentor-mandate")
+def mentor():
+    return render_template("mentors_mandate.html")
 
 @public_bp.route("/api/market/trend")
 def market_trend_api():
@@ -334,17 +334,31 @@ def podhub():
                         if match:
                             metadata = yaml.safe_load(match.group(1))
                             
-                            # Determine category from path
+                            # Determine category from deep path
+                            # kushub/tools/image/flux-image -> ['tools', 'image', 'flux-image']
                             rel_path = os.path.relpath(root, hub_path)
-                            category = rel_path.split(os.sep)[0].capitalize()
+                            path_parts = rel_path.split(os.sep)
                             
+                            category = "Miscellaneous"
+                            if len(path_parts) >= 2:
+                                # Use the second part (e.g. image, video, audio) as category
+                                category = path_parts[1].capitalize()
+                            elif len(path_parts) == 1:
+                                category = path_parts[0].capitalize()
+
                             if category not in skills_by_category:
                                 skills_by_category[category] = []
+                            
+                            # Extract prompt example if possible (e.g. from JSON in code blocks)
+                            prompt_match = re.search(r'"prompt":\s*"(.*?)"', content)
+                            sample_prompt = prompt_match.group(1) if prompt_match else "No prompt defined."
                             
                             skills_by_category[category].append({
                                 'name': metadata.get('name', os.path.basename(root)),
                                 'description': metadata.get('description', 'No description available.'),
-                                'rel_path': rel_path.replace(os.sep, '/')
+                                'rel_path': rel_path.replace(os.sep, '/'),
+                                'prompt': sample_prompt,
+                                'model': metadata.get('model', os.path.basename(root).split('-')[0].capitalize())
                             })
                 except Exception as e:
                     print(f"Error parsing skill at {skill_path}: {e}")
@@ -388,12 +402,20 @@ def skill_detail(category, skill_name):
         return render_template("404.html"), 404
 
     hub_path = os.path.join(os.getcwd(), 'kushub')
-    # Reconstruct path safely (Category is capitalized in UI, but we need folder names)
     skill_dir = None
     for root, dirs, _ in os.walk(hub_path):
         if os.path.basename(root).lower() == skill_name.lower():
             rel_path = os.path.relpath(root, hub_path)
-            if rel_path.lower().startswith(category.lower()):
+            path_parts = rel_path.split(os.sep)
+            
+            # Match new categorization: category is second part if deep, else first part
+            resolved_category = "Miscellaneous"
+            if len(path_parts) >= 2:
+                resolved_category = path_parts[1].lower()
+            elif len(path_parts) == 1:
+                resolved_category = path_parts[0].lower()
+                
+            if resolved_category == category.lower():
                 skill_dir = root
                 break
     
@@ -690,9 +712,9 @@ def sitemap():
         'public.infrastructure',
         'public.compliance',
         'public.method', 
-        'public.ceo_profile', 
+        'public.lead_consultant_profile', 
         'public.team', 
-        'public.chairman', 
+        'public.mentor', 
         'public.blog',
         'public.audit_request'
     ]
@@ -738,26 +760,32 @@ def sitemap():
                     xml_sitemap.append(f'  </url>')
         except: pass
         
+        # 4. Dynamic PodHub Skills
         try:
-            # Fallback for older schema
-            response2 = safe_execute(supabase_admin.table('posts').select("id, created_at, date").eq('published', True))
-            if response2.data:
-                for post in response2.data:
-                    url = url_for('public.blog_post', post_id=post['id'], _external=True)
-                    escaped_url = saxutils.escape(url)
+            hub_path = os.path.join(os.getcwd(), 'kushub')
+            for root, dirs, files in os.walk(hub_path):
+                if 'SKILL.md' in files:
+                    skill_name = os.path.basename(root)
+                    rel_path = os.path.relpath(root, hub_path)
+                    path_parts = rel_path.split(os.sep)
                     
-                    raw_date = post.get('created_at') or post.get('date')
-                    if raw_date:
-                        clean_date = raw_date.replace('T', ' ').split(' ')[0]
-                    else:
-                        clean_date = datetime.now().strftime('%Y-%m-%d')
+                    # Match categorization logic from skill_detail
+                    category = "Miscellaneous"
+                    if len(path_parts) >= 2:
+                        category = path_parts[1].lower()
+                    elif len(path_parts) == 1:
+                        category = path_parts[0].lower()
+                        
+                    url = url_for('public.skill_detail', category=category, skill_name=skill_name, _external=True)
+                    escaped_url = saxutils.escape(url)
                     
                     xml_sitemap.append(f'  <url>')
                     xml_sitemap.append(f'    <loc>{escaped_url}</loc>')
-                    xml_sitemap.append(f'    <lastmod>{clean_date}</lastmod>')
-                    xml_sitemap.append(f'    <changefreq>weekly</changefreq>')
-                    xml_sitemap.append(f'    <priority>0.9</priority>')
+                    xml_sitemap.append(f'    <changefreq>monthly</changefreq>')
+                    xml_sitemap.append(f'    <priority>0.7</priority>')
                     xml_sitemap.append(f'  </url>')
+        except Exception as e:
+            print(f"Sitemap Skill Error: {e}")
         except: pass
 
     xml_sitemap.append('</urlset>')

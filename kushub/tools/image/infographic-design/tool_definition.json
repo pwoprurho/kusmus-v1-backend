@@ -1,0 +1,26 @@
+{
+  "name": "infographic_design",
+  "description": "Generate infographics and data visualization diagrams from text descriptions.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "type": "string",
+        "description": "The detailed description of the infographic or diagram to generate."
+      },
+      "style": {
+        "type": "string",
+        "enum": ["flat_vector", "technical_blueprint", "isometric_3d", "sketch"],
+        "default": "flat_vector",
+        "description": "The visual style of the infographic."
+      },
+      "aspect_ratio": {
+        "type": "string",
+        "enum": ["1:1", "16:9", "9:16", "3:2"],
+        "default": "1:1",
+        "description": "The aspect ratio of the generated image."
+      }
+    },
+    "required": ["prompt"]
+  }
+}

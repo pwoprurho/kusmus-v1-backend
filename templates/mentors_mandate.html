@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+
+{% block title %}Mentor's Mandate | Prof. Godfrey Akpojotor | Kusmus AI{% endblock %}
+
+{% block meta_description %}The Mentor's Mandate by Prof. Godfrey Akpojotor. Exploring the scientific lineage, SSLP initiative, and the vision for Engineering Certainty in African AI infrastructure.{% endblock %}
+
+
+{% block content %}
+<style>
+    :root {
+        --accent-blue: #0072ff;
+        --accent-glow: rgba(0, 114, 255, 0.15);
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.06);
+    }
+
+    .mentors-hero {
+        padding: 140px 0 80px;
+        background: radial-gradient(circle at 70% 30%, var(--accent-glow) 0%, transparent 50%);
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .hero-layout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .mentor-tag {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--accent-blue);
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .mentor-name {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #fff 0%, #888 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .mentor-role {
+        font-size: 1.5rem;
+        color: #aaa;
+        margin-bottom: 40px;
+        font-weight: 300;
+    }
+
+    .mentor-portrait-wrapper {
+        position: relative;
+    }
+
+    .mentor-portrait {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 30px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .portrait-accent {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 100px;
+        height: 100px;
+        background: var(--accent-blue);
+        border-radius: 20px;
+        z-index: -1;
+        opacity: 0.5;
+        filter: blur(40px);
+    }
+
+    .mandate-section {
+        padding: 80px 0;
+    }
+
+    .mandate-document {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 60px;
+    }
+
+    .document-body h3 {
+        font-size: 1.8rem;
+        color: var(--accent-blue);
+        margin: 40px 0 25px;
+    }
+
+    .document-body h3:first-child {
+        margin-top: 0;
+    }
+
+    .document-body p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #bbb;
+        margin-bottom: 20px;
+    }
+
+    .video-section {
+        padding: 100px 0;
+        background: rgba(0,0,0,0.2);
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 50px;
+    }
+
+    .video-card {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        padding: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(0, 114, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #000;
+        margin-bottom: 25px;
+    }
+
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-info h4 {
+        font-size: 1.25rem;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .video-info span {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--accent-blue);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+        .hero-layout, .mandate-grid, .video-grid {
+            grid-template-columns: 1fr;
+        }
+        .mentor-name { font-size: 3rem; }
+        .quote-text { font-size: 1.6rem; }
+    }
+</style>
+
+<section class="mentors-hero">
+    <div class="container">
+        <div class="hero-layout">
+            <div class="hero-content fade-in">
+                <span class="mentor-tag">Master Consultant</span>
+                <h1 class="mentor-name">Prof. Godfrey E. Akpojotor</h1>
+                <p class="mentor-role">Lead AI Consultant & Pioneer of African AI Infrastructure</p>
+                <div style="display: flex; gap: 20px;">
+                    <div style="padding: 15px 25px; border-radius: 12px; background: rgba(0, 114, 255, 0.1); border: 1px solid rgba(0, 114, 255, 0.2);">
+                        <span style="display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Academic Tenure</span>
+                        <span style="font-weight: 700; color: #fff;">25+ Years</span>
+                    </div>
+                    <div style="padding: 15px 25px; border-radius: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);">
+                        <span style="display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px;">Specialization</span>
+                        <span style="font-weight: 700; color: #fff;">Computational Physics</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mentor-portrait-wrapper" style="transition-delay: 0.3s;">
+                <img src="{{ url_for('static', filename='images/founder.png') }}" alt="Prof. Godfrey Akpojotor" class="mentor-portrait">
+                <div class="portrait-accent"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mandate-section container">
+    <div class="mandate-document reveal">
+        <div class="document-body">
+            <h3>Scientific Lineage & Professional History</h3>
+            <p>
+                The foundation of Kusmus Smart Tech was laid not in a boardroom, but in the rigorous corridors of theoretical physics. With more than two decades of academic excellence, I have transformed my teaching and research in Computational Science and engineering using Python into a Smart Tech venture, evolving from diverse training to versatile consultancy.
+            </p>
+            <p>
+                As a pioneer of Python in Africa, I was the Initiator/Coordinator of the Python African Computational Science and Engineering Tour Project (PACSETPro), dedicated to empowering the next generation of African computational scientists for years.
+            </p>
+
+            <h3>The SSLP Initiative</h3>
+            <p>
+                To boost accessibility and inclusivity, I initiated the <strong>Smartphones for Smart Learning Project (SSLP)</strong>. In this framework, smartphones are adopted as mobile computation laboratories, scalable via cloud computing into mobile supercomputers in our pockets.
+            </p>
+            <p>
+                This initiative is key to driving the requirements of the 4th Sustainable Development Goal (SDG4) on education, ensuring that sovereign intelligence is accessible to all, regardless of their hardware constraints.
+            </p>
+            
+            <p style="margin-top: 40px; font-weight: 700; color: #fff;">Prof. Godfrey Akpojotor</p>
+        </div>
+    </div>
+</section>
+
+<section class="video-section">
+    <div class="container">
+        <div class="reveal">
+            <span class="mentor-tag">Evidence of Thought</span>
+            <h2 style="font-size: 2.5rem; color: #fff;">Thought Leadership Archive</h2>
+            <p style="color: #666; max-width: 600px; margin-top: 15px;">Tracing the evolution of Engineering Certainty through keynote addresses and global technical summits.</p>
+        </div>
+
+        <div class="video-grid">
+            <!-- PyCon US 2019 - LOCAL -->
+            <div class="video-card reveal">
+                <div class="video-container">
+                    <video controls poster="{{ url_for('static', filename='videos/poster_2019.jpg') }}" style="width: 100%; height: 100%;">
+                        <source src="{{ url_for('static', filename='videos/mentor_pycon_2019.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <span>PyCon US 2019 / Keynote</span>
+                    <h4>The Vision for Certainty</h4>
+                    <a href="https://www.youtube.com/watch?v=4SpeUQjMex4" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 15px; display: inline-block;">
+                        <i class="fab fa-youtube"></i> Source: YouTube
+                    </a>
+                </div>
+            </div>
+
+            <!-- PyCon South Africa 2017 - EMBED -->
+            <div class="video-card reveal" style="transition-delay: 0.1s;">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/W7zRuRmr9y8" title="PyCon ZA 2017" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <span>PyCon ZA 2017 / Technical Tour</span>
+                    <h4>Scaling African Python</h4>
+                </div>
+            </div>
+
+            <!-- PyCon South Africa 2016 - EMBED -->
+            <div class="video-card reveal" style="transition-delay: 0.2s;">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/4lgIkhaTA98" title="PyCon ZA 2016" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <span>PyCon ZA 2016 / Keynote</span>
+                    <h4>Sovereign Computing Roots</h4>
+                </div>
+            </div>
+
+            <!-- PyCon 2012 - LOCAL -->
+            <div class="video-card reveal" style="transition-delay: 0.3s;">
+                <div class="video-container">
+                    <video controls poster="{{ url_for('static', filename='videos/poster_2012.jpg') }}" style="width: 100%; height: 100%;">
+                        <source src="{{ url_for('static', filename='videos/mentor_pycon_2012.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <span>PyCon 2012 / Special Address</span>
+                    <h4>The Early Foundations</h4>
+                    <a href="https://www.youtube.com/watch?v=4bWC_VXffq4" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 15px; display: inline-block;">
+                        <i class="fab fa-youtube"></i> Source: YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 100px 0; text-align: center;">
+    <div class="reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 30px;">Ready to Engineer Certainty?</h2>
+        <a href="{{ url_for('public.audit_request') }}" class="primary-button" style="padding: 20px 50px; font-size: 1.2rem;">INITIATE ENGAGEMENT</a>
+    </div>
+</section>
+
+{% endblock %}

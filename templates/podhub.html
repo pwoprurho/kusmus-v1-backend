@@ -42,25 +42,95 @@
     }
 
     .podhub-hero p {
-        font-size: 1.3rem; /* Increased (+2pt approx) */
+        font-size: 1.15rem;
         color: #888;
         max-width: 700px;
         margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .search-filter-container {
+        max-width: 800px;
+        margin: 40px auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 15px 20px 15px 50px;
+        color: #fff;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s;
+    }
+
+    .search-input:focus {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 20px rgba(0, 114, 255, 0.2);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 20px;
+        color: #555;
+        font-size: 1.1rem;
+    }
+
+    .filter-pills {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .filter-pill {
+        padding: 8px 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        color: #666;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .filter-pill:hover, .filter-pill.active {
+        background: rgba(0, 114, 255, 0.1);
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
     }
 
     .skills-section {
-        padding: 40px 0 100px;
+        padding: 60px 0 100px;
     }
 
     .category-group {
-        margin-bottom: 60px;
+        margin-bottom: 80px;
+        transition: all 0.5s ease;
+    }
+
+    .category-group.hidden {
+        display: none;
     }
 
     .category-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: 700;
-        color: #FFD700;
-        margin-bottom: 30px;
+        color: #fff;
+        margin-bottom: 35px;
         display: flex;
         align-items: center;
         gap: 15px;
@@ -192,7 +262,21 @@
         <div class="hero-badge reveal">System Registry</div>
         <h1 class="reveal">PodHub</h1>
         <p class="reveal">The authoritative ecosystem for sovereign AI skills. Explore, integrate, and deploy autonomous capabilities across the Kusmus network.</p>
-        <div class="reveal" style="margin-top: 30px;">
+        
+        <div class="search-filter-container reveal">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="skill-search" class="search-input" placeholder="Search for protocols, tools, or models...">
+            </div>
+            <div class="filter-pills" id="category-filters">
+                <button class="filter-pill active" data-category="all">All Ecosystems</button>
+                {% for category in skills_by_category.keys() %}
+                <button class="filter-pill" data-category="{{ category }}">{{ category }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="reveal" style="margin-top: 40px;">
             <a href="{{ url_for('public.submit_skill') }}" class="view-btn" style="justify-content: center; background: rgba(0, 114, 255, 0.1); padding: 12px 25px; border-radius: 8px; border: 1px solid rgba(0, 114, 255, 0.3);">
                 <i class="fas fa-plus-circle"></i> Submit Your Skill
             </a>
@@ -204,7 +288,7 @@
     <div class="container">
         {% if skills_by_category %}
             {% for category, skills in skills_by_category.items() %}
-            <div class="category-group">
+            <div class="category-group" data-category="{{ category }}">
                 <h2 class="category-title reveal">
                     <i class="fas {% if category == 'Tools' %}fa-tools{% elif category == 'Sdk' %}fa-code{% elif category == 'Ui' %}fa-desktop{% else %}fa-cube{% endif %}"></i>
                     {{ category }}
@@ -217,7 +301,16 @@
                                 <i class="fas {% if 'browser' in skill.name %}fa-globe{% elif 'search' in skill.name %}fa-search{% elif 'file' in skill.name %}fa-file-alt{% else %}fa-microchip{% endif %}"></i>
                             </div>
                             <h3 class="skill-name">{{ skill.name }}</h3>
+                            <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+                                <span style="font-size: 0.65rem; background: rgba(0, 114, 255, 0.1); color: #00c3ff; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(0, 114, 255, 0.2);">MODEL: {{ skill.model }}</span>
+                            </div>
                             <p class="skill-desc">{{ skill.description | truncate(150) }}</p>
+                            
+                            <!-- Skill Prompt Section -->
+                            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                                <span style="display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">Skill Prompt</span>
+                                <code style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #aaa; line-height: 1.4; word-break: break-word;">{{ skill.prompt }}</code>
+                            </div>
                         </div>
                         <div class="skill-footer">
                             <span class="skill-tag">PROT-{{ loop.index + 100 }}</span>
@@ -241,6 +334,55 @@
 {% block extra_js %}
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const skillSearch = document.getElementById('skill-search');
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const categoryGroups = document.querySelectorAll('.category-group');
+        const skillCards = document.querySelectorAll('.skill-card');
+
+        function filterSkills() {
+            const searchTerm = skillSearch.value.toLowerCase();
+            const activeCategory = document.querySelector('.filter-pill.active').dataset.category;
+
+            categoryGroups.forEach(group => {
+                const groupCategory = group.dataset.category;
+                const categorySkills = group.querySelectorAll('.skill-card');
+                let hasVisibleSkills = false;
+
+                categorySkills.forEach(card => {
+                    const skillName = card.querySelector('.skill-name').innerText.toLowerCase();
+                    const skillDesc = card.querySelector('.skill-desc').innerText.toLowerCase();
+                    
+                    const matchesSearch = skillName.includes(searchTerm) || skillDesc.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'all' || activeCategory === groupCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'flex';
+                        hasVisibleSkills = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (hasVisibleSkills) {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+        }
+
+        if (skillSearch) {
+            skillSearch.addEventListener('input', filterSkills);
+        }
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                filterSkills();
+            });
+        });
+
         // GSAP staggered entry for skill cards
         gsap.from(".skill-card", {
             duration: 0.8,
@@ -249,7 +391,7 @@
             stagger: 0.1,
             ease: "power2.out",
             scrollTrigger: {
-                trigger: ".skills-grid",
+                trigger: ".skills_section",
                 start: "top 80%"
             }
         });

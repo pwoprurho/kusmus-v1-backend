@@ -662,15 +662,7 @@
                 </table>
             </div>
 
-            <div class="glass-panel">
-                <span class="hud-label" style="color: #00ff88;">Library Content Management</span>
-                <p style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">Upload curriculum PDFs to automatically populate the Free Document Library under the Ecosystem tab.</p>
-                <form action="{{ url_for('admin.upload_library_pdf') }}" method="POST" enctype="multipart/form-data" style="display: flex; gap: 15px; align-items: center;">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                    <input type="file" name="pdf_file" accept=".pdf" required style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 6px; color: #fff; flex: 1;">
-                    <button type="submit" class="btn-action" style="background:#00ff88; border:none; color:#000; font-weight:bold; padding: 10px 20px;"><i class="fas fa-upload"></i> PUBLISH TO LIBRARY</button>
-                </form>
-            </div>
+
 
             <div class="glass-panel">
                 <span class="hud-label">Audit Requests (Leads)</span>
