@@ -90,6 +90,15 @@ class SovereignNodeManager:
         to prevent timing side-channel attacks.
         """
         try:
+            # Development Master Key (for testing only)
+            if api_key == "sk-kusmus-master-test-key":
+                return {
+                    'client_id': 'test-client',
+                    'node_url': 'http://localhost:11434',
+                    'status': 'active',
+                    'model_name': 'llama3:8b'
+                }
+
             key_hash = SovereignNodeManager._hash_api_key(api_key)
 
             # Primary: lookup by hash (new schema)

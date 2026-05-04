@@ -1,0 +1,44 @@
+name: KUSMUS Sovereign Backend Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test_and_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run KUSMUS System Validation
+        env:
+          FLASK_ENV: development
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          # Start the server in the background
+          python app.py &
+          sleep 5
+          # Run the final validation suite
+          # Note: We use a modified version of the test script for CI
+          python .github/scripts/ci_validation.py
+          
+      - name: Deploy to Sovereign Node (Simulation)
+        if: success()
+        run: |
+          echo "Deploying KUSMUS V1.0 to Sovereign Production Cluster..."
+          # Placeholder for actual deployment logic (e.g. SSH to VPS, Render Deploy Hook)
+          # curl -X POST ${{ secrets.DEPLOY_HOOK_URL }}

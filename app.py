@@ -114,9 +114,11 @@ from routes.admin import admin_bp
 from routes.tax import tax_bp
 from routes.physics_sandbox import physics_bp
 from routes.sovereign import sovereign_bp, init_csrf_exemptions
+from routes.hive import hive_bp
 
-# Sovereign API uses Bearer token auth, not browser sessions — exempt from CSRF.
+# Sovereign API and Hive sync use Bearer tokens/Node IDs, not browser sessions — exempt from CSRF.
 init_csrf_exemptions(csrf)
+csrf.exempt(hive_bp)
 
 app.register_blueprint(public_bp)
 app.register_blueprint(auth_bp)
@@ -125,6 +127,7 @@ app.register_blueprint(sandbox_bp)
 app.register_blueprint(tax_bp)
 app.register_blueprint(physics_bp)
 app.register_blueprint(sovereign_bp)
+app.register_blueprint(hive_bp)
 
 # --- CACHING LAYER ---
 # Cache user profiles for 10 minutes (600 seconds) to avoid redundant DB hits
