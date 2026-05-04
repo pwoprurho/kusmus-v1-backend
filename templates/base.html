@@ -43,26 +43,6 @@
     <meta name="geo.region" content="NG" />
     <meta name="geo.placename" content="Lagos" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
-    <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:title"
-        content="{% block og_title %}A.I and Python Trainings & Solutions offering in Nigeria | Kusmus{% endblock %}">
-    <meta property="og:description"
-        content="{% block og_description %}Transform your career with Nigeria's best A.I and Python training programs. We offer robust AI solutions and democratized tech education.{% endblock %}">
-    <meta property="og:image"
-        content="{% block og_image %}{{ url_for('static', filename='images/pic01.png', _external=True) }}{% endblock %}">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ request.url }}">
-    <meta property="twitter:title"
-        content="{% block twitter_title %}Top A.I and Python Trainings in Nigeria | Kusmus{% endblock %}">
-    <meta property="twitter:description"
-        content="{% block twitter_description %}Nigeria's leading academy for Artificial Intelligence, Python programming, and enterprise software solutions.{% endblock %}">
-    <meta property="twitter:image"
-        content="{% block twitter_image %}{{ url_for('static', filename='images/pic01.png', _external=True) }}{% endblock %}">
-
     <!-- JSON-LD Structured Data: EducationalOrganization & LocalBusiness -->
     <script type="application/ld+json">
     {
