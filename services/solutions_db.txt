@@ -2,7 +2,7 @@
 # Explain these products and services to users exactly as described here. Keep it professional but accessible.
 
 KUSMUS ACADEMY:
-The premier educational wing of Kusmus. We provide official Python Institute certifications (PCEP, PCAP, PCPP) and advanced Kusmus-certified technical tracks. We offer an 'Intro to ICT' course for free to ensure everyone has a foundational entry point into the digital economy.
+The premier educational wing of Kusmus. We provide official Python Institute certifications (PCEP, PCAP, PCPP) and advanced Kusmus-certified technical tracks. We offer an 'Intro to ICT' course starting at ₦150,000 to ensure a professional foundation for all digital engineers.
 
 CAREER PATHWAYS:
 Specialized professional tracks for high-tier technical roles, including AI Systems Architect, Autonomous Engineer, and Data Sovereignty Officer. These tracks are designed for institutional-grade mastery and career placement.
