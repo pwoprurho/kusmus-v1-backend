@@ -139,7 +139,8 @@
     .video-container {
         position: relative;
         width: 100%;
-        aspect-ratio: 16/9;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
         overflow: hidden;
         border-radius: 16px;
         background: #000;
@@ -148,9 +149,11 @@
 
     .video-container video, 
     .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
         border: none;
     }
 
@@ -260,6 +263,9 @@
                 <div class="video-info">
                     <span>PyCon ZA 2017 / Technical Tour</span>
                     <h4>Scaling African Python</h4>
+                    <a href="https://www.youtube.com/watch?v=W7zRuRmr9y8" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 15px; display: inline-block;">
+                        <i class="fab fa-youtube"></i> Source: YouTube
+                    </a>
                 </div>
             </div>
 
@@ -271,6 +277,9 @@
                 <div class="video-info">
                     <span>PyCon ZA 2016 / Keynote</span>
                     <h4>Sovereign Computing Roots</h4>
+                    <a href="https://www.youtube.com/watch?v=4lgIkhaTA98" target="_blank" class="secondary-button" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 15px; display: inline-block;">
+                        <i class="fab fa-youtube"></i> Source: YouTube
+                    </a>
                 </div>
             </div>
 
