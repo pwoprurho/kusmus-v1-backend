@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Site Index | Kusmus AI Navigation Registry{% endblock %}
+
+{% block content %}
+<style>
+    .sitemap-container {
+        padding: 180px 0 100px;
+    }
+
+    .sitemap-header {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .sitemap-header h1 {
+        font-size: 3rem;
+        background: linear-gradient(135deg, #fff 0%, #888 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .sitemap-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+    }
+
+    .sitemap-section h2 {
+        font-size: 1.2rem;
+        color: #0072ff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 10px;
+    }
+
+    .sitemap-list {
+        list-style: none;
+    }
+
+    .sitemap-list li {
+        margin-bottom: 12px;
+    }
+
+    .sitemap-list a {
+        color: #888;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .sitemap-list a:hover {
+        color: #fff;
+    }
+</style>
+
+<div class="sitemap-container container">
+    <div class="sitemap-header reveal">
+        <h1>Global Navigation Index</h1>
+        <p style="color: #666;">Comprehensive registry of all sovereign intelligence nodes and public infrastructure.</p>
+    </div>
+
+    <div class="sitemap-grid">
+        <div class="sitemap-section reveal">
+            <h2>Core Platform</h2>
+            <ul class="sitemap-list">
+                <li><a href="{{ url_for('public.home') }}">Home Surface</a></li>
+                <li><a href="{{ url_for('public.solutions') }}">Enterprise Solutions</a></li>
+                <li><a href="{{ url_for('public.infrastructure') }}">Physical Infrastructure</a></li>
+                <li><a href="{{ url_for('public.method') }}">Methodology</a></li>
+                <li><a href="{{ url_for('public.compliance') }}">Compliance & Security</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-section reveal">
+            <h2>Verticals</h2>
+            <ul class="sitemap-list">
+                <li><a href="{{ url_for('public.telecom') }}">Telecommunications</a></li>
+                <li><a href="{{ url_for('public.banking') }}">Banking & Finance</a></li>
+                <li><a href="{{ url_for('public.energy') }}">Energy / Oil & Gas</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-section reveal">
+            <h2>Academy</h2>
+            <ul class="sitemap-list">
+                <li><a href="{{ url_for('public.academy_apply') }}">Course Catalog</a></li>
+                <li><a href="{{ url_for('public.careers') }}">Career Pathways</a></li>
+                <li><a href="{{ url_for('public.podhub') }}">Intelligence Archive</a></li>
+                <li><a href="{{ url_for('public.mentor') }}">Mentor's Mandate</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-section reveal">
+            <h2>Ecosystem</h2>
+            <ul class="sitemap-list">
+                <li><a href="{{ url_for('sandbox.sandbox_view') }}">Sovereign Sandbox</a></li>
+                <li><a href="{{ url_for('tax.public_tax_agent') }}">Public Tax Agent</a></li>
+                <li><a href="{{ url_for('physics.stem_sandbox_view') }}">Physics Engine</a></li>
+                <li><a href="{{ url_for('public.community') }}">Community Network</a></li>
+            </ul>
+        </div>
+
+        <div class="sitemap-section reveal">
+            <h2>Resources</h2>
+            <ul class="sitemap-list">
+                <li><a href="{{ url_for('public.blog') }}">Intelligence Briefings</a></li>
+                <li><a href="{{ url_for('public.library') }}">Digital Library</a></li>
+                <li><a href="{{ url_for('public.audit_request') }}">Security Audit Request</a></li>
+                <li><a href="{{ url_for('public.llm_manifest') }}">AI Transparency Manifesto</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

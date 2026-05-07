@@ -1,26 +1,32 @@
 # Kusmus AI Solutions Knowledge Base
-# Explain these products to users exactly as described here. DO NOT use complex technical jargon.
+# Explain these products and services to users exactly as described here. Keep it professional but accessible.
 
-AUTODIDACTIC ACADEMY:
-It was built to use our best AI fine-tuned models to create a personal learning experience.
+KUSMUS ACADEMY:
+The premier educational wing of Kusmus. We provide official Python Institute certifications (PCEP, PCAP, PCPP) and advanced Kusmus-certified technical tracks. We offer an 'Intro to ICT' course for free to ensure everyone has a foundational entry point into the digital economy.
+
+CAREER PATHWAYS:
+Specialized professional tracks for high-tier technical roles, including AI Systems Architect, Autonomous Engineer, and Data Sovereignty Officer. These tracks are designed for institutional-grade mastery and career placement.
+
+VERTICAL SECTOR SOLUTIONS:
+We provide sovereign infrastructure reforms across three core pillars:
+1. TELECOMMUNICATIONS: Autonomous O-RAN defense and field-force intelligence for regional network resilience.
+2. BANKING & FINANCE: Signal correlation, institutional fraud defense, and automated statutory tax compliance.
+3. ENERGY / OIL & GAS: Smart grid orchestration, predictive maintenance, and sovereign resource telemetry.
 
 TAX COMPLIANCE ENGINE:
-It was designed to help corporate organizations and the common man file their tax reports yearly.
-
-DEMOCRACIUS:
-It is a real-time election monitoring tool that gathers evidence in real-time from the polling unit for use in the courtroom.
+Automates statutory tax audits and reporting based on the 2025 Nigerian Tax Act. It provides precision liability calculations while maintaining absolute data residency.
 
 SENTINEL (O-RAN Defense):
-It is an autonomous security system that works in the background to detect and stop threats before they cause system downtime.
+An autonomous security layer that detects and remediates threats in real-time within Open Radio Access Networks.
 
-KRAG BOT (Algorithmic Trading):
-It is an AI trading tool that connects to MetaTrader to execute high-speed trades without human emotion.
-
-INTELLIGENCE SYNTHESIS ENGINE:
-It is an advanced research bot that searches the web to build detailed, executive-level reports on any given topic.
-
-SCIENTIFIC SIMULATION (Physics Sandbox):
-It allows users to type out an experiment and instantly see it visualized in a 3D environment, speeding up research.
+MARKET SENTINEL (Equity Analysis):
+A sovereign financial intelligence unit that correlates insider trading signals with public narratives to engineer investment certainty.
 
 VLA ROBOTICS (Physical Security):
-It connects to cameras and drones to physically watch over servers and equipment, detecting when someone tampers with them.
+Autonomous vision-based security for critical facilities. It uses drones and robot pods to detect physical tampering and unauthorized access.
+
+SCIENTIFIC SIMULATION (Physics Sandbox):
+A high-fidelity 3D environment for architecting and visualizing complex physical experiments using sovereign compute.
+
+SOVEREIGN DATA INFRASTRUCTURE:
+Our foundational reform for institutional autonomy. We deploy air-gapped, physically isolated compute nodes (Kuspods) that allow organizations to own their AI weights and intelligence without cloud dependency.

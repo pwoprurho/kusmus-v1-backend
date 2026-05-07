@@ -3,6 +3,39 @@
 {% block title %}Sovereign AI Stack | Engineering Certainty | Kusmus AI{% endblock %}
 
 {% block meta_description %}Discover the Kusmus Sovereign AI Stack: on-premise, air-gapped, NVIDIA-grade infrastructure powering autonomous tax engines, O-RAN defense, and robotic visual security systems.{% endblock %}
+{% block head_meta %}
+<!-- Service Schema for AEO Authority -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Kusmus Sovereign AI Services",
+  "itemListElement": [
+    {
+      "@type": "Service",
+      "name": "Sentinel: O-RAN Defense System",
+      "description": "Proactive O-RAN signal integrity and autonomous threat remediation for telecommunications.",
+      "provider": { "@type": "Organization", "name": "Kusmus AI" },
+      "areaServed": "NG"
+    },
+    {
+      "@type": "Service",
+      "name": "Tax Compliance Engine",
+      "description": "Statutory tax liability calculation and bank statement analysis fine-tuned on Nigeria Tax Act 2025.",
+      "provider": { "@type": "Organization", "name": "Kusmus AI" },
+      "areaServed": "NG"
+    },
+    {
+      "@type": "Service",
+      "name": "VLA Robotics",
+      "description": "Vision-Language-Action models for physical security and hardware diagnostics.",
+      "provider": { "@type": "Organization", "name": "Kusmus AI" },
+      "areaServed": "NG"
+    }
+  ]
+}
+</script>
+{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/infrastructure.css') }}">
 
@@ -306,14 +339,14 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
             {% for industry in industries %}
-            <div class="agent-card-glass" style="--accent-clr: {{ industry.color }}; padding: 30px; background: rgba(15,15,15,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+            <a href="{{ url_for(industry.url) if industry.url else '#' }}" class="agent-card-glass" style="--accent-clr: {{ industry.color }}; padding: 30px; background: rgba(15,15,15,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; text-decoration: none; display: block; transition: all 0.3s;">
                 <div class="agent-icon" style="color: var(--accent-clr); font-size: 1.5rem; margin-bottom: 15px;"><i class="{{ industry.icon }}"></i></div>
                 <h3 class="agent-name" style="color: #fff; font-size: 1.25rem; margin-bottom: 10px;">{{ industry.name }}</h3>
                 <p class="agent-desc" style="color: #888; font-size: 0.9rem; line-height: 1.6;">{{ industry.desc }}</p>
                 <div class="pod-tag" style="margin-top: 15px; font-size: 0.75rem; color: var(--accent-clr);">
                     <span class="dot" style="background: var(--accent-clr); width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px;"></span> Core Sector
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
     </section>

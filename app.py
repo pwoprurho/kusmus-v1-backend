@@ -209,7 +209,7 @@ def add_security_headers(response):
     Enforce noindex on all sensitive routes so search engines
     never crawl admin, auth, or internal kus_bot endpoints.
     """
-    sensitive_prefixes = ('/admin', '/auth', '/sandbox', '/tax', '/physics', '/client')
+    sensitive_prefixes = ('/admin', '/auth', '/client', '/api')
     if getattr(request, 'path', '').startswith(sensitive_prefixes):
         response.headers['X-Robots-Tag'] = 'noindex, nofollow'
     return response

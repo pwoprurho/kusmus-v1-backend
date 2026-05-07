@@ -70,22 +70,22 @@
 
     <div class="sector-grid">
         <!-- TELECOM SECTOR -->
-        <div class="glass-panel sector-card top-cyan">
+        <a href="{{ url_for('public.telecom') }}" class="glass-panel sector-card top-cyan" style="text-decoration: none; display: block; transition: transform 0.3s;">
             <div class="card-header">
                 <i class="fas fa-tower-broadcast" style="color: #00c3ff;"></i>
                 <h3>Telecommunications</h3>
             </div>
             <p>Autonomous O-RAN defense and network resilience including <strong>HR Field-Force Support</strong> for regional leaders like MTN Group.</p>
-        </div>
+        </a>
 
         <!-- BANKING & FINANCE -->
-        <div class="glass-panel sector-card top-blue">
+        <a href="{{ url_for('public.banking') }}" class="glass-panel sector-card top-blue" style="text-decoration: none; display: block; transition: transform 0.3s;">
             <div class="card-header">
                 <i class="fas fa-vault" style="color: #0072ff;"></i>
                 <h3>Banking & Finance</h3>
             </div>
             <p>Execution-grade signal correlation and automated statutory tax compliance for institutional finance and wealth management.</p>
-        </div>
+        </a>
 
         <!-- RETAIL & WHOLESALE -->
         <div class="glass-panel sector-card top-emerald">
@@ -124,13 +124,13 @@
         </div>
 
         <!-- CRITICAL INFRASTRUCTURE -->
-        <div class="glass-panel sector-card top-slate">
+        <a href="{{ url_for('public.energy') }}" class="glass-panel sector-card top-slate" style="text-decoration: none; display: block; transition: transform 0.3s;">
             <div class="card-header">
                 <i class="fas fa-city" style="color: #64748b;"></i>
                 <h3>Critical Infrastructure</h3>
             </div>
             <p>Building the foundational engine for autonomous success across power grids, logistics networks, and state operations.</p>
-        </div>
+        </a>
     </div>
     </div>
 </section>

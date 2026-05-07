@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://kushub.ai/sitemap.xml
+Sitemap: https://www.kusmus.ai/sitemap.xml

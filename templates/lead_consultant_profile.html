@@ -4,6 +4,49 @@
 
 {% block meta_description %}Profile of Akpojotor Oghenerurho, Lead AI Consultant at Kusmus AI. Expert in Neural Systems, Enterprise AI, and the architect of the Kushub ecosystem.{% endblock %}
 
+{% block extra_css %}{% endblock %}
+{% block head_meta %}
+<!-- Person Schema for AEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Akpojotor Oghenerurho",
+  "jobTitle": "Lead AI Consultant",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Kusmus AI"
+  },
+  "url": "{{ request.url }}",
+  "image": "{{ url_for('static', filename='images/rurho.png', _external=True) }}",
+  "sameAs": [
+    "https://ng.linkedin.com/in/oghenerurho-akpojotor-819246289"
+  ],
+  "knowsAbout": ["Neural Systems", "Enterprise AI", "Sovereign Intelligence", "Python Programming", "Deep-Tech Architecture"],
+  "description": "Architect of the Kushub ecosystem and expert in deploying Neural Systems and Enterprise AI in West Africa."
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "{{ url_for('public.home', _external=True) }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Lead Consultant Profile",
+    "item": "{{ request.url }}"
+  }]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <style>
     .ceo-section {

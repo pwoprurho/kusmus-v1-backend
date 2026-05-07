@@ -32,7 +32,7 @@
     <meta property="twitter:description" content="{% block twitter_description %}Engineering Independence from Big Tech. Providing Certainty for Africa.{% endblock %}">
     <meta property="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
 
-    {% if request.path.startswith(('/admin', '/client', '/auth', '/sandbox', '/tax', '/physics')) %}
+    {% if request.path.startswith(('/admin', '/client', '/auth', '/api')) %}
     <meta name="robots" content="noindex, nofollow">
     {% else %}
     <!-- Explicit indexing directives for Googlebot & Answer Engines -->
@@ -141,6 +141,20 @@
       "sameAs": [
         "https://linkedin.com/company/kusmus-ai"
       ]
+    }
+    </script>
+
+    <!-- Global BreadcrumbList for Crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ url_for('public.home', _external=True) }}"
+      }]
     }
     </script>
 
@@ -479,10 +493,11 @@
                 </li>
 
                 <li class="nav-item" style="position: relative;">
-                    <a href="{{ url_for('public.home') }}#academy" class="nav-link"><i class="fas fa-graduation-cap"></i> Academy <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
+                    <a href="#" class="nav-link"><i class="fas fa-graduation-cap"></i> Academy <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i></a>
                     <div class="glass-dropdown" style="left: auto; right: 0; transform: translateX(0) translateY(10px);">
-                        <a href="{{ url_for('public.home') }}#academy" class="dropdown-item">Training Overview</a>
-                        <a href="{{ url_for('public.academy_apply') }}" class="dropdown-item">Cohort Enrollment</a>
+                        <a href="{{ url_for('public.home') }}#academy" class="dropdown-item">Overview</a>
+                        <a href="{{ url_for('public.academy_apply') }}" class="dropdown-item">Course Catalog</a>
+                        <a href="{{ url_for('public.careers') }}" class="dropdown-item">Career Pathways</a>
                         <a href="{{ url_for('public.podhub') }}" class="dropdown-item">Intelligence Archive</a>
                     </div>
                 </li>
@@ -528,21 +543,26 @@
                     <ul style="list-style: none;">
                         <li><a href="{{ url_for('public.careers') }}" style="color: #888; display: block; padding: 2px 0;">Career Paths</a></li>
                         <li><a href="{{ url_for('public.academy_apply') }}" style="color: #888; display: block; padding: 2px 0;">Student Enrollment</a></li>
-                        <li><a href="{{ url_for('public.podhub') }}" style="color: #888; display: block; padding: 2px 0;">Certifications</a></li>
+                        <li><a href="{{ url_for('public.certifications') }}" style="color: #888; display: block; padding: 2px 0;">Certifications</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4 style="color: #0072ff; margin-bottom: 10px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Core Sectors</h4>
                     <ul style="list-style: none;">
-                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Telecommunications</a></li>
-                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Banking & Finance</a></li>
-                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Energy / Oil & Gas</a></li>
-                        <li><a href="{{ url_for('public.solutions') }}" style="color: #888; display: block; padding: 2px 0;">Infrastructure</a></li>
+                        <li><a href="{{ url_for('public.telecom') }}" style="color: #888; display: block; padding: 2px 0;">Telecommunications</a></li>
+                        <li><a href="{{ url_for('public.banking') }}" style="color: #888; display: block; padding: 2px 0;">Banking & Finance</a></li>
+                        <li><a href="{{ url_for('public.energy') }}" style="color: #888; display: block; padding: 2px 0;">Energy / Oil & Gas</a></li>
+                        <li><a href="{{ url_for('public.infrastructure') }}" style="color: #888; display: block; padding: 2px 0;">Infrastructure</a></li>
                     </ul>
                 </div>
             </div>
             <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 15px; text-align: center; color: #444; font-size: 0.75rem;">
                 <p>&copy; 2024-2025 Kusmus AI. All rights reserved. Engineering Certainty.</p>
+                <div style="margin-top: 10px; display: flex; justify-content: center; gap: 20px; opacity: 0.6;">
+                    <a href="{{ url_for('public.visual_sitemap') }}" style="color: #444; text-decoration: none;">Sitemap</a>
+                    <a href="{{ url_for('public.llm_manifest') }}" style="color: #444; text-decoration: none;">AI Manifesto</a>
+                    <a href="{{ url_for('public.compliance') }}" style="color: #444; text-decoration: none;">Compliance</a>
+                </div>
             </div>
         </footer>
     </main>
@@ -560,14 +580,13 @@
                 <!-- Hardcoded Initial State for Instant Load -->
                 <div class="ai-message">
                     <strong>[AI ARCHITECT]</strong><br>
-                    Kusmus AI Systems Architect Online. Core logic synchronized.
+                    Kusmus AI Systems Architect Online. Platform logic synchronized.
                 </div>
                 <div class="ai-message">
-                    I am the sovereign engineer. We don't provide a SaaS; we provide the **Sovereign Stack**.<br><br>
-                    Whether you are deploying strict air-gapped private clusters for high-security environments, or upskilling your workforce through the **Academy** to command modern infrastructure, I am here to guide your orchestration.
+                    I am your guide to the Kusmus ecosystem. I provide strategic intelligence on our **Infrastructural Reforms**, specialized **Sector Solutions** (Telecom, Banking, Energy), and our comprehensive **Academy** tracks.
                 </div>
                 <div class="ai-message">
-                    How may I assist you today?
+                    How can I help you engineer certainty today?
                 </div>
             </div>
             <div class="chat-input">

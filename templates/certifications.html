@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Certifications | Professional Python & AI Credentials | Kusmus{% endblock %}
+
+{% block content %}
+<style>
+    .cert-page {
+        padding: 160px 0 100px;
+    }
+
+    .cert-header {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .cert-header h1 {
+        font-size: 3.5rem;
+        background: linear-gradient(135deg, #fff 0%, #FFD700 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
+
+    .cert-category-title {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 60px 0 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .cert-card {
+        background: rgba(15, 15, 15, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 20px;
+        position: relative;
+        transition: all 0.4s;
+    }
+
+    .cert-card:hover {
+        border-color: #FFD700;
+        background: rgba(255, 215, 0, 0.03);
+        transform: translateY(-5px);
+    }
+
+    .cert-badge {
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #FFD700;
+        color: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .verify-section {
+        margin-top: 100px;
+        padding: 60px;
+        background: radial-gradient(circle at center, rgba(0, 114, 255, 0.05), transparent 70%);
+        border-radius: 30px;
+        border: 1px solid rgba(0, 114, 255, 0.1);
+        text-align: center;
+    }
+
+    .verify-input-group {
+        display: flex;
+        max-width: 600px;
+        margin: 30px auto 0;
+        gap: 15px;
+    }
+
+    .verify-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px 25px;
+        border-radius: 12px;
+        color: #fff;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .verify-btn {
+        background: #0072ff;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .verify-btn:hover {
+        background: #00c6ff;
+        box-shadow: 0 5px 15px rgba(0, 114, 255, 0.3);
+    }
+</style>
+
+<div class="cert-page container">
+    <div class="cert-header reveal">
+        <h1>Global Validation.</h1>
+        <p style="color: #888; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+            Kusmus certifications are the benchmark for professional excellence in Python programming and Sovereign AI engineering.
+        </p>
+    </div>
+
+    <!-- Official Python Institute Section -->
+    <div class="cert-category-title reveal">
+        <i class="fab fa-python" style="font-size: 2rem; color: #FFD700;"></i>
+        <h2 style="color: #fff; font-size: 1.8rem; letter-spacing: 2px;">PYTHON INSTITUTE OFFICIAL</h2>
+    </div>
+
+    <div class="cert-grid">
+        <div class="cert-card reveal">
+            <div class="cert-badge"><i class="fas fa-certificate"></i></div>
+            <h3 style="color: #fff; margin-bottom: 10px;">PCEP™</h3>
+            <p style="color: #FFD700; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">ENTRY-LEVEL PROGRAMMER</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Foundation certification validating universal computer programming concepts and Python syntax.</p>
+        </div>
+
+        <div class="cert-card reveal">
+            <div class="cert-badge"><i class="fas fa-medal"></i></div>
+            <h3 style="color: #fff; margin-bottom: 10px;">PCAP™</h3>
+            <p style="color: #00c6ff; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">ASSOCIATE IN PYTHON</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Professional credential for object-oriented programming and module orchestration.</p>
+        </div>
+
+        <div class="cert-card reveal">
+            <div class="cert-badge"><i class="fas fa-trophy"></i></div>
+            <h3 style="color: #fff; margin-bottom: 10px;">PCPP™</h3>
+            <p style="color: #4ade80; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">CERTIFIED PROFESSIONAL</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Advanced recognition for design patterns, network programming, and GUI expertise.</p>
+        </div>
+    </div>
+
+    <!-- Kusmus Career Tracks -->
+    <div class="cert-category-title reveal" style="margin-top: 100px;">
+        <i class="fas fa-bolt" style="font-size: 2rem; color: #0072ff;"></i>
+        <h2 style="color: #fff; font-size: 1.8rem; letter-spacing: 2px;">KUSMUS CAREER TRACKS</h2>
+    </div>
+
+    <div class="cert-grid">
+        <div class="cert-card reveal">
+            <h3 style="color: #fff; margin-bottom: 10px;">AI Systems Architect</h3>
+            <p style="color: #0072ff; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">SOVEREIGN INFRASTRUCTURE</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Expertise in deploying physically isolated, high-fidelity AI nodes within institutional perimeters.</p>
+        </div>
+
+        <div class="cert-card reveal">
+            <h3 style="color: #fff; margin-bottom: 10px;">Autonomous Engineer</h3>
+            <p style="color: #0072ff; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">AGENTIC ORCHESTRATION</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Certification for building multi-agent swarm systems and self-healing autonomous digital workflows.</p>
+        </div>
+
+        <div class="cert-card reveal">
+            <h3 style="color: #fff; margin-bottom: 10px;">Data Sovereignty Officer</h3>
+            <p style="color: #0072ff; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px;">GOVERNANCE & SECURITY</p>
+            <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">Validation of institutional compliance and zero-trust neural data management protocols.</p>
+        </div>
+    </div>
+
+    <!-- Verification Section -->
+    <div class="verify-section reveal">
+        <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 15px;">Verify a Credential</h2>
+        <p style="color: #888;">Validate the authenticity of a Kusmus Certificate or Identity Token.</p>
+        
+        <div class="verify-input-group">
+            <input type="text" class="verify-input" placeholder="Enter Certificate ID (e.g. KUS-2025-XXXX)">
+            <button class="verify-btn">Verify Credential</button>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 1px;">// SECURE CRYPTOGRAPHIC VERIFICATION //</p>
+    </div>
+</div>
+{% endblock %}

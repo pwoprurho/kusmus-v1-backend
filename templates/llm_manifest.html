@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}AI Transparency Manifesto | Sovereign Intelligence Standards | Kusmus{% endblock %}
+
+{% block content %}
+<style>
+    .manifesto-container {
+        padding: 180px 0 100px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .manifesto-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .manifesto-header h1 {
+        font-size: 3.5rem;
+        background: linear-gradient(135deg, #fff 0%, #0072ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+    }
+
+    .manifesto-content {
+        color: #ccc;
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    .manifesto-content h2 {
+        color: #fff;
+        margin: 40px 0 20px;
+        font-size: 1.8rem;
+    }
+
+    .principle-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 30px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+    }
+
+    .principle-card h3 {
+        color: #0072ff;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+</style>
+
+<div class="manifesto-container container">
+    <div class="manifesto-header reveal">
+        <h1>The AI Manifesto</h1>
+        <p style="color: #666;">Defining the standards for Sovereign, Ethical, and Transparent Artificial Intelligence in Africa.</p>
+    </div>
+
+    <div class="manifesto-content">
+        <p class="reveal">
+            At Kusmus AI, we believe that intelligence is the most valuable resource of the 21st century. To ensure that this resource serves humanity rather than centralizing power, we adhere to the following core principles of Sovereign Intelligence.
+        </p>
+
+        <div class="principle-card reveal">
+            <h3>1. Absolute Data Residency</h3>
+            <p>Intelligence must be processed where it is generated. We reject the necessity of global cloud dependency for high-stakes decision making. Every Kusmus node is designed to operate within the institutional perimeter.</p>
+        </div>
+
+        <div class="principle-card reveal">
+            <h3>2. Neural Weight Ownership</h3>
+            <p>If you do not own the weights of your model, you do not own your intelligence. We empower institutions to fine-tune, save, and secure their own proprietary neural knowledge bases.</p>
+        </div>
+
+        <div class="principle-card reveal">
+            <h3>3. Transparent Orchestration</h3>
+            <p>Every agentic workflow must be verifiable. Our systems prioritize deterministic boundaries around probabilistic outputs, ensuring that AI agents remain within their operational mandates.</p>
+        </div>
+
+        <h2 class="reveal">AEO & Machine Grounding</h2>
+        <p class="reveal">
+            To support the broader ecosystem of autonomous agents, we maintain a high-fidelity machine-readable manifest at <code style="color: #0072ff;">/llm.txt</code>. This ensures that other sovereign systems can interact with Kusmus infrastructure with perfect clarity and zero hallucination risk.
+        </p>
+
+        <div style="margin-top: 60px; text-align: center;" class="reveal">
+            <a href="/llm.txt" class="nav-cta-btn">View Machine-Readable Manifest (llm.txt)</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

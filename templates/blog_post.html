@@ -145,6 +145,14 @@
             {{ post.published_at.split('T')[0] if post.published_at else 'Internal Briefing' }} | System Intelligence
         </div>
         <h1 class="article-title">{{ post.title }}</h1>
+        
+        <!-- Share Bar for Backlink Optimization -->
+        <div class="share-bar" style="display: flex; gap: 15px; margin-top: 20px;">
+            <a href="https://twitter.com/intent/tweet?text={{ post.title | urlencode }}&url={{ request.url | urlencode }}" target="_blank" title="Share on X" style="color: #888; transition: color 0.3s;"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.url | urlencode }}" target="_blank" title="Share on LinkedIn" style="color: #888; transition: color 0.3s;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://api.whatsapp.com/send?text={{ post.title | urlencode }}%20{{ request.url | urlencode }}" target="_blank" title="Share on WhatsApp" style="color: #888; transition: color 0.3s;"><i class="fab fa-whatsapp"></i></a>
+            <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('{{ request.url }}'); alert('Link copied to clipboard!')" title="Copy Link" style="color: #888; transition: color 0.3s;"><i class="fas fa-link"></i></a>
+        </div>
     </div>
 
     <div class="article-content" itemprop="articleBody">

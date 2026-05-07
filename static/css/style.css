@@ -565,7 +565,7 @@ nav {
         overflow-y: auto;
     }
 
-    #primary-navigation[data-visible="true"] {
+    #primary-navigation.active {
         transform: translateX(0);
     }
 

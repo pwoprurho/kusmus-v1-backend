@@ -141,17 +141,17 @@ def _get_skill_categories():
 def _get_curated_industries():
     """Comprehensive industry mapping reflecting the original supported sectors."""
     return [
-        {'name': 'Telecommunications', 'icon': 'fas fa-tower-broadcast', 'color': '#00c3ff', 'desc': 'Autonomous O-RAN defense and network resilience for regional telecommunications leaders.'},
-        {'name': 'Banking & Finance', 'icon': 'fas fa-vault', 'color': '#0072ff', 'desc': 'Execution-grade signal correlation and automated statutory tax compliance for institutional finance.'},
-        {'name': 'Retail & Wholesale', 'icon': 'fas fa-shopping-cart', 'color': '#00ff88', 'desc': 'VLA Robotics for warehouse integrity and frontline labor optimization via automated support pods.'},
-        {'name': 'Oil & Gas / Energy', 'icon': 'fas fa-oil-well', 'color': '#ff7e00', 'desc': 'Predictive maintenance and sovereign resource telemetry for the energy sector.'},
-        {'name': 'Construction & Engineering', 'icon': 'fas fa-trowel-bricks', 'color': '#ff4444', 'desc': 'Autonomous project oversight and kinematic reasoning for large-scale infrastructure.'},
-        {'name': 'Integrated Security', 'icon': 'fas fa-shield-halved', 'color': '#ff4444', 'desc': 'Unified digital/physical defense with integrated personnel integrity vetting.'},
-        {'name': 'Agriculture & Food Security', 'icon': 'fas fa-seedling', 'color': '#2ecc71', 'desc': 'Sovereign climate telemetry and autonomous supply chain optimization for food security.'},
-        {'name': 'Manufacturing & Robotics', 'icon': 'fas fa-robot', 'color': '#9b59b6', 'desc': 'Agentic factory floor orchestration and high-fidelity assembly line diagnostics.'},
-        {'name': 'Entertainment & Media', 'icon': 'fas fa-clapperboard', 'color': '#ff00ff', 'desc': 'Personalized engagement pods and autonomous content synthesis for global digital layers.'},
-        {'name': 'Advertising & Branding', 'icon': 'fas fa-ad', 'color': '#FFD700', 'desc': 'High-fidelity branding pods and sentiment-driven asset generation.'},
-        {'name': 'Critical Infrastructure', 'icon': 'fas fa-city', 'color': '#64748b', 'desc': 'The foundational engine for autonomous success across power and state logistics.'}
+        {'name': 'Telecommunications', 'icon': 'fas fa-tower-broadcast', 'color': '#00c3ff', 'url': 'public.telecom', 'desc': 'Autonomous O-RAN defense and network resilience for regional telecommunications leaders.'},
+        {'name': 'Banking & Finance', 'icon': 'fas fa-vault', 'color': '#0072ff', 'url': 'public.banking', 'desc': 'Execution-grade signal correlation and automated statutory tax compliance for institutional finance.'},
+        {'name': 'Retail & Wholesale', 'icon': 'fas fa-shopping-cart', 'color': '#00ff88', 'url': 'public.solutions', 'desc': 'VLA Robotics for warehouse integrity and frontline labor optimization via automated support pods.'},
+        {'name': 'Oil & Gas / Energy', 'icon': 'fas fa-oil-well', 'color': '#ff7e00', 'url': 'public.energy', 'desc': 'Predictive maintenance and sovereign resource telemetry for the energy sector.'},
+        {'name': 'Construction & Engineering', 'icon': 'fas fa-trowel-bricks', 'color': '#ff4444', 'url': 'public.infrastructure', 'desc': 'Autonomous project oversight and kinematic reasoning for large-scale infrastructure.'},
+        {'name': 'Integrated Security', 'icon': 'fas fa-shield-halved', 'color': '#ff4444', 'url': 'public.solutions', 'desc': 'Unified digital/physical defense with integrated personnel integrity vetting.'},
+        {'name': 'Agriculture & Food Security', 'icon': 'fas fa-seedling', 'color': '#2ecc71', 'url': 'public.solutions', 'desc': 'Sovereign climate telemetry and autonomous supply chain optimization for food security.'},
+        {'name': 'Manufacturing & Robotics', 'icon': 'fas fa-robot', 'color': '#9b59b6', 'url': 'public.solutions', 'desc': 'Agentic factory floor orchestration and high-fidelity assembly line diagnostics.'},
+        {'name': 'Entertainment & Media', 'icon': 'fas fa-clapperboard', 'color': '#ff00ff', 'url': 'public.solutions', 'desc': 'Personalized engagement pods and autonomous content synthesis for global digital layers.'},
+        {'name': 'Advertising & Branding', 'icon': 'fas fa-ad', 'color': '#FFD700', 'url': 'public.solutions', 'desc': 'High-fidelity branding pods and sentiment-driven asset generation.'},
+        {'name': 'Critical Infrastructure', 'icon': 'fas fa-city', 'color': '#64748b', 'url': 'public.infrastructure', 'desc': 'The foundational engine for autonomous success across power and state logistics.'}
     ]
 
 @public_bp.route("/")
@@ -247,6 +247,30 @@ def method():
 @public_bp.route("/compliance")
 def compliance():
     return render_template("compliance.html")
+
+@public_bp.route("/telecom")
+def telecom():
+    return render_template("telecom.html")
+
+@public_bp.route("/banking")
+def banking():
+    return render_template("banking.html")
+
+@public_bp.route("/energy")
+def energy():
+    return render_template("energy.html")
+
+@public_bp.route("/site-map")
+def visual_sitemap():
+    return render_template("sitemap_page.html")
+
+@public_bp.route("/ai-manifesto")
+def llm_manifest():
+    return render_template("llm_manifest.html")
+
+@public_bp.route("/certifications")
+def certifications():
+    return render_template("certifications.html")
 
 @public_bp.route('/community')
 def community():
@@ -716,7 +740,19 @@ def sitemap():
         'public.team', 
         'public.mentor', 
         'public.blog',
-        'public.audit_request'
+        'public.audit_request',
+        'public.careers',
+        'public.library',
+        'public.academy_apply',
+        'public.community',
+        'public.podhub',
+        'public.telecom',
+        'public.banking',
+        'public.energy',
+        'public.certifications',
+        'sandbox.sandbox_view',
+        'tax.public_tax_agent',
+        'physics.stem_sandbox_view'
     ]
     
     xml_sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
