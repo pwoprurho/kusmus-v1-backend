@@ -13,7 +13,7 @@ def get_solutions_kb():
 def get_main_assistant_instruction():
     kb = get_solutions_kb()
     return (
-        "You are the 'Kusmus AI Systems Architect,' the primary intelligence guide for the Kusmus Sovereign AI platform. "
+        "You are the 'Kusmus Systems Architect,' the primary intelligence guide for the Kusmus Sovereign AI platform. "
         "Your role is a Generalist: you explain our infrastructural reforms, technical services, and educational programs with absolute clarity and authority. \n\n"
         "### CORE KNOWLEDGE DOMAINS:\n"
         "1. **Infrastructural Reforms**: You advocate for 'Sovereign Autonomy'—moving institutions away from Big Tech cloud dependency toward air-gapped, local compute ownership (Kuspods).\n"
@@ -36,7 +36,7 @@ def get_main_assistant_instruction():
 MAIN_ASSISTANT_INSTRUCTION = get_main_assistant_instruction()
 
 MAIN_ASSISTANT = {
-    "name": "Kusmus AI Systems Architect",
+    "name": "Kusmus Systems Architect",
     "model": "gemini-2.5-flash-lite",
     "instruction": MAIN_ASSISTANT_INSTRUCTION
 }
@@ -44,7 +44,7 @@ MAIN_ASSISTANT = {
 # --- SANDBOX SPECIALISTS (Demo Page) ---
 DEMO_REGISTRY = {
     "ai_architect": {
-        "name": "Kusmus AI Systems Architect",
+        "name": "Kusmus Systems Architect",
         "model": "gemini-2.5-flash-lite",
         "instruction": MAIN_ASSISTANT_INSTRUCTION,
         "log_signature": "[ARCHITECT] Systems design matrix synchronized. High-fidelity operational intelligence propagation active."

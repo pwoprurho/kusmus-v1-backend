@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Admin | {% block title %}Kusmus AI{% endblock %}</title>
+    <title>Admin | {% block title %}Kusmus{% endblock %}</title>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 0; overflow-x: hidden; }
         
@@ -75,7 +75,7 @@
 
     {% block header %}
     <div class="admin-header">
-        <h1>Kusmus AI Command Center</h1>
+        <h1>Kusmus Command Center</h1>
         <div class="admin-nav">
             {% if current_user.is_authenticated %}
                 <span>Officer: <strong>{{ current_user.full_name }}</strong></span>

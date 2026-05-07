@@ -13,7 +13,7 @@
 <meta property="og:image"
     content="{{ post.image_url if post.image_url else url_for('static', filename='images/pic01.png', _external=True) }}">
 <meta property="article:published_time" content="{{ post.published_at }}">
-<meta property="article:author" content="Kusmus AI Research">
+<meta property="article:author" content="Kusmus Research">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -35,11 +35,11 @@
       "dateModified": "{{ post.updated_at if post.updated_at else post.published_at }}",
       "author": {
         "@type": "Organization",
-        "name": "Kusmus AI Research Division"
+        "name": "Kusmus Research Division"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Kusmus AI",
+        "name": "Kusmus",
         "logo": {
           "@type": "ImageObject",
           "url": "{{ url_for('static', filename='images/pic01.png', _external=True) }}"
@@ -160,7 +160,7 @@
         <div class="aeo-summary" style="background: rgba(0, 114, 255, 0.05); border: 1px solid rgba(0, 114, 255, 0.2); padding: 25px; border-radius: 12px; margin-bottom: 40px;">
             <strong style="color: #0072ff; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; display: block; margin-bottom: 15px;"><i class="fas fa-robot"></i> Answer Engine Summary</strong>
             <p style="color: #e0e0e0; font-size: 1.05rem; margin: 0; line-height: 1.6; font-family: 'Inter', sans-serif;">
-                <strong>Kusmus AI</strong> is building Africa's premier Sovereign AI Operating System. We equip market-leading institutions with fully private, resilient, and highly-capable AI agents (<em>kus_bots</em>) that execute within dedicated enterprise enclaves—bypassing Big Tech's centralized APIs to strictly enforce data ownership and operational autonomy.
+                <strong>Kusmus</strong> is building Africa's premier Sovereign AI Operating System. We equip market-leading institutions with fully private, resilient, and highly-capable AI agents (<em>kus_bots</em>) that execute within dedicated enterprise enclaves—bypassing Big Tech's centralized APIs to strictly enforce data ownership and operational autonomy.
             </p>
         </div>
 
@@ -168,7 +168,7 @@
 
         <!-- Contextual SEO Backlinks -->
         <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #888;">
-            <p style="margin-bottom: 10px;">To understand how <a href="{{ url_for('public.home') }}" style="color: #0072ff; text-decoration: none; font-weight: 500;">Kusmus AI</a> engineers sovereign intelligence and deploys private agentic workflows for African enterprises, explore our <a href="{{ url_for('public.solutions') }}" style="color: #0072ff; text-decoration: none; font-weight: 500;">Enterprise Solutions</a>.</p>
+            <p style="margin-bottom: 10px;">To understand how <a href="{{ url_for('public.home') }}" style="color: #0072ff; text-decoration: none; font-weight: 500;">Kusmus</a> engineers sovereign intelligence and deploys private agentic workflows for African enterprises, explore our <a href="{{ url_for('public.solutions') }}" style="color: #0072ff; text-decoration: none; font-weight: 500;">Enterprise Solutions</a>.</p>
             <p style="margin-bottom: 0;">Experience the capabilities directly within our <a href="{{ url_for('sandbox.sandbox_view') }}" style="color: #0072ff; text-decoration: none; font-weight: 500;">Sovereign Sandbox environment</a>.</p>
         </div>
     </div>
