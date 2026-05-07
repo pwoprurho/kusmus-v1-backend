@@ -313,7 +313,12 @@
                             </div>
                         </div>
                         <div class="skill-footer">
-                            <span class="skill-tag">PROT-{{ loop.index + 100 }}</span>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <span class="skill-tag">PROT-{{ loop.index + 100 }}</span>
+                                <a href="{{ url_for('public.podhub_download_skill', skill_path=skill.rel_path) }}" class="view-btn" style="color: #00ff88; font-size: 0.75rem;" title="Download Skill Package">
+                                    <i class="fas fa-download"></i> ZIP
+                                </a>
+                            </div>
                             <a href="{{ url_for('public.skill_detail', category=category, skill_name=skill.name) }}" class="view-btn">Full Details <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>

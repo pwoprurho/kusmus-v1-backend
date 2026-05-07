@@ -389,6 +389,38 @@ def podhub():
 
     return render_template("podhub.html", skills_by_category=skills_by_category)
 
+@public_bp.route("/podhub/download/<path:skill_path>")
+def podhub_download_skill(skill_path):
+    """Package a specific skill folder into a ZIP for institutional download."""
+    import zipfile
+    import io
+    from flask import send_file
+    
+    # Security: Ensure skill_path doesn't escape kushub
+    base_dir = os.path.join(os.getcwd(), 'kushub')
+    full_path = os.path.abspath(os.path.join(base_dir, skill_path))
+    
+    if not full_path.startswith(base_dir) or not os.path.exists(full_path):
+        return "Unauthorized or missing skill telemetry.", 403
+        
+    memory_file = io.BytesIO()
+    with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zf:
+        for root, dirs, files in os.walk(full_path):
+            for file in files:
+                file_full_path = os.path.join(root, file)
+                # Create relative path inside ZIP
+                arcname = os.path.relpath(file_full_path, full_path)
+                zf.write(file_full_path, arcname)
+    
+    memory_file.seek(0)
+    skill_name = os.path.basename(full_path)
+    return send_file(
+        memory_file,
+        mimetype='application/zip',
+        as_attachment=True,
+        download_name=f"kusmus_skill_{skill_name}.zip"
+    )
+
 
 
 
