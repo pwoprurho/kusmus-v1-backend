@@ -10,15 +10,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 40px 20px;
+        padding: 140px 20px 100px;
         position: relative;
         z-index: 10;
         text-align: center;
-        overflow-y: auto; /* Internal scroll if needed */
     }
 
     .careers-header {
-        margin-bottom: 40px;
+        margin-bottom: 60px;
         max-width: 800px;
     }
 
@@ -39,7 +38,7 @@
 
     .career-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 30px;
         width: 100%;
         max-width: 1200px;
@@ -51,7 +50,7 @@
         backdrop-filter: blur(15px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         padding: 35px;
-        border-radius: 4px;
+        border-radius: 8px;
         text-align: left;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
@@ -61,27 +60,11 @@
         overflow: hidden;
     }
 
-    .career-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #0072ff, transparent);
-        transform: translateX(-100%);
-        transition: transform 0.5s ease;
-    }
-
     .career-card:hover {
         border-color: rgba(0, 114, 255, 0.3);
         background: rgba(20, 20, 25, 0.9);
         transform: translateY(-5px);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .career-card:hover::before {
-        transform: translateX(100%);
     }
 
     .career-icon {
@@ -91,26 +74,26 @@
     }
 
     .career-name {
-        color: #FFD700;
+        color: #fff;
         font-size: 1.4rem;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .career-description {
-        color: #ccc;
-        font-size: 0.95rem;
+        color: #888;
+        font-size: 0.9rem;
         line-height: 1.6;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .career-tag {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         text-transform: uppercase;
         letter-spacing: 1px;
         color: #555;
         border: 1px solid #333;
         padding: 4px 10px;
-        border-radius: 2px;
+        border-radius: 4px;
         display: inline-block;
         margin-bottom: 15px;
     }
@@ -119,9 +102,10 @@
         display: inline-block;
         color: #0072ff;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+        text-decoration: none;
         transition: color 0.3s;
     }
 
@@ -129,70 +113,161 @@
         color: #fff;
     }
 
-    @media (max-width: 768px) {
-        .careers-container {
-            padding: 80px 20px 40px;
-            justify-content: flex-start;
-        }
-        .career-grid {
-            grid-template-columns: 1fr;
-        }
+    .section-divider {
+        margin: 100px 0 60px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .section-divider h2 {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .section-divider p {
+        color: #666;
     }
 </style>
 
-<div class="careers-container">
-    <div class="careers-header fade-in">
+<div class="careers-container container">
+    <div class="careers-header reveal">
         <h1>Architect the Future.</h1>
-        <p>The Kusmus Academy doesn't just train employees; we engineer the next generation of sovereign infrastructure masters. Choose your path and redefine what's possible.</p>
+        <p>The Kusmus Academy provides elite specialized tracks for both foundational engineering and high-tier Sovereign AI orchestration.</p>
+    </div>
+
+    <!-- Tier 1: Advanced AI Careers (₦500k) -->
+    <div class="section-divider reveal">
+        <h2 style="color: #FFD700;">Advanced AI Career Paths</h2>
+        <p>Institutional-grade mastery for the next generation of AI leaders.</p>
     </div>
 
     <div class="career-grid">
-        <!-- Sovereign LLM Architect -->
-        <div class="career-card fade-in" style="animation-delay: 0.1s;">
+        <!-- AI Systems Architect -->
+        <div class="career-card reveal" style="border-left: 4px solid #0072ff;">
             <div>
-                <div class="career-tag">Core Intelligence Path</div>
+                <div class="career-tag">Architect Path</div>
                 <div class="career-icon"><i class="fas fa-brain"></i></div>
                 <h3 class="career-name">AI Systems Architect</h3>
-                <p style="color: #0072ff; font-size: 0.75rem; margin-bottom: 10px; font-weight: 700;">CERTIFICATE: KUSMUS CERTIFIED AI SYSTEMS ARCHITECT</p>
-                <p class="career-description">Master the deployment and optimization of localized, private reasoning engines. Specialize in RAG-orchestration and institutional intelligence perimeters.</p>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #0072ff; margin-bottom: 15px; font-weight: 800;">₦500,000</div>
+                <p class="career-description">Deploy and optimize localized reasoning engines. Specialize in RAG-orchestration and institutional intelligence perimeters.</p>
+                <ul style="color: #555; font-size: 0.75rem; margin-bottom: 20px; list-style: none; padding: 0;">
+                    <li><i class="fas fa-check" style="color: #0072ff; margin-right: 8px;"></i> Sovereign Node Setup</li>
+                    <li><i class="fas fa-check" style="color: #0072ff; margin-right: 8px;"></i> Vector DB Architecture</li>
+                </ul>
             </div>
-            <a href="{{ url_for('public.academy_apply') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+            <a href="{{ url_for('public.academy_apply') }}?track=architect" class="apply-career-btn">Enroll Now &rarr;</a>
         </div>
 
-        <!-- Autonomous Engineering Specialist -->
-        <div class="career-card fade-in" style="animation-delay: 0.2s;">
+        <!-- Autonomous Engineer -->
+        <div class="career-card reveal" style="border-left: 4px solid #00ff88;">
             <div>
-                <div class="career-tag">Agentic Autonomy Path</div>
+                <div class="career-tag">Autonomy Path</div>
                 <div class="career-icon"><i class="fas fa-network-wired"></i></div>
                 <h3 class="career-name">Autonomous Engineer</h3>
-                <p style="color: #0072ff; font-size: 0.75rem; margin-bottom: 10px; font-weight: 700;">CERTIFICATE: KUSMUS CERTIFIED AUTONOMOUS ENGINEER</p>
-                <p class="career-description">Design and engineer multi-agent ecosystems that operate with zero-latency coordination. Focus on self-healing protocols and agentic workflows.</p>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #00ff88; margin-bottom: 15px; font-weight: 800;">₦500,000</div>
+                <p class="career-description">Engineer multi-agent ecosystems with zero-latency coordination. Focus on self-healing protocols.</p>
+                <ul style="color: #555; font-size: 0.75rem; margin-bottom: 20px; list-style: none; padding: 0;">
+                    <li><i class="fas fa-check" style="color: #00ff88; margin-right: 8px;"></i> Swarm Logic Design</li>
+                    <li><i class="fas fa-check" style="color: #00ff88; margin-right: 8px;"></i> Agentic Workflows</li>
+                </ul>
             </div>
-            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+            <a href="{{ url_for('public.academy_apply') }}?track=autonomous" class="apply-career-btn">Enroll Now &rarr;</a>
         </div>
 
-        <!-- Institutional AI Security Operative -->
-        <div class="career-card fade-in" style="animation-delay: 0.3s;">
+        <!-- Data Sovereignty Officer -->
+        <div class="career-card reveal" style="border-left: 4px solid #ff4444;">
             <div>
-                <div class="career-tag">SecOps Integrity Path</div>
+                <div class="career-tag">Security Path</div>
                 <div class="career-icon"><i class="fas fa-user-shield"></i></div>
                 <h3 class="career-name">Data Sovereignty Officer</h3>
-                <p style="color: #0072ff; font-size: 0.75rem; margin-bottom: 10px; font-weight: 700;">CERTIFICATE: KUSMUS CERTIFIED SOVEREIGNTY OFFICER</p>
-                <p class="career-description">Harden AI-driven perimeters against emerging adversarial vectors. Master the intersection of cybersecurity and neural network integrity.</p>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #ff4444; margin-bottom: 15px; font-weight: 800;">₦500,000</div>
+                <p class="career-description">Harden AI perimeters against adversarial vectors. Master cybersecurity and neural integrity.</p>
+                <ul style="color: #555; font-size: 0.75rem; margin-bottom: 20px; list-style: none; padding: 0;">
+                    <li><i class="fas fa-check" style="color: #ff4444; margin-right: 8px;"></i> Neural Governance</li>
+                    <li><i class="fas fa-check" style="color: #ff4444; margin-right: 8px;"></i> Compliance Auditing</li>
+                </ul>
             </div>
-            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+            <a href="{{ url_for('public.academy_apply') }}?track=sovereignty" class="apply-career-btn">Enroll Now &rarr;</a>
         </div>
 
-        <!-- AI Powered Branding and Marketing Specialist -->
-        <div class="career-card fade-in" style="animation-delay: 0.4s;">
+        <!-- AI Brand Strategist -->
+        <div class="career-card reveal" style="border-left: 4px solid #FFD700;">
             <div>
-                <div class="career-tag">Growth Optimization Path</div>
+                <div class="career-tag">Growth Path</div>
                 <div class="career-icon"><i class="fas fa-ad"></i></div>
                 <h3 class="career-name">AI Brand Strategist</h3>
-                <p style="color: #0072ff; font-size: 0.75rem; margin-bottom: 10px; font-weight: 700;">CERTIFICATE: KUSMUS CERTIFIED AI BRAND STRATEGIST</p>
-                <p class="career-description">Leverage generative pods and sentiment-driven telemetry to build sovereign brands that resonate across the global digital layer.</p>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #FFD700; margin-bottom: 15px; font-weight: 800;">₦500,000</div>
+                <p class="career-description">Leverage generative pods and sentiment-driven telemetry to build sovereign brands globally.</p>
+                <ul style="color: #555; font-size: 0.75rem; margin-bottom: 20px; list-style: none; padding: 0;">
+                    <li><i class="fas fa-check" style="color: #FFD700; margin-right: 8px;"></i> Generative Pipelines</li>
+                    <li><i class="fas fa-check" style="color: #FFD700; margin-right: 8px;"></i> Sentiment Analysis</li>
+                </ul>
             </div>
-            <a href="{{ url_for('public.audit_request') }}" class="apply-career-btn">Apply for Training &rarr;</a>
+            <a href="{{ url_for('public.academy_apply') }}?track=branding" class="apply-career-btn">Enroll Now &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Tier 2: Core Engineering Careers (₦200k) -->
+    <div class="section-divider reveal">
+        <h2>Core Software Engineering Tracks</h2>
+        <p>Master the foundational systems that power the Sovereign Web.</p>
+    </div>
+
+    <div class="career-grid">
+        <!-- Python Backend Developer -->
+        <div class="career-card reveal">
+            <div>
+                <div class="career-tag">Backend Path</div>
+                <div class="career-icon"><i class="fas fa-server"></i></div>
+                <h3 class="career-name">Python Backend Developer</h3>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #00c6ff; margin-bottom: 15px; font-weight: 800;">₦200,000</div>
+                <p class="career-description">Build high-performance, secure server-side architectures. Master FastAPI and database modeling.</p>
+            </div>
+            <a href="{{ url_for('public.academy_apply') }}?track=backend" class="apply-career-btn">Enroll Now &rarr;</a>
+        </div>
+
+        <!-- Full-Stack Engineer -->
+        <div class="career-card reveal">
+            <div>
+                <div class="career-tag">Systems Path</div>
+                <div class="career-icon"><i class="fas fa-code"></i></div>
+                <h3 class="career-name">Full-Stack Engineer</h3>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #00ff88; margin-bottom: 15px; font-weight: 800;">₦200,000</div>
+                <p class="career-description">Architect complete end-to-end applications. Combine Python backends with modern frontends.</p>
+            </div>
+            <a href="{{ url_for('public.academy_apply') }}?track=fullstack" class="apply-career-btn">Enroll Now &rarr;</a>
+        </div>
+
+        <!-- Automation Specialist -->
+        <div class="career-card reveal">
+            <div>
+                <div class="career-tag">Efficiency Path</div>
+                <div class="career-icon"><i class="fas fa-cogs"></i></div>
+                <h3 class="career-name">Automation Specialist</h3>
+                <div style="font-family: 'JetBrains Mono', monospace; color: #FFD700; margin-bottom: 15px; font-weight: 800;">₦200,000</div>
+                <p class="career-description">Eliminate manual redundancy. Master web scraping, scheduling, and autonomous workflows.</p>
+            </div>
+            <a href="{{ url_for('public.academy_apply') }}?track=automation" class="apply-career-btn">Enroll Now &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Career Benefits Section -->
+    <div style="margin-top: 100px; text-align: center; max-width: 900px;" class="reveal">
+        <h2 style="color: #fff; font-size: 2rem; margin-bottom: 40px;">The Kusmus Career Advantage</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            <div>
+                <h4 style="color: #0072ff; margin-bottom: 10px;"><i class="fas fa-briefcase"></i> Institutional Placement</h4>
+                <p style="color: #666; font-size: 0.85rem;">Priority deployment within our high-tier institutional partner networks.</p>
+            </div>
+            <div>
+                <h4 style="color: #00ff88; margin-bottom: 10px;"><i class="fas fa-server"></i> Node Ownership</h4>
+                <p style="color: #666; font-size: 0.85rem;">Subsidized access to sovereign compute resources for your research.</p>
+            </div>
+            <div>
+                <h4 style="color: #FFD700; margin-bottom: 10px;"><i class="fas fa-certificate"></i> Elite Certification</h4>
+                <p style="color: #666; font-size: 0.85rem;">Earn the 'Kusmus Certified' gold-standard credential.</p>
+            </div>
         </div>
     </div>
 </div>
