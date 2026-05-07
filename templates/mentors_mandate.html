@@ -255,10 +255,13 @@
                 </div>
             </div>
 
-            <!-- PyCon South Africa 2017 - EMBED -->
+            <!-- PyCon South Africa 2017 - LOCAL -->
             <div class="video-card reveal" style="transition-delay: 0.1s;">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/W7zRuRmr9y8" title="PyCon ZA 2017" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls poster="{{ url_for('static', filename='videos/poster_2019.jpg') }}" style="width: 100%; height: 100%;">
+                        <source src="{{ url_for('static', filename='videos/mentor_pycon_2017.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="video-info">
                     <span>PyCon ZA 2017 / Technical Tour</span>
@@ -268,11 +271,14 @@
                     </a>
                 </div>
             </div>
-
-            <!-- PyCon South Africa 2016 - EMBED -->
+ 
+            <!-- PyCon South Africa 2016 - LOCAL -->
             <div class="video-card reveal" style="transition-delay: 0.2s;">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/4lgIkhaTA98" title="PyCon ZA 2016" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls poster="{{ url_for('static', filename='videos/poster_2019.jpg') }}" style="width: 100%; height: 100%;">
+                        <source src="{{ url_for('static', filename='videos/mentor_pycon_2016.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="video-info">
                     <span>PyCon ZA 2016 / Keynote</span>
